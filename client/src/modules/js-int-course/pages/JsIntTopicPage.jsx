@@ -12,37 +12,51 @@ export default function JsIntTopicPage() {
 
   /* ── State ─────────────────────────────────────────────────── */
   const [navOpen, setNavOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("html");
   const [copyLabel, setCopyLabel] = useState("Copy");
   const [isLoading, setIsLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
-  const [consoleOutput, setConsoleOutput] = useState([]);
+
+  /* Editable code state for each tab */
+  const [htmlCode, setHtmlCode] = useState("");
+  const [cssCode, setCssCode] = useState("");
+  const [jsCode, setJsCode] = useState("");
+  const [previewKey, setPreviewKey] = useState(0);
 
   const editorRef = useRef(null);
+  const iframeRef = useRef(null);
 
   /* ── Locate topic data ─────────────────────────────────────── */
   const topicData = jsIntTopicExamples.find(
     (t) => t.topic.toLowerCase() === (topic || "").toLowerCase(),
   );
 
-  const defaultCode =
-    topicData?.code ?? `// ${topic}\nconsole.log("Hello from ${topic}!")`;
+  const defaultHtml = topicData?.html ?? `<!-- ${topic} -->\n<div id="output">\n  <h2>${topic}</h2>\n  <p>Interactive example</p>\n</div>`;
+  const defaultCss = topicData?.css ?? `/* ${topic} styles */\n#output {\n  font-family: 'Segoe UI', sans-serif;\n  padding: 20px;\n}`;
+  const defaultJs = topicData?.js ?? `// ${topic}\nconsole.log("Hello from ${topic}!");`;
 
   const rawDescription =
     topicData?.description ?? `This topic covers ${topic} in JavaScript.`;
 
-  /* Strip leading "The <topic> concept / tag " so the banner template
-     doesn't accidentally duplicate it */
   const description = useMemo(() => {
     return rawDescription
       .replace(new RegExp(`^The\\s+${topic}\\s+`, "i"), "")
       .replace(/^The\s+/i, "");
   }, [rawDescription, topic]);
 
+  /* ── Initialize code when topic changes ─────────────────────── */
+  useEffect(() => {
+    setHtmlCode(defaultHtml);
+    setCssCode(defaultCss);
+    setJsCode(defaultJs);
+    setActiveTab("html");
+    setPreviewKey((k) => k + 1);
+  }, [topic]);
+
   /* ── Loading animation ─────────────────────────────────────── */
   useEffect(() => {
     setIsLoading(true);
     setFadeOut(false);
-    setConsoleOutput([]);
 
     const fadeTimer = setTimeout(() => setFadeOut(true), 950);
     const removeTimer = setTimeout(() => setIsLoading(false), 1400);
@@ -58,62 +72,105 @@ export default function JsIntTopicPage() {
     editorRef.current = editor;
   }
 
-  /* ── Run code, capture console output ─────────────────────── */
-  function runCode() {
-    const code = editorRef.current?.getValue() ?? defaultCode;
-    const outputs = [];
-
-    const serialize = (args) =>
-      args
-        .map((a) => {
-          if (a === null) return "null";
-          if (a === undefined) return "undefined";
-          if (typeof a === "object") {
-            try {
-              return JSON.stringify(a, null, 2);
-            } catch {
-              return String(a);
-            }
-          }
-          return String(a);
-        })
-        .join(" ");
-
-    const origLog = console.log;
-    const origErr = console.error;
-    const origWarn = console.warn;
-
-    console.log = (...args) =>
-      outputs.push({ type: "log", text: serialize(args) });
-    console.error = (...args) =>
-      outputs.push({ type: "error", text: serialize(args) });
-    console.warn = (...args) =>
-      outputs.push({ type: "warn", text: serialize(args) });
-
-    try {
-      // eslint-disable-next-line no-new-func
-      const fn = new Function(code);
-      fn();
-    } catch (err) {
-      outputs.push({ type: "error", text: err.message });
-    } finally {
-      console.log = origLog;
-      console.error = origErr;
-      console.warn = origWarn;
-    }
-
-    setConsoleOutput(outputs);
+  /* ── Save current tab code before switching ─────────────────── */
+  function saveCurrentTab() {
+    const currentCode = editorRef.current?.getValue() ?? "";
+    if (activeTab === "html") setHtmlCode(currentCode);
+    else if (activeTab === "css") setCssCode(currentCode);
+    else if (activeTab === "js") setJsCode(currentCode);
   }
+
+  /* ── Switch tab ─────────────────────────────────────────────── */
+  function switchTab(tab) {
+    saveCurrentTab();
+    setActiveTab(tab);
+  }
+
+  /* ── Get current code for active tab ────────────────────────── */
+  function getActiveCode() {
+    if (activeTab === "html") return htmlCode;
+    if (activeTab === "css") return cssCode;
+    return jsCode;
+  }
+
+  /* ── Get editor language ────────────────────────────────────── */
+  function getEditorLanguage() {
+    if (activeTab === "html") return "html";
+    if (activeTab === "css") return "css";
+    return "javascript";
+  }
+
+  /* ── Run Preview — combine HTML + CSS + JS into iframe ──────── */
+  function runPreview() {
+    saveCurrentTab();
+    // Small delay to ensure state is saved
+    setTimeout(() => {
+      setPreviewKey((k) => k + 1);
+    }, 50);
+  }
+
+  /* ── Build preview HTML ─────────────────────────────────────── */
+  const previewHtml = useMemo(() => {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1a1a2e;
+      color: #e5e5e5;
+      padding: 16px;
+      min-height: 100vh;
+    }
+    ${cssCode}
+  </style>
+</head>
+<body>
+  ${htmlCode}
+  <script>
+    // Console capture for display
+    const __outputs = [];
+    const __origLog = console.log;
+    console.log = (...args) => {
+      __origLog(...args);
+      const el = document.getElementById('__console-output');
+      if (el) {
+        const line = document.createElement('div');
+        line.className = '__console-line';
+        line.textContent = args.map(a => typeof a === 'object' ? JSON.stringify(a, null, 2) : String(a)).join(' ');
+        el.appendChild(line);
+      }
+    };
+    console.error = (...args) => {
+      const el = document.getElementById('__console-output');
+      if (el) {
+        const line = document.createElement('div');
+        line.className = '__console-line __console-error';
+        line.textContent = args.map(a => typeof a === 'object' ? JSON.stringify(a, null, 2) : String(a)).join(' ');
+        el.appendChild(line);
+      }
+    };
+    try {
+      ${jsCode}
+    } catch(e) {
+      console.error('Error: ' + e.message);
+    }
+  </script>
+</body>
+</html>`;
+  }, [htmlCode, cssCode, jsCode, previewKey]);
 
   /* ── Copy to clipboard ─────────────────────────────────────── */
   const handleCopy = useCallback(async () => {
-    const code = editorRef.current?.getValue() ?? defaultCode;
+    const code = editorRef.current?.getValue() ?? getActiveCode();
     try {
       await navigator.clipboard.writeText(code);
       setCopyLabel("Copied!");
       setTimeout(() => setCopyLabel("Copy"), 2000);
     } catch {
-      /* fallback for older browsers */
       const ta = document.createElement("textarea");
       ta.value = code;
       ta.style.cssText = "position:fixed;opacity:0;pointer-events:none;";
@@ -129,7 +186,7 @@ export default function JsIntTopicPage() {
       }
       document.body.removeChild(ta);
     }
-  }, [defaultCode]);
+  }, [activeTab, htmlCode, cssCode, jsCode]);
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
@@ -148,26 +205,20 @@ export default function JsIntTopicPage() {
           aria-live="polite"
           aria-label="Loading topic"
         >
-          {/* Spinning ring + JS logo */}
           <div className="loading-logo-wrap">
             <div className="loading-spinner-ring" aria-hidden="true" />
             <span className="loading-js-text" aria-hidden="true">
               &#123;JS&#125;
             </span>
           </div>
-
-          {/* Topic slug pill */}
           <div className="loading-tag-name" aria-hidden="true">
             {topic}
           </div>
-
-          {/* Bouncing dots */}
           <div className="loading-dots" aria-hidden="true">
             <div className="loading-dot" />
             <div className="loading-dot" />
             <div className="loading-dot" />
           </div>
-
           <p className="loading-caption">Loading topic…</p>
         </div>
       )}
@@ -177,7 +228,6 @@ export default function JsIntTopicPage() {
       ══════════════════════════════════════════════════════════ */}
       <header className="topic-page-header" role="banner">
         <div className="topic-header-inner">
-          {/* Left — Back button */}
           <button
             className="topic-back-btn"
             onClick={() => navigate(-1)}
@@ -188,12 +238,10 @@ export default function JsIntTopicPage() {
             Back
           </button>
 
-          {/* Center — Brand title */}
           <h1 className="topic-header-title animate-fade-in">
             <span className="topic-header-js">JS</span> INTERMEDIATE IN MY STYLE
           </h1>
 
-          {/* Right — Hamburger menu trigger */}
           <button
             className="topic-menu-trigger"
             onClick={() => setNavOpen(true)}
@@ -236,15 +284,39 @@ export default function JsIntTopicPage() {
       <main className="topic-main" id="main-content">
         <div className="topic-panels-grid">
           {/* ────────────────────────────────────────────────────
-              LEFT PANEL — Monaco Editor
+              LEFT PANEL — Code Editor with Tabs
           ──────────────────────────────────────────────────── */}
           <section className="editor-panel" aria-label="Code editor">
-            {/* Panel header bar */}
-            <div className="editor-panel-header">
-              <div className="editor-panel-header-left">
-                <span className="editor-lang-badge">JS</span>
-                <span className="editor-label-text">Editable Code</span>
-              </div>
+            {/* Tab buttons */}
+            <div className="editor-tabs-bar">
+              <button
+                className={`editor-tab ${activeTab === "html" ? "active" : ""}`}
+                onClick={() => switchTab("html")}
+                type="button"
+                aria-label="Switch to HTML code"
+              >
+                <i className="bi bi-filetype-html" aria-hidden="true" />
+                HTML
+              </button>
+              <button
+                className={`editor-tab ${activeTab === "css" ? "active" : ""}`}
+                onClick={() => switchTab("css")}
+                type="button"
+                aria-label="Switch to CSS code"
+              >
+                <i className="bi bi-filetype-css" aria-hidden="true" />
+                CSS
+              </button>
+              <button
+                className={`editor-tab ${activeTab === "js" ? "active" : ""}`}
+                onClick={() => switchTab("js")}
+                type="button"
+                aria-label="Switch to JavaScript code"
+              >
+                <i className="bi bi-filetype-js" aria-hidden="true" />
+                JS
+              </button>
+              <div className="editor-tabs-spacer" />
               <div className="editor-dots" aria-hidden="true">
                 <div className="editor-dot red" />
                 <div className="editor-dot yellow" />
@@ -255,11 +327,17 @@ export default function JsIntTopicPage() {
             {/* Monaco Editor */}
             <div className="editor-monaco-wrap">
               <Editor
+                key={`${topic}-${activeTab}`}
                 height="100%"
-                defaultLanguage="javascript"
-                defaultValue={defaultCode}
+                language={getEditorLanguage()}
+                value={getActiveCode()}
                 theme="vs-dark"
                 onMount={handleEditorMount}
+                onChange={(value) => {
+                  if (activeTab === "html") setHtmlCode(value || "");
+                  else if (activeTab === "css") setCssCode(value || "");
+                  else setJsCode(value || "");
+                }}
                 options={{
                   minimap: { enabled: !isMobile },
                   fontSize: isMobile ? 12 : 14,
@@ -280,6 +358,7 @@ export default function JsIntTopicPage() {
                   bracketPairColorization: { enabled: true },
                   renderLineHighlight: "all",
                   lineHeight: 22,
+                  tabSize: 2,
                   scrollbar: {
                     vertical: "visible",
                     horizontal: "visible",
@@ -292,31 +371,28 @@ export default function JsIntTopicPage() {
 
             {/* Action buttons bar */}
             <div className="editor-actions-bar">
-              {/* Run */}
               <button
                 className="action-btn run"
-                onClick={runCode}
+                onClick={runPreview}
                 type="button"
-                aria-label="Run code and show console output"
+                aria-label="Run code and show preview"
                 title="Run code (Ctrl+Enter)"
               >
                 <i className="bi bi-play-fill" aria-hidden="true" />
                 Run
               </button>
 
-              {/* Open full JsIntCompiler */}
               <button
                 className="action-btn compiler"
                 onClick={() => navigate("/js-int-course/compiler")}
                 type="button"
                 aria-label="Open full compiler playground"
-                title="Open in JsIntCompiler"
+                title="Open in Compiler"
               >
                 <i className="bi bi-terminal-fill" aria-hidden="true" />
-                JsIntCompiler
+                Compiler
               </button>
 
-              {/* Copy code */}
               <button
                 className="action-btn copy"
                 onClick={handleCopy}
@@ -334,96 +410,44 @@ export default function JsIntTopicPage() {
           </section>
 
           {/* ────────────────────────────────────────────────────
-              RIGHT PANEL — Console Output
+              RIGHT PANEL — Interactive Preview
           ──────────────────────────────────────────────────── */}
-          <section className="console-panel" aria-label="Console output">
+          <section className="preview-panel" aria-label="Interactive preview">
             {/* Panel header */}
-            <div className="console-panel-header">
-              <h2 className="console-panel-title">
-                <i className="bi bi-terminal-fill" aria-hidden="true" />
-                Console Output
+            <div className="preview-panel-header">
+              <h2 className="preview-panel-title">
+                <i className="bi bi-eye-fill" aria-hidden="true" />
+                Interactive Preview
               </h2>
-              <span className="console-live-badge">Live Result</span>
+              <span className="preview-live-badge">Live Output</span>
             </div>
 
-            {/* Output area */}
-            <div
-              className="console-output"
-              role="log"
-              aria-live="polite"
-              aria-label="JavaScript console output"
-            >
-              {consoleOutput.length === 0 ? (
-                /* Empty state */
-                <div className="console-empty-state">
-                  <i
-                    className="bi bi-terminal-dash console-empty-icon"
-                    aria-hidden="true"
-                  />
-                  <p className="console-empty-title">No output yet</p>
-                  <p className="console-empty-hint">
-                    Output from <code>console.log()</code> appears here when you
-                    click <strong>Run</strong>
-                  </p>
-                </div>
-              ) : (
-                /* Log entries */
-                consoleOutput.map((entry, i) => (
-                  <div
-                    key={i}
-                    className={`console-entry console-entry--${entry.type}`}
-                  >
-                    {/* Type icon */}
-                    <span className="console-entry-icon" aria-hidden="true">
-                      {entry.type === "error" && (
-                        <i className="bi bi-x-circle-fill" />
-                      )}
-                      {entry.type === "warn" && (
-                        <i className="bi bi-exclamation-triangle-fill" />
-                      )}
-                      {entry.type === "log" && (
-                        <i className="bi bi-chevron-right" />
-                      )}
-                    </span>
-
-                    {/* Type label */}
-                    <span className="console-entry-type">
-                      {entry.type.toUpperCase()}
-                    </span>
-
-                    {/* Output text */}
-                    <span className="console-entry-text">{entry.text}</span>
-                  </div>
-                ))
-              )}
+            {/* Preview iframe */}
+            <div className="preview-output">
+              <iframe
+                ref={iframeRef}
+                key={previewKey}
+                srcDoc={previewHtml}
+                title="Code Preview"
+                className="preview-iframe"
+                sandbox="allow-scripts allow-modals"
+              />
             </div>
 
-            {/* Bottom bar — clear + count */}
-            <div className="console-actions-bar">
+            {/* Bottom bar */}
+            <div className="preview-actions-bar">
               <button
-                className="console-clear-btn"
-                onClick={() => setConsoleOutput([])}
-                disabled={consoleOutput.length === 0}
+                className="preview-refresh-btn"
+                onClick={runPreview}
                 type="button"
-                aria-label="Clear console output"
+                aria-label="Refresh preview"
               >
-                <i className="bi bi-trash" aria-hidden="true" />
-                Clear
+                <i className="bi bi-arrow-clockwise" aria-hidden="true" />
+                Refresh
               </button>
-
-              {consoleOutput.length > 0 && (
-                <span
-                  className="console-count-badge"
-                  aria-label={`${consoleOutput.length} output lines`}
-                >
-                  {consoleOutput.length}{" "}
-                  {consoleOutput.length === 1 ? "line" : "lines"}
-                </span>
-              )}
-
-              <span className="console-hint-text">
+              <span className="preview-hint-text">
                 <i className="bi bi-info-circle" aria-hidden="true" />
-                console.log() output appears here on Run
+                Combined HTML + CSS + JS output
               </span>
             </div>
           </section>

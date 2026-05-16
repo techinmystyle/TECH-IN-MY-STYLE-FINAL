@@ -10,8 +10,6 @@ const NAV_LINKS = [
   { label: 'Topics',         to: '/js-adv-course/topics',     icon: 'bi bi-code-square',      pageKey: 'topics'    },
   { label: 'Compiler',       to: '/js-adv-course/compiler',   icon: 'bi bi-terminal-fill',    pageKey: 'compiler'  },
   { label: 'Resources',      to: '/js-adv-course/resources',  icon: 'bi bi-journal-code',     pageKey: 'resources' },
-  { label: 'Dashboard',      to: '/js-adv-course/dashboard',  icon: 'bi bi-graph-up-arrow',   pageKey: 'dashboard' },
-  { label: 'Projects',       to: '/js-adv-course/projects',   icon: 'bi bi-layers-fill',      pageKey: 'projects'  },
   { label: "Let's Connect",  to: '/js-adv-course/connect',    icon: 'bi bi-person-lines-fill', pageKey: 'connect'  },
 ]
 
@@ -75,8 +73,6 @@ function getPageKey(pathname) {
   if (pathname.startsWith('/topics'))        return 'topics'
   if (pathname.startsWith('/compiler'))      return 'compiler'
   if (pathname.startsWith('/resources'))     return 'resources'
-  if (pathname.startsWith('/dashboard'))     return 'dashboard'
-  if (pathname.startsWith('/projects'))      return 'projects'
   if (pathname.startsWith('/connect'))       return 'connect'
   return ''
 }
@@ -238,7 +234,7 @@ export default function JsAdvNavbar() {
               type="button"
             >
               <i
-                className={dark ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill'}
+                className={dark ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill'}
                 aria-hidden="true"
               />
             </button>
@@ -347,7 +343,7 @@ export default function JsAdvNavbar() {
         <div className="navbar__mobile-theme">
           <span className="navbar__mobile-theme-label">
             <i
-              className={dark ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill'}
+              className={dark ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill'}
               aria-hidden="true"
             />
             {dark ? 'Dark Mode' : 'Light Mode'}

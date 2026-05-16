@@ -20,14 +20,14 @@ const data: SubtopicData = {
       icon: 'video',
       title: 'Topic video source',
       description: 'A comprehensive video',
-      link: 'https://youtu.be/9OK32jb_TdI?si=xdrF6PINsEOIg5R1',
+      link: 'https://youtu.be/QoIRX37VZpo?si=PAjTPheXm5oYAU3C',
       linkText: 'Watch',
     },
     {
       icon: 'book',
       title: 'Python pdf',
       description: 'pdf on topic',
-      link: 'https://drive.google.com/file/d/1SlG7xt6UGPQ7qDwN4N57V7_pq4VX0g6N/view?usp=drive_link',
+      link: 'https://drive.google.com/file/d/1ZSdmgL5IJwnAnlSwAaaufSPVI1D0YvQB/view?usp=drive_link',
       linkText: 'Visit',
     },
   ]

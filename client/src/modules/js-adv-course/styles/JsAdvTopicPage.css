@@ -1169,3 +1169,123 @@
 
 
 
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   LANGUAGE TABS  (HTML / CSS / JS switcher on the editor panel)
+═══════════════════════════════════════════════════════════════════ */
+.js-adv-course-root .editor-panel-header {
+  /* override: now flex with space-between */
+  justify-content: space-between;
+}
+
+.js-adv-course-root .editor-lang-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.js-adv-course-root .editor-lang-tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s, box-shadow 0.18s;
+  white-space: nowrap;
+}
+
+.js-adv-course-root .editor-lang-tab:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-light);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.js-adv-course-root .editor-lang-tab--active {
+  background: color-mix(in srgb, var(--lang-color) 18%, transparent);
+  color: var(--lang-color);
+  border-color: color-mix(in srgb, var(--lang-color) 55%, transparent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--lang-color) 20%, transparent);
+}
+
+/* Fallback for browsers without color-mix */
+@supports not (color: color-mix(in srgb, red 50%, blue)) {
+  .js-adv-course-root .editor-lang-tab--active {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f9fafb;
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+}
+
+.js-adv-course-root .editor-panel-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PREVIEW IFRAME  (combined HTML+CSS+JS output)
+═══════════════════════════════════════════════════════════════════ */
+.js-adv-course-root .preview-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+}
+
+.js-adv-course-root .preview-iframe {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  background: #fff;
+}
+
+/* Show empty hint only when iframe has no srcdoc yet */
+.js-adv-course-root .preview-iframe:not([srcdoc]) ~ .preview-empty-hint,
+.js-adv-course-root .preview-iframe[srcdoc=""] ~ .preview-empty-hint {
+  display: flex;
+}
+
+.js-adv-course-root .preview-empty-hint {
+  display: none;
+  position: absolute;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  text-align: center;
+  padding: 2rem;
+  background: #0b0b18;
+  pointer-events: none;
+}
+
+.js-adv-course-root .preview-empty-hint svg {
+  stroke: rgba(6, 182, 212, 0.2);
+}
+
+.js-adv-course-root .preview-empty-hint p {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.js-adv-course-root .preview-empty-hint p strong {
+  color: var(--jsadv-cyan);
+}
+
+.js-adv-course-root .preview-empty-hint span {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}

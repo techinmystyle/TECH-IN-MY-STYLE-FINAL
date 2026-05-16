@@ -16,7 +16,7 @@ export default function JsAdvTopicNavMenu({ isOpen, onClose }) {
   /* Set of module titles that are currently COLLAPSED (everything else = open) */
   const [collapsedModules, setCollapsedModules] = useState(new Set());
 
-  const { topicId: activeTopic } = useParams();
+  const { topic: activeTopic } = useParams();
   const searchInputRef = useRef(null);
   const drawerRef = useRef(null);
 

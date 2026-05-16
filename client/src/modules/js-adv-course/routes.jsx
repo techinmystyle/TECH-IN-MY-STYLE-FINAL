@@ -7,8 +7,6 @@ import JsAdvTopicPage from './pages/JsAdvTopicPage';
 import JsAdvCompiler from './pages/JsAdvCompiler';
 import JsAdvConnect from './pages/JsAdvConnect';
 import JsAdvResources from './pages/JsAdvResources';
-import JsAdvProjects from './pages/JsAdvProjects';
-import JsAdvDashboard from './pages/JsAdvDashboard';
 
 export default function JsAdvCourseRoutes() {
   return (
@@ -20,8 +18,6 @@ export default function JsAdvCourseRoutes() {
         <Route path="/compiler" element={<JsAdvCompiler />} />
         <Route path="/connect" element={<JsAdvConnect />} />
         <Route path="/resources" element={<JsAdvResources />} />
-        <Route path="/projects" element={<JsAdvProjects />} />
-        <Route path="/dashboard" element={<JsAdvDashboard />} />
       </Routes>
     </div>
   );

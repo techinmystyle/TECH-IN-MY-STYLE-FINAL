@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import JsAdvNavbar, { useDarkMode } from "../components/JsAdvNavbar";
+import JsAdvNavbar from "../components/JsAdvNavbar";
 import JsAdvFooter from "../components/JsAdvFooter";
 import { Link } from "react-router-dom";
 import "../styles/JsAdvResources.css";
@@ -328,7 +328,6 @@ const BADGE_LABELS = {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function JsAdvResources() {
-  const { isDark } = useDarkMode();
 
   const [activeTab, setActiveTab] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -356,7 +355,7 @@ export default function JsAdvResources() {
   }, []);
 
   return (
-    <div className={`resources-page${isDark ? " dark" : ""}`}>
+    <div className="resources-page">
       <JsAdvNavbar />
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}

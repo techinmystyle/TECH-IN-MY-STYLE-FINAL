@@ -1,4 +1,4 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    JsAdvTopics.css â€” Advanced JavaScript "In My Style" JsAdvTopics Index Page
    Brand: PRIMARY #06b6d4 (JS Yellow)  |  DARK var(--bg) (Deep Navy)
    Design: Glassmorphism Â· Scroll Animations Â· Premium UI
@@ -204,7 +204,7 @@
 .js-adv-course-root .jsadv-topics-search__input {
   width: 100%;
   background: var(--surface);
-  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border: 1.5px solid var(--border-color);
   border-radius: 12px;
   padding: 0.85rem 3rem 0.85rem 2.8rem;
   font-size: 0.97rem;

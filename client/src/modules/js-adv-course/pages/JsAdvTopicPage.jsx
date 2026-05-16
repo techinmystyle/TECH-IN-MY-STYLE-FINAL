@@ -5,10 +5,18 @@ import { useDarkMode } from "../components/JsAdvNavbar";
 import JsAdvTopicNavMenu from "../components/JsAdvTopicNavMenu";
 import JsAdvTopicPageFooter from "../components/JsAdvTopicPageFooter";
 import JsAdvTopicPagesData from "../data/JsAdvTopicPagesData";
+import { JsAdvTopicsData } from "../data/JsAdvTopicsData";
 import "../styles/JsAdvTopicPage.css";
 
+/* ── Language tab config ─────────────────────────────────────────── */
+const LANG_TABS = [
+  { id: "html", label: "HTML", monaco: "html",       color: "#e34c26" },
+  { id: "css",  label: "CSS",  monaco: "css",        color: "#264de4" },
+  { id: "js",   label: "JS",   monaco: "javascript", color: "#f7df1e" },
+];
+
 export default function JsAdvTopicPage() {
-  const { topicId } = useParams();
+  const { topic: topicId } = useParams();
   const navigate = useNavigate();
   const { dark } = useDarkMode();
 
@@ -16,33 +24,60 @@ export default function JsAdvTopicPage() {
   const [navOpen, setNavOpen]         = useState(false);
   const [isLoading, setIsLoading]     = useState(true);
   const [fadeOut, setFadeOut]         = useState(false);
-  const [activeTab, setActiveTab]     = useState("output"); // "output" | "theory"
+  const [activeTab, setActiveTab]     = useState("preview"); // "preview" | "console" | "theory"
+  const [activeLang, setActiveLang]   = useState("js");      // "html" | "css" | "js"
   const [outputLogs, setOutputLogs]   = useState([]);
   const [copyLabel, setCopyLabel]     = useState("Copy");
-  const [editorKey, setEditorKey]     = useState(0); // bump to reset editor
+  const [editorKey, setEditorKey]     = useState(0);
+
+  /* ── Per-language editor content (live mirrors) ──────────────── */
+  const htmlRef = useRef("");
+  const cssRef  = useRef("");
+  const jsRef   = useRef("");
 
   /* ── Refs ────────────────────────────────────────────────────── */
   const editorRef  = useRef(null);
-  const runnerRef  = useRef(null); // hidden sandbox iframe
+  const previewRef = useRef(null); // combined output iframe
   const logsEndRef = useRef(null);
 
   /* ── Data ────────────────────────────────────────────────────── */
-  const topicData = Array.isArray(JsAdvTopicPagesData)
-    ? JsAdvTopicPagesData.find(
-        (t) => t.id === topicId || t.topicId === topicId
-      )
+  const exampleData = Array.isArray(JsAdvTopicPagesData)
+    ? JsAdvTopicPagesData.find((t) => t.topic === topicId)
     : null;
 
-  const defaultCode =
-    topicData?.code ||
-    `// ${topicId} — JavaScript Advanced\n// Write and run your code here\n\nconsole.log('Hello from ${topicId}!');\n`;
+  const allTopics = JsAdvTopicsData?.modules?.flatMap((m) =>
+    m.topics.map((t) => ({ ...t, category: m.title, catColor: m.color }))
+  ) ?? [];
+  const topicMeta = allTopics.find((t) => t.id === topicId) ?? null;
+
+  const topicData = exampleData
+    ? {
+        ...topicMeta,
+        description: exampleData.description || topicMeta?.description,
+      }
+    : topicMeta ?? null;
+
+  /* ── Default code per language ───────────────────────────────── */
+  const defaultHtml = exampleData?.html || `<!-- ${topicId} — HTML -->\n<div id="app">\n  <h1>Hello from ${topicId}</h1>\n</div>`;
+  const defaultCss  = exampleData?.css  || `/* ${topicId} — CSS */\nbody { font-family: sans-serif; padding: 2rem; }`;
+  const defaultJs   = exampleData?.js   || `// ${topicId} — JavaScript Advanced\nconsole.log('Hello from ${topicId}!');`;
+
+  /* ── Seed refs when topic changes ───────────────────────────── */
+  useEffect(() => {
+    htmlRef.current = defaultHtml;
+    cssRef.current  = defaultCss;
+    jsRef.current   = defaultJs;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [topicId]);
 
   /* ── Loading Overlay ─────────────────────────────────────────── */
   useEffect(() => {
     setIsLoading(true);
     setFadeOut(false);
     setOutputLogs([]);
-    setActiveTab("output");
+    setActiveTab("preview");
+    setActiveLang("js");
+    setEditorKey((k) => k + 1);
 
     const fadeTimer   = setTimeout(() => setFadeOut(true),    950);
     const removeTimer = setTimeout(() => setIsLoading(false), 1400);
@@ -53,16 +88,16 @@ export default function JsAdvTopicPage() {
     };
   }, [topicId]);
 
-  /* ── postMessage listener (sandbox iframe → parent) ─────────── */
+  /* ── postMessage listener (preview iframe → parent) ─────────── */
   useEffect(() => {
     function handleMsg(e) {
       if (e.data?.source === "js-adv-runner") {
         setOutputLogs((prev) => [
           ...prev,
           {
-            type: e.data.type  || "log",
-            text: e.data.text  ?? "",
-            ts:   e.data.ts    || Date.now(),
+            type: e.data.type || "log",
+            text: e.data.text ?? "",
+            ts:   e.data.ts   || Date.now(),
           },
         ]);
       }
@@ -81,107 +116,151 @@ export default function JsAdvTopicPage() {
     editorRef.current = editor;
   }
 
-  /* ── Run code in hidden sandbox iframe ───────────────────────── */
-  function runCode() {
-    const code = editorRef.current?.getValue() ?? defaultCode;
-    setOutputLogs([]);
-    setActiveTab("output");
+  /* ── Get current value for active lang ──────────────────────── */
+  function getCurrentCode() {
+    return editorRef.current?.getValue() ?? getDefaultForLang(activeLang);
+  }
 
-    /* Wrap user code: override console methods → postMessage */
-    const inject = `
+  function getDefaultForLang(lang) {
+    if (lang === "html") return defaultHtml;
+    if (lang === "css")  return defaultCss;
+    return defaultJs;
+  }
+
+  /* ── Save current editor value to the right ref ─────────────── */
+  function saveCurrentLang() {
+    const val = editorRef.current?.getValue();
+    if (val === undefined) return;
+    if (activeLang === "html") htmlRef.current = val;
+    else if (activeLang === "css") cssRef.current = val;
+    else jsRef.current = val;
+  }
+
+  /* ── Switch language tab ─────────────────────────────────────── */
+  function switchLang(lang) {
+    saveCurrentLang();
+    setActiveLang(lang);
+    // Monaco value update happens via key or setValue after mount
+    setTimeout(() => {
+      if (editorRef.current) {
+        const val = lang === "html" ? htmlRef.current
+                  : lang === "css"  ? cssRef.current
+                  : jsRef.current;
+        editorRef.current.setValue(val);
+      }
+    }, 0);
+  }
+
+  /* ── Build combined srcdoc and run ──────────────────────────── */
+  function buildSrcdoc() {
+    saveCurrentLang();
+    const html = htmlRef.current || defaultHtml;
+    const css  = cssRef.current  || defaultCss;
+    const js   = jsRef.current   || defaultJs;
+
+    /* Console intercept injected before user JS */
+    const consoleShim = `
+<script>
 (function () {
   var _origLog   = console.log;
   var _origWarn  = console.warn;
   var _origError = console.error;
-
   function _ser(args) {
-    return Array.prototype.slice.call(args).map(function (a) {
-      if (a === null)       return 'null';
-      if (a === undefined)  return 'undefined';
-      if (typeof a === 'object') {
-        try { return JSON.stringify(a, null, 2); } catch (_) { return String(a); }
-      }
+    return Array.prototype.slice.call(args).map(function(a){
+      if (a === null)      return 'null';
+      if (a === undefined) return 'undefined';
+      if (typeof a === 'object') { try { return JSON.stringify(a,null,2); } catch(_){ return String(a); } }
       return String(a);
     }).join(' ');
   }
-
-  console.log = function () {
-    window.parent.postMessage(
-      { source: 'js-adv-runner', type: 'log',  text: _ser(arguments), ts: Date.now() }, '*'
-    );
+  console.log = function() {
+    window.parent.postMessage({ source:'js-adv-runner', type:'log',   text:_ser(arguments), ts:Date.now() },'*');
     _origLog.apply(console, arguments);
   };
-  console.warn = function () {
-    window.parent.postMessage(
-      { source: 'js-adv-runner', type: 'warn', text: _ser(arguments), ts: Date.now() }, '*'
-    );
+  console.warn = function() {
+    window.parent.postMessage({ source:'js-adv-runner', type:'warn',  text:_ser(arguments), ts:Date.now() },'*');
     _origWarn.apply(console, arguments);
   };
-  console.error = function () {
-    window.parent.postMessage(
-      { source: 'js-adv-runner', type: 'error', text: _ser(arguments), ts: Date.now() }, '*'
-    );
+  console.error = function() {
+    window.parent.postMessage({ source:'js-adv-runner', type:'error', text:_ser(arguments), ts:Date.now() },'*');
     _origError.apply(console, arguments);
   };
+  window.addEventListener('error', function(e){
+    window.parent.postMessage({ source:'js-adv-runner', type:'error', text:'Uncaught: '+e.message, ts:Date.now() },'*');
+  });
+})();
+<\/script>`;
 
-  try {
-    ${code}
-  } catch (err) {
-    window.parent.postMessage(
-      { source: 'js-adv-runner', type: 'error', text: 'RuntimeError: ' + err.message, ts: Date.now() }, '*'
-    );
+    const safeJs = js.replace(/<\/script>/gi, "<\\/script>");
+
+    return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<style>${css}</style>
+</head>
+<body>
+${html}
+${consoleShim}
+<script>
+try {
+${safeJs}
+} catch(err) {
+  window.parent.postMessage({ source:'js-adv-runner', type:'error', text:'RuntimeError: '+err.message, ts:Date.now() },'*');
+}
+<\/script>
+</body>
+</html>`;
   }
-})();`;
 
-    if (runnerRef.current) {
-      /* eslint-disable-next-line no-useless-escape */
-      const safe = inject.replace(/<\/script>/gi, "<\\/script>");
-      runnerRef.current.srcdoc = `<!DOCTYPE html><html><body><script>${safe}<\/script></body></html>`;
+  /* ── Run: update preview iframe ──────────────────────────────── */
+  function runCode() {
+    setOutputLogs([]);
+    setActiveTab("preview");
+    if (previewRef.current) {
+      previewRef.current.srcdoc = buildSrcdoc();
     }
   }
 
-  /* ── Copy ────────────────────────────────────────────────────── */
+  /* ── Copy current editor content ─────────────────────────────── */
   const handleCopy = useCallback(async () => {
-    const code = editorRef.current?.getValue() ?? defaultCode;
+    const code = getCurrentCode();
     try {
       await navigator.clipboard.writeText(code);
       setCopyLabel("Copied!");
     } catch {
-      /* Fallback for non-secure contexts */
       const ta = document.createElement("textarea");
       ta.value = code;
-      Object.assign(ta.style, {
-        position: "fixed", opacity: "0", pointerEvents: "none",
-      });
+      Object.assign(ta.style, { position: "fixed", opacity: "0", pointerEvents: "none" });
       document.body.appendChild(ta);
-      ta.focus();
-      ta.select();
-      try {
-        document.execCommand("copy");
-        setCopyLabel("Copied!");
-      } catch (err) {
-        console.error("Copy failed", err);
-      }
+      ta.focus(); ta.select();
+      try { document.execCommand("copy"); setCopyLabel("Copied!"); } catch (err) { console.error("Copy failed", err); }
       document.body.removeChild(ta);
     }
     setTimeout(() => setCopyLabel("Copy"), 2000);
-  }, [defaultCode]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeLang]);
 
-  /* ── Reset ───────────────────────────────────────────────────── */
+  /* ── Reset current language to default ──────────────────────── */
   function handleReset() {
-    setEditorKey((k) => k + 1);
+    const def = getDefaultForLang(activeLang);
+    if (activeLang === "html") htmlRef.current = def;
+    else if (activeLang === "css") cssRef.current = def;
+    else jsRef.current = def;
+    if (editorRef.current) editorRef.current.setValue(def);
     setOutputLogs([]);
   }
 
-  /* ── Download ────────────────────────────────────────────────── */
+  /* ── Download current file ───────────────────────────────────── */
   function handleDownload() {
-    const code = editorRef.current?.getValue() ?? defaultCode;
-    const blob = new Blob([code], { type: "text/javascript" });
+    const code = getCurrentCode();
+    const ext  = activeLang === "html" ? "html" : activeLang === "css" ? "css" : "js";
+    const mime = activeLang === "html" ? "text/html" : activeLang === "css" ? "text/css" : "text/javascript";
+    const blob = new Blob([code], { type: mime });
     const url  = URL.createObjectURL(blob);
     const a    = document.createElement("a");
-    a.href     = url;
-    a.download = `${topicId || "script"}.js`;
-    a.click();
+    a.href = url; a.download = `${topicId || "script"}.${ext}`; a.click();
     URL.revokeObjectURL(url);
   }
 
@@ -195,26 +274,14 @@ export default function JsAdvTopicPage() {
 
   const monacoTheme = dark ? "vs-dark" : "light";
   const isMobile    = typeof window !== "undefined" && window.innerWidth < 768;
+  const activeLangCfg = LANG_TABS.find((t) => t.id === activeLang);
 
-  const DIFF_COLORS = {
-    Beginner:     "#22c55e",
-    Intermediate: "#f59e0b",
-    Advanced:     "#ef4444",
-  };
+  const DIFF_COLORS = { Beginner: "#22c55e", Intermediate: "#f59e0b", Advanced: "#ef4444" };
   const diffColor = DIFF_COLORS[topicData?.difficulty] ?? "#6b7280";
 
   /* ── Render ──────────────────────────────────────────────────── */
   return (
     <div className={`topic-page${dark ? " topic-page--dark" : ""}`}>
-
-      {/* Hidden JS sandbox */}
-      <iframe
-        ref={runnerRef}
-        title="js-adv-runner"
-        sandbox="allow-scripts"
-        style={{ display: "none" }}
-        aria-hidden="true"
-      />
 
       {/* ══ Loading Overlay ══════════════════════════════════════ */}
       {isLoading && (
@@ -328,26 +395,41 @@ export default function JsAdvTopicPage() {
           {/* ── LEFT: Editor Panel ───────────────────────────── */}
           <div className="editor-panel">
 
-            {/* Panel header */}
+            {/* Panel header with language tabs */}
             <div className="editor-panel-header">
-              <div className="editor-panel-header-left">
-                <span className="editor-lang-badge">JavaScript</span>
-                <span className="editor-label-text">Editable Code</span>
+              <div className="editor-lang-tabs">
+                {LANG_TABS.map((lt) => (
+                  <button
+                    key={lt.id}
+                    className={`editor-lang-tab${activeLang === lt.id ? " editor-lang-tab--active" : ""}`}
+                    style={{ "--lang-color": lt.color }}
+                    onClick={() => switchLang(lt.id)}
+                  >
+                    {lt.label}
+                  </button>
+                ))}
               </div>
-              <div className="editor-dots">
-                <div className="editor-dot red"    />
-                <div className="editor-dot yellow" />
-                <div className="editor-dot green"  />
+              <div className="editor-panel-header-right">
+                <span className="editor-label-text">Editable Code</span>
+                <div className="editor-dots">
+                  <div className="editor-dot red" />
+                  <div className="editor-dot yellow" />
+                  <div className="editor-dot green" />
+                </div>
               </div>
             </div>
 
             {/* Monaco Editor */}
             <div className="editor-monaco-wrap">
               <Editor
-                key={editorKey}
+                key={`${topicId}-${activeLang}-${editorKey}`}
                 height="100%"
-                defaultLanguage="javascript"
-                defaultValue={defaultCode}
+                language={activeLangCfg?.monaco || "javascript"}
+                defaultValue={
+                  activeLang === "html" ? defaultHtml
+                  : activeLang === "css" ? defaultCss
+                  : defaultJs
+                }
                 theme={monacoTheme}
                 onMount={handleEditorMount}
                 options={{
@@ -361,8 +443,8 @@ export default function JsAdvTopicPage() {
                   automaticLayout:      true,
                   padding:              { top: 12, bottom: 12 },
                   scrollbar: {
-                    vertical:             "visible",
-                    horizontal:           "visible",
+                    vertical:              "visible",
+                    horizontal:            "visible",
                     verticalScrollbarSize: isMobile ? 6 : 10,
                   },
                   bracketPairColorization: { enabled: true },
@@ -381,7 +463,6 @@ export default function JsAdvTopicPage() {
 
             {/* Action buttons */}
             <div className="editor-actions-bar">
-              {/* Run */}
               <button className="action-btn run" onClick={runCode}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -389,8 +470,6 @@ export default function JsAdvTopicPage() {
                 </svg>
                 Run
               </button>
-
-              {/* Copy */}
               <button className="action-btn copy" onClick={handleCopy}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -399,8 +478,6 @@ export default function JsAdvTopicPage() {
                 </svg>
                 {copyLabel}
               </button>
-
-              {/* Reset */}
               <button className="action-btn reset" onClick={handleReset}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -409,8 +486,6 @@ export default function JsAdvTopicPage() {
                 </svg>
                 Reset
               </button>
-
-              {/* Download */}
               <button className="action-btn download" onClick={handleDownload}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -418,43 +493,50 @@ export default function JsAdvTopicPage() {
                   <polyline points="7 10 12 15 17 10" />
                   <line x1="12" y1="15" x2="12" y2="3" />
                 </svg>
-                .js
+                .{activeLang}
               </button>
             </div>
           </div>
 
-          {/* ── RIGHT: Output / Theory Panel ─────────────────── */}
+          {/* ── RIGHT: Preview / Console / Theory Panel ──────── */}
           <div className="output-panel">
 
             {/* Tab switcher */}
             <div className="output-tabs" role="tablist">
-              <button
-                role="tab"
-                aria-selected={activeTab === "output"}
-                className={`output-tab${activeTab === "output" ? " output-tab--active" : ""}`}
-                onClick={() => setActiveTab("output")}
-              >
+              {/* Preview */}
+              <button role="tab" aria-selected={activeTab === "preview"}
+                className={`output-tab${activeTab === "preview" ? " output-tab--active" : ""}`}
+                onClick={() => setActiveTab("preview")}>
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2"
-                  strokeLinecap="round" strokeLinejoin="round">
+                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+                Preview
+              </button>
+
+              {/* Console */}
+              <button role="tab" aria-selected={activeTab === "console"}
+                className={`output-tab${activeTab === "console" ? " output-tab--active" : ""}`}
+                onClick={() => setActiveTab("console")}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="4 17 10 11 4 5" />
                   <line x1="12" y1="19" x2="20" y2="19" />
                 </svg>
-                Output
+                Console
                 {outputLogs.length > 0 && (
                   <span className="output-tab-count">{outputLogs.length}</span>
                 )}
               </button>
 
-              <button
-                role="tab"
-                aria-selected={activeTab === "theory"}
+              {/* Theory */}
+              <button role="tab" aria-selected={activeTab === "theory"}
                 className={`output-tab${activeTab === "theory" ? " output-tab--active" : ""}`}
-                onClick={() => setActiveTab("theory")}
-              >
+                onClick={() => setActiveTab("theory")}>
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2"
-                  strokeLinecap="round" strokeLinejoin="round">
+                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
                   <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
                 </svg>
@@ -462,16 +544,29 @@ export default function JsAdvTopicPage() {
               </button>
 
               <span className="output-run-hint" aria-hidden="true">
-                ← Run to see output
+                {"\u2190"} Run to preview
               </span>
             </div>
 
-            {/* ── Output tab ── */}
+            {/* ── Preview tab ── */}
             <div
-              className={`output-tab-panel${activeTab === "output" ? " output-tab-panel--visible" : ""}`}
-              role="tabpanel"
-              aria-label="Console output"
-            >
+              className={`output-tab-panel${activeTab === "preview" ? " output-tab-panel--visible" : ""}`}
+              role="tabpanel" aria-label="Live preview">
+              <div className="preview-wrap">
+                <iframe
+                  ref={previewRef}
+                  title="js-adv-preview"
+                  sandbox="allow-scripts"
+                  className="preview-iframe"
+                  aria-label="Combined HTML/CSS/JS preview"
+                />
+              </div>
+            </div>
+
+            {/* ── Console tab ── */}
+            <div
+              className={`output-tab-panel${activeTab === "console" ? " output-tab-panel--visible" : ""}`}
+              role="tabpanel" aria-label="Console output">
               <div className="console-output" aria-live="polite">
                 {outputLogs.length === 0 ? (
                   <div className="console-empty">
@@ -481,35 +576,25 @@ export default function JsAdvTopicPage() {
                       <polyline points="4 17 10 11 4 5" />
                       <line x1="12" y1="19" x2="20" y2="19" />
                     </svg>
-                    <p>
-                      Click <strong>Run</strong> to execute the code
-                    </p>
+                    <p>Click <strong>Run</strong> to execute the code</p>
                     <span>console.log() output appears here</span>
                   </div>
                 ) : (
                   <div className="console-lines">
                     {outputLogs.map((log, i) => (
-                      <div
-                        key={i}
-                        className={`console-line console-line--${log.type}`}
-                      >
+                      <div key={i} className={`console-line console-line--${log.type}`}>
                         <span className="console-ts">{fmtTime(log.ts)}</span>
                         <span className="console-icon">
-                          {log.type === "error" ? "✕"
-                            : log.type === "warn" ? "⚠"
-                            : "›"}
+                          {log.type === "error" ? "\u2715" : log.type === "warn" ? "\u26a0" : "\u203a"}
                         </span>
                         <span className="console-text">{log.text}</span>
                       </div>
                     ))}
-                    {/* Completion indicator */}
                     <div className="console-line console-line--done">
                       <span className="console-ts">{fmtTime(Date.now())}</span>
-                      <span className="console-icon">✓</span>
+                      <span className="console-icon">{"\u2713"}</span>
                       <span className="console-text">
-                        Script complete —{" "}
-                        {outputLogs.length} output
-                        {outputLogs.length !== 1 ? "s" : ""}
+                        Script complete {"\u2014"} {outputLogs.length} output{outputLogs.length !== 1 ? "s" : ""}
                       </span>
                     </div>
                     <div ref={logsEndRef} />
@@ -521,13 +606,10 @@ export default function JsAdvTopicPage() {
             {/* ── Theory tab ── */}
             <div
               className={`output-tab-panel${activeTab === "theory" ? " output-tab-panel--visible" : ""}`}
-              role="tabpanel"
-              aria-label="Topic theory"
-            >
+              role="tabpanel" aria-label="Topic theory">
               <div className="theory-content">
                 {topicData ? (
                   <>
-                    {/* Overview */}
                     <div className="theory-section">
                       <h3 className="theory-section-title">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
@@ -539,14 +621,10 @@ export default function JsAdvTopicPage() {
                         </svg>
                         Overview
                       </h3>
-                      <p className="theory-description">
-                        {topicData.description}
-                      </p>
+                      <p className="theory-description">{topicData.description}</p>
                     </div>
 
-                    {/* Key Points */}
-                    {Array.isArray(topicData.keyPoints) &&
-                      topicData.keyPoints.length > 0 && (
+                    {Array.isArray(topicData.keyPoints) && topicData.keyPoints.length > 0 && (
                       <div className="theory-section">
                         <h3 className="theory-section-title">
                           <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
@@ -561,10 +639,9 @@ export default function JsAdvTopicPage() {
                           {topicData.keyPoints.map((pt, i) => (
                             <li key={i} className="keypoint-item">
                               <span className="keypoint-bullet">
-                                <svg width="14" height="14" viewBox="0 0 24 24"
-                                  fill="none" stroke="currentColor"
-                                  strokeWidth="2.5" strokeLinecap="round"
-                                  strokeLinejoin="round">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                  stroke="currentColor" strokeWidth="2.5"
+                                  strokeLinecap="round" strokeLinejoin="round">
                                   <polyline points="20 6 9 17 4 12" />
                                 </svg>
                               </span>
@@ -575,15 +652,13 @@ export default function JsAdvTopicPage() {
                       </div>
                     )}
 
-                    {/* Tip: Run the code */}
                     <div className="theory-tip">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" strokeWidth="2"
                         strokeLinecap="round" strokeLinejoin="round">
                         <polygon points="5 3 19 12 5 21 5 3" />
                       </svg>
-                      Press <strong>Run</strong> in the editor to see this
-                      topic's code in action.
+                      Press <strong>Run</strong> to see HTML + CSS + JS combined output.
                     </div>
                   </>
                 ) : (
@@ -594,11 +669,8 @@ export default function JsAdvTopicPage() {
                       <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
                       <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
                     </svg>
-                    <p>
-                      No theory content for{" "}
-                      <strong>{topicId}</strong> yet.
-                    </p>
-                    <span>Content is being added — check back soon.</span>
+                    <p>No theory content for <strong>{topicId}</strong> yet.</p>
+                    <span>Content is being added {"\u2014"} check back soon.</span>
                   </div>
                 )}
               </div>
@@ -608,7 +680,7 @@ export default function JsAdvTopicPage() {
         </div>{/* /topic-panels-grid */}
       </main>
 
-      {/* ══ JsAdvFooter ═══════════════════════════════════════════════ */}
+      {/* ══ Footer ═══════════════════════════════════════════════ */}
       <JsAdvTopicPageFooter currentTopicId={topicId} />
     </div>
   );

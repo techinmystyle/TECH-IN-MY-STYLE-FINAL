@@ -1,10 +1,9 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   JsIntTopicPage.css  â€”  JS Intermediate In My Style
-   Theme: Violet Primary (#8b5cf6) Â· Black (#1A1A1A) Â· Dark-first design
-   Dark mode via  html.dark  class on <html>
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════════════════════════════════════════════════════════
+   JsIntTopicPage.css — JS Intermediate In My Style
+   Theme: Violet Primary (#8b5cf6) · Black (#1A1A1A) · Dark-first design
+═══════════════════════════════════════════════════════════════ */
 
-/* â”€â”€â”€ Page Shell â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* --- Page Shell --- */
 .js-int-course-root .topic-page {
   min-height: 100vh;
   display: flex;
@@ -16,15 +15,12 @@
   overflow-x: hidden;
 }
 
-
-/* Light-mode override */
 html:not(.dark) .js-int-course-root .topic-page {
   background-color: #f5f5f0;
   color: #1a1a1a;
 }
 
-
-/* â”€â”€â”€ Fade-in keyframe â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* --- Fade-in keyframe --- */
 @keyframes jsintTopicFadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0);   }
@@ -35,9 +31,9 @@ html:not(.dark) .js-int-course-root .topic-page {
 }
 
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ═══════════════════════════════════════════════════════════════
    LOADING OVERLAY
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+═══════════════════════════════════════════════════════════════ */
 @keyframes overlayIn {
   from { opacity: 0; }
   to   { opacity: 1; }
@@ -60,14 +56,12 @@ html:not(.dark) .js-int-course-root .topic-page {
   animation: overlayIn 0.2s ease forwards;
 }
 
-
 .js-int-course-root .topic-loading-overlay.fade-out {
   animation: overlayOut 0.42s ease forwards;
   pointer-events: none;
 }
 
-
-/* â”€â”€ Spinner ring + JS logo â”€â”€ */
+/* -- Spinner ring + JS logo -- */
 .js-int-course-root .loading-logo-wrap {
   position: relative;
   width: 92px;
@@ -76,7 +70,6 @@ html:not(.dark) .js-int-course-root .topic-page {
   align-items: center;
   justify-content: center;
 }
-
 
 @keyframes jsintSpinRing {
   to { transform: rotate(360deg); }
@@ -91,7 +84,6 @@ html:not(.dark) .js-int-course-root .topic-page {
   border-radius: 50%;
   animation: jsintSpinRing 0.9s linear infinite;
 }
-
 
 @keyframes jsintJsPulse {
   from { transform: scale(0.88); opacity: 0.75; }
@@ -108,8 +100,7 @@ html:not(.dark) .js-int-course-root .topic-page {
   user-select: none;
 }
 
-
-/* â”€â”€ Topic name pill â”€â”€ */
+/* -- Topic name pill -- */
 .js-int-course-root .loading-tag-name {
   font-size: 0.95rem;
   font-weight: 700;
@@ -126,13 +117,11 @@ html:not(.dark) .js-int-course-root .topic-page {
   white-space: nowrap;
 }
 
-
-/* â”€â”€ Bouncing dots â”€â”€ */
+/* -- Bouncing dots -- */
 .js-int-course-root .loading-dots {
   display: flex;
   gap: 0.45rem;
 }
-
 
 @keyframes jsintDotBounce {
   0%, 100% { transform: translateY(0);     opacity: 1;   }
@@ -147,14 +136,11 @@ html:not(.dark) .js-int-course-root .topic-page {
   animation: jsintDotBounce 0.65s ease-in-out infinite;
 }
 
-.js-int-course-root .loading-dot:nth-child(1) { animation-delay: 0s;    }
-
+.js-int-course-root .loading-dot:nth-child(1) { animation-delay: 0s; }
 .js-int-course-root .loading-dot:nth-child(2) { animation-delay: 0.13s; }
-
 .js-int-course-root .loading-dot:nth-child(3) { animation-delay: 0.26s; }
 
-
-/* â”€â”€ Caption â”€â”€ */
+/* -- Caption -- */
 .js-int-course-root .loading-caption {
   font-size: 0.75rem;
   font-weight: 500;
@@ -164,9 +150,9 @@ html:not(.dark) .js-int-course-root .topic-page {
 }
 
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ═══════════════════════════════════════════════════════════════
    FIXED HEADER BAR
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+═══════════════════════════════════════════════════════════════ */
 .js-int-course-root .topic-page-header {
   position: fixed;
   top: 0;
@@ -180,12 +166,10 @@ html:not(.dark) .js-int-course-root .topic-page {
   flex-shrink: 0;
 }
 
-
 html:not(.dark) .js-int-course-root .topic-page-header {
   background: #1a1a1a;
   border-bottom-color: rgba(139, 92, 246, 0.25);
 }
-
 
 .js-int-course-root .topic-header-inner {
   display: flex;
@@ -198,8 +182,7 @@ html:not(.dark) .js-int-course-root .topic-page-header {
   gap: 0.75rem;
 }
 
-
-/* â”€â”€ Back button â”€â”€ */
+/* -- Back button -- */
 .js-int-course-root .topic-back-btn {
   flex-shrink: 0;
   display: inline-flex;
@@ -218,20 +201,17 @@ html:not(.dark) .js-int-course-root .topic-page-header {
   letter-spacing: 0.01em;
 }
 
-
 .js-int-course-root .topic-back-btn:hover {
   background: rgba(139, 92, 246, 0.14);
   border-color: rgba(139, 92, 246, 0.6);
   color: #8b5cf6;
 }
 
-
 .js-int-course-root .topic-back-btn i {
   font-size: 0.9rem;
 }
 
-
-/* â”€â”€ Center title â”€â”€ */
+/* -- Center title -- */
 .js-int-course-root .topic-header-title {
   flex: 1;
   text-align: center;
@@ -246,7 +226,6 @@ html:not(.dark) .js-int-course-root .topic-page-header {
   text-transform: uppercase;
 }
 
-
 .js-int-course-root .topic-header-js {
   color: #8b5cf6;
   font-weight: 900;
@@ -256,8 +235,7 @@ html:not(.dark) .js-int-course-root .topic-page-header {
   padding: 0 4px;
 }
 
-
-/* â”€â”€ Hamburger menu trigger â”€â”€ */
+/* -- Hamburger menu trigger -- */
 .js-int-course-root .topic-menu-trigger {
   flex-shrink: 0;
   display: flex;
@@ -275,12 +253,10 @@ html:not(.dark) .js-int-course-root .topic-page-header {
   transition: background 0.2s, border-color 0.2s;
 }
 
-
 .js-int-course-root .topic-menu-trigger:hover {
   background: rgba(139, 92, 246, 0.14);
   border-color: rgba(139, 92, 246, 0.6);
 }
-
 
 .js-int-course-root .topic-menu-trigger span {
   display: block;
@@ -291,29 +267,26 @@ html:not(.dark) .js-int-course-root .topic-page-header {
   transition: background 0.2s;
 }
 
-
 .js-int-course-root .topic-menu-trigger:hover span {
   background: #8b5cf6;
 }
 
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ═══════════════════════════════════════════════════════════════
    INFO BANNER
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+═══════════════════════════════════════════════════════════════ */
 .js-int-course-root .topic-info-banner {
-  margin-top: 56px; /* push below fixed header */
+  margin-top: 56px;
   background: rgba(139, 92, 246, 0.06);
   border-bottom: 1px solid rgba(139, 92, 246, 0.2);
   padding: 10px 20px;
   flex-shrink: 0;
 }
 
-
 html:not(.dark) .js-int-course-root .topic-info-banner {
   background: rgba(139, 92, 246, 0.12);
   border-bottom-color: rgba(139, 92, 246, 0.4);
 }
-
 
 .js-int-course-root .topic-info-inner {
   display: flex;
@@ -324,7 +297,6 @@ html:not(.dark) .js-int-course-root .topic-info-banner {
   flex-wrap: wrap;
 }
 
-
 .js-int-course-root .topic-info-icon {
   flex-shrink: 0;
   color: #8b5cf6;
@@ -332,18 +304,15 @@ html:not(.dark) .js-int-course-root .topic-info-banner {
   margin-top: 2px;
 }
 
-
 .js-int-course-root .topic-info-text {
   font-size: 0.86rem;
   color: #c8c8c8;
   line-height: 1.55;
 }
 
-
 html:not(.dark) .js-int-course-root .topic-info-text {
   color: #3d3d2e;
 }
-
 
 .js-int-course-root .topic-info-text code {
   background: rgba(139, 92, 246, 0.15);
@@ -356,16 +325,15 @@ html:not(.dark) .js-int-course-root .topic-info-text {
   border: 1px solid rgba(139, 92, 246, 0.25);
 }
 
-
 html:not(.dark) .js-int-course-root .topic-info-text code {
   background: rgba(139, 92, 246, 0.2);
   color: #7a6800;
 }
 
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   MAIN CONTENT â€” PANELS GRID
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════════════════════════════════════════════════════════
+   MAIN CONTENT — PANELS GRID
+═══════════════════════════════════════════════════════════════ */
 .js-int-course-root .topic-main {
   flex: 1;
   display: flex;
@@ -376,7 +344,6 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
   min-height: 0;
 }
 
-
 .js-int-course-root .topic-panels-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -386,18 +353,17 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
   min-height: calc(100vh - 56px - 42px - 3rem);
 }
 
-
 @media (max-width: 768px) {
   .js-int-course-root .topic-panels-grid {
     grid-template-columns: 1fr;
     min-height: unset;
   }
-
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+
+/* ═══════════════════════════════════════════════════════════════
    EDITOR PANEL (LEFT)
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+═══════════════════════════════════════════════════════════════ */
 .js-int-course-root .editor-panel {
   background: #1e1e1e;
   border-radius: 10px;
@@ -410,61 +376,66 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
   transition: box-shadow 0.2s;
 }
 
-
 .js-int-course-root .editor-panel:hover {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4),
               0 0 0 1px rgba(139, 92, 246, 0.15);
 }
 
-
-/* Panel header */
-.js-int-course-root .editor-panel-header {
+/* -- Editor Tabs Bar -- */
+.js-int-course-root .editor-tabs-bar {
   background: #111827;
-  padding: 0.55rem 0.9rem;
+  padding: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   flex-shrink: 0;
   border-bottom: 1px solid rgba(139, 92, 246, 0.08);
 }
 
-
-.js-int-course-root .editor-panel-header-left {
-  display: flex;
+.js-int-course-root .editor-tab {
+  display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-}
-
-
-/* JS lang badge */
-.js-int-course-root .editor-lang-badge {
-  background: rgba(139, 92, 246, 0.15);
-  color: #8b5cf6;
-  font-size: 0.7rem;
-  font-weight: 800;
-  padding: 0.15rem 0.55rem;
-  border-radius: 4px;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: 1px solid rgba(139, 92, 246, 0.3);
-}
-
-
-.js-int-course-root .editor-label-text {
+  gap: 0.35rem;
+  padding: 0.65rem 1.2rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2.5px solid transparent;
   color: #6b7280;
-  font-size: 0.76rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  position: relative;
 }
 
+.js-int-course-root .editor-tab:hover {
+  color: #d1d5db;
+  background: rgba(139, 92, 246, 0.05);
+}
+
+.js-int-course-root .editor-tab.active {
+  color: #8b5cf6;
+  border-bottom-color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.08);
+}
+
+.js-int-course-root .editor-tab i {
+  font-size: 0.9rem;
+}
+
+.js-int-course-root .editor-tabs-spacer {
+  flex: 1;
+}
 
 /* Traffic light dots */
 .js-int-course-root .editor-dots {
   display: flex;
   gap: 0.38rem;
   align-items: center;
+  padding-right: 0.9rem;
 }
-
 
 .js-int-course-root .editor-dot {
   width: 11px;
@@ -473,13 +444,9 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
   flex-shrink: 0;
 }
 
-
 .js-int-course-root .editor-dot.red { background: #ef4444; }
-
 .js-int-course-root .editor-dot.yellow { background: #f59e0b; }
-
 .js-int-course-root .editor-dot.green { background: #22c55e; }
-
 
 /* Monaco wrapper */
 .js-int-course-root .editor-monaco-wrap {
@@ -488,8 +455,7 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
   overflow: hidden;
 }
 
-
-/* â”€â”€ Action buttons bar â”€â”€ */
+/* -- Action buttons bar -- */
 .js-int-course-root .editor-actions-bar {
   background: #0d1117;
   padding: 0.5rem 0.75rem;
@@ -500,7 +466,6 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
   flex-shrink: 0;
   border-top: 1px solid rgba(139, 92, 246, 0.06);
 }
-
 
 /* Base action button */
 .js-int-course-root .action-btn {
@@ -519,47 +484,40 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
   font-family: inherit;
 }
 
-
 .js-int-course-root .action-btn:hover {
   filter: brightness(1.14);
   transform: translateY(-1px);
 }
-
 
 .js-int-course-root .action-btn:active {
   transform: translateY(0);
   filter: brightness(0.95);
 }
 
-
 .js-int-course-root .action-btn i {
   font-size: 0.85rem;
   flex-shrink: 0;
 }
 
-
-/* Run â€” Violet Primary */
+/* Run — Violet Primary */
 .js-int-course-root .action-btn.run {
   background: #8b5cf6;
   color: #1a1a1a;
   box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
 }
 
-
 .js-int-course-root .action-btn.run:hover {
   box-shadow: 0 4px 16px rgba(139, 92, 246, 0.45);
 }
 
-
-/* JsIntCompiler â€” blue-ish */
+/* Compiler — blue-ish */
 .js-int-course-root .action-btn.compiler {
   background: #1d4ed8;
   color: #fff;
   box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25);
 }
 
-
-/* Copy â€” dark gray */
+/* Copy — dark gray */
 .js-int-course-root .action-btn.copy {
   background: #374151;
   color: #f3f4f6;
@@ -567,9 +525,139 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
 }
 
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   CONSOLE PANEL (RIGHT)
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════════════════════════════════════════════════════════
+   PREVIEW PANEL (RIGHT)
+═══════════════════════════════════════════════════════════════ */
+.js-int-course-root .preview-panel {
+  background: #161616;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35),
+              0 0 0 1px rgba(139, 92, 246, 0.08);
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+  transition: box-shadow 0.2s;
+}
+
+.js-int-course-root .preview-panel:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(139, 92, 246, 0.15);
+}
+
+/* Panel header */
+.js-int-course-root .preview-panel-header {
+  background: #111827;
+  padding: 0.55rem 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.08);
+}
+
+.js-int-course-root .preview-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #d1d5db;
+  margin: 0;
+}
+
+.js-int-course-root .preview-panel-title i {
+  color: #8b5cf6;
+  font-size: 0.95rem;
+}
+
+/* "Live Output" badge */
+.js-int-course-root .preview-live-badge {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 0.15rem 0.6rem;
+  border-radius: 9999px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+/* -- Preview output area -- */
+.js-int-course-root .preview-output {
+  flex: 1;
+  overflow: hidden;
+  background: #0a0a0a;
+  min-height: 0;
+  position: relative;
+}
+
+.js-int-course-root .preview-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #1a1a2e;
+  display: block;
+  min-height: 400px;
+}
+
+/* -- Preview actions bar -- */
+.js-int-course-root .preview-actions-bar {
+  background: #0d1117;
+  padding: 0.48rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(139, 92, 246, 0.06);
+}
+
+.js-int-course-root .preview-refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.36rem 0.8rem;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 5px;
+  color: #8b5cf6;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s;
+  font-family: inherit;
+}
+
+.js-int-course-root .preview-refresh-btn:hover {
+  background: rgba(139, 92, 246, 0.18);
+  border-color: rgba(139, 92, 246, 0.45);
+}
+
+.js-int-course-root .preview-refresh-btn i {
+  font-size: 0.8rem;
+}
+
+.js-int-course-root .preview-hint-text {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  color: #374151;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.js-int-course-root .preview-hint-text i {
+  font-size: 0.75rem;
+  color: #4b5563;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CONSOLE PANEL (LEGACY — kept for compatibility)
+═══════════════════════════════════════════════════════════════ */
 .js-int-course-root .console-panel {
   background: #161616;
   border-radius: 10px;
@@ -582,14 +670,11 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
   transition: box-shadow 0.2s;
 }
 
-
 .js-int-course-root .console-panel:hover {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4),
               0 0 0 1px rgba(139, 92, 246, 0.15);
 }
 
-
-/* Panel header */
 .js-int-course-root .console-panel-header {
   background: #111827;
   padding: 0.55rem 0.9rem;
@@ -599,7 +684,6 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
   flex-shrink: 0;
   border-bottom: 1px solid rgba(139, 92, 246, 0.08);
 }
-
 
 .js-int-course-root .console-panel-title {
   display: flex;
@@ -611,14 +695,11 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
   margin: 0;
 }
 
-
 .js-int-course-root .console-panel-title i {
   color: #8b5cf6;
   font-size: 0.95rem;
 }
 
-
-/* "Live Result" badge */
 .js-int-course-root .console-live-badge {
   background: rgba(34, 197, 94, 0.15);
   color: #22c55e;
@@ -631,8 +712,6 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
   border: 1px solid rgba(34, 197, 94, 0.25);
 }
 
-
-/* â”€â”€ Console output area â”€â”€ */
 .js-int-course-root .console-output {
   flex: 1;
   overflow-y: auto;
@@ -646,286 +725,30 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
   scrollbar-color: rgba(139, 92, 246, 0.3) transparent;
 }
 
-
 .js-int-course-root .console-output::-webkit-scrollbar { width: 5px; }
-
 .js-int-course-root .console-output::-webkit-scrollbar-track { background: transparent; }
-
 .js-int-course-root .console-output::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.25); border-radius: 4px; }
-
 .js-int-course-root .console-output::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.45); }
 
 
-/* â”€â”€ Empty state â”€â”€ */
-.js-int-course-root .console-empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  min-height: 240px;
-  text-align: center;
-  gap: 0.65rem;
-  padding: 2rem 1.5rem;
-}
-
-
-.js-int-course-root .console-empty-icon {
-  font-size: 2.2rem;
-  color: rgba(139, 92, 246, 0.25);
-}
-
-
-.js-int-course-root .console-empty-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #4b5563;
-  margin: 0;
-}
-
-
-.js-int-course-root .console-empty-hint {
-  font-size: 0.8rem;
-  color: #374151;
-  margin: 0;
-  line-height: 1.6;
-}
-
-
-.js-int-course-root .console-empty-hint code {
-  background: rgba(139, 92, 246, 0.1);
-  color: #8b5cf6;
-  padding: 0.06rem 0.35rem;
-  border-radius: 3px;
-  font-size: 0.88em;
-  font-weight: 600;
-}
-
-
-.js-int-course-root .console-empty-hint strong {
-  color: #8b5cf6;
-}
-
-
-/* â”€â”€ Log entry â”€â”€ */
-.js-int-course-root .console-entry {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.45rem;
-  padding: 5px 6px;
-  border-radius: 5px;
-  margin-bottom: 3px;
-  word-break: break-all;
-  transition: background 0.15s;
-}
-
-
-.js-int-course-root .console-entry:last-child {
-  margin-bottom: 0;
-}
-
-
-.js-int-course-root .console-entry:hover {
-  background: rgba(255, 255, 255, 0.03);
-}
-
-
-/* Entry â€” log */
-.js-int-course-root .console-entry--log {
-  border-left: 2px solid rgba(139, 92, 246, 0.35);
-}
-
-
-.js-int-course-root .console-entry--log .console-entry-icon i {
-  color: rgba(139, 92, 246, 0.7);
-}
-
-
-.js-int-course-root .console-entry--log .console-entry-type {
-  color: rgba(139, 92, 246, 0.5);
-}
-
-
-.js-int-course-root .console-entry--log .console-entry-text {
-  color: #d1fae5;
-}
-
-
-/* Entry â€” error */
-.js-int-course-root .console-entry--error {
-  background: rgba(239, 68, 68, 0.06);
-  border-left: 2px solid #ef4444;
-}
-
-
-.js-int-course-root .console-entry--error .console-entry-icon i {
-  color: #ef4444;
-}
-
-
-.js-int-course-root .console-entry--error .console-entry-type {
-  color: #f87171;
-}
-
-
-.js-int-course-root .console-entry--error .console-entry-text {
-  color: #fca5a5;
-}
-
-
-/* Entry â€” warn */
-.js-int-course-root .console-entry--warn {
-  background: rgba(245, 158, 11, 0.06);
-  border-left: 2px solid #f59e0b;
-}
-
-
-.js-int-course-root .console-entry--warn .console-entry-icon i {
-  color: #f59e0b;
-}
-
-
-.js-int-course-root .console-entry--warn .console-entry-type {
-  color: #fbbf24;
-}
-
-
-.js-int-course-root .console-entry--warn .console-entry-text {
-  color: #fde68a;
-}
-
-
-/* â”€â”€ Entry sub-parts â”€â”€ */
-.js-int-course-root .console-entry-icon {
-  flex-shrink: 0;
-  font-size: 0.8rem;
-  width: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1px;
-}
-
-
-.js-int-course-root .console-entry-type {
-  flex-shrink: 0;
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  width: 38px;
-  text-transform: uppercase;
-  margin-top: 1px;
-}
-
-
-.js-int-course-root .console-entry-text {
-  flex: 1;
-  white-space: pre-wrap;
-  word-break: break-word;
-  font-size: 0.82rem;
-  line-height: 1.5;
-}
-
-
-/* â”€â”€ Console actions bar â”€â”€ */
-.js-int-course-root .console-actions-bar {
-  background: #0d1117;
-  padding: 0.48rem 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0;
-  flex-wrap: wrap;
-  border-top: 1px solid rgba(139, 92, 246, 0.06);
-}
-
-
-.js-int-course-root .console-clear-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.36rem 0.8rem;
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.25);
-  border-radius: 5px;
-  color: #f87171;
-  font-size: 0.76rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.18s, border-color 0.18s;
-  font-family: inherit;
-}
-
-
-.js-int-course-root .console-clear-btn:hover:not(:disabled) {
-  background: rgba(239, 68, 68, 0.18);
-  border-color: rgba(239, 68, 68, 0.45);
-}
-
-
-.js-int-course-root .console-clear-btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-
-.js-int-course-root .console-clear-btn i {
-  font-size: 0.8rem;
-}
-
-
-/* Output line count badge */
-.js-int-course-root .console-count-badge {
-  background: rgba(139, 92, 246, 0.1);
-  color: rgba(139, 92, 246, 0.7);
-  font-size: 0.67rem;
-  font-weight: 700;
-  padding: 0.15rem 0.55rem;
-  border-radius: 9999px;
-  letter-spacing: 0.05em;
-  border: 1px solid rgba(139, 92, 246, 0.2);
-}
-
-
-/* Hint text at right */
-.js-int-course-root .console-hint-text {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.7rem;
-  color: #374151;
-  margin-left: auto;
-  white-space: nowrap;
-}
-
-
-.js-int-course-root .console-hint-text i {
-  font-size: 0.75rem;
-  color: #4b5563;
-}
-
-
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE TWEAKS
+═══════════════════════════════════════════════════════════════ */
 @media (max-width: 600px) {
-  .js-int-course-root .console-hint-text {
+  .js-int-course-root .preview-hint-text {
     display: none;
   }
-
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   RESPONSIVE TWEAKS
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media (max-width: 480px) {
   .js-int-course-root .topic-header-title {
     font-size: 0.65rem;
   }
 
-
   .js-int-course-root .topic-back-btn {
     padding: 0.3rem 0.55rem;
     font-size: 0.74rem;
   }
-
 
   .js-int-course-root .topic-menu-trigger {
     width: 34px;
@@ -933,33 +756,32 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
     gap: 4px;
   }
 
-
   .js-int-course-root .topic-main {
     padding: 0.6rem 0.6rem 1rem;
   }
 
-
   .js-int-course-root .editor-panel,
-.js-int-course-root .console-panel {
+  .js-int-course-root .preview-panel {
     min-height: 400px;
   }
-
 
   .js-int-course-root .action-btn {
     padding: 0.38rem 0.7rem;
     font-size: 0.74rem;
   }
 
-
   .js-int-course-root .topic-info-banner {
     padding: 8px 14px;
   }
-
 
   .js-int-course-root .topic-info-text {
     font-size: 0.78rem;
   }
 
+  .js-int-course-root .editor-tab {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.7rem;
+  }
 }
 
 @media (max-width: 380px) {
@@ -967,35 +789,31 @@ html:not(.dark) .js-int-course-root .topic-info-text code {
     font-size: 0.58rem;
     letter-spacing: 0.02em;
   }
-
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   HOVER SCALE EFFECT  (subtle lift on panels)
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+
+/* ═══════════════════════════════════════════════════════════════
+   HOVER SCALE EFFECT
+═══════════════════════════════════════════════════════════════ */
 .js-int-course-root .hover-scale {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 
 .js-int-course-root .hover-scale:hover {
   transform: translateY(-2px);
 }
 
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ═══════════════════════════════════════════════════════════════
    PREFERS REDUCED MOTION
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+═══════════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   .js-int-course-root .loading-spinner-ring,
-.js-int-course-root .loading-js-text,
-.js-int-course-root .loading-dot,
-.js-int-course-root .animate-fade-in,
-.js-int-course-root .hover-scale {
+  .js-int-course-root .loading-js-text,
+  .js-int-course-root .loading-dot,
+  .js-int-course-root .animate-fade-in,
+  .js-int-course-root .hover-scale {
     animation: none !important;
     transition: none !important;
   }
-
 }
-
-

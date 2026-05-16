@@ -15,7 +15,7 @@ import "../styles/JsAdvTopicPageFooter.css";
    { id, title, description, difficulty, time, moduleId, moduleTitle, moduleColor, moduleIcon }
 ───────────────────────────────────────────────────────────────────────────── */
 export default function JsAdvTopicPageFooter() {
-  const { topicId } = useParams();
+  const { topic: topicId } = useParams();
   const navigate = useNavigate();
   const allTopics = getAllTopics();
 

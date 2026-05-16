@@ -9,23 +9,11 @@ const data: SubtopicData = {
   interviewQuestions: [
     { q: 'What is the "def" keyword?', a: 'It is used to define a new function in Python.' },
     { q: 'Difference between parameters and arguments?', a: 'Parameters are the variables in the function definition; arguments are the actual values passed to it.' },
-    { q: 'What is a lambda function?', a: 'An anonymous, inline function that can take any number of arguments but has only one expression.' }
+    { q: 'What is a lambda function?', a: 'An anonymous, inline function that can take any number of arguments but has only one expression.' },
   ],
   resources: [
-    {
-      icon: 'video',
-      title: 'Topic video source',
-      description: 'A comprehensive video',
-      link: 'https://youtu.be/9OK32jb_TdI?si=xdrF6PINsEOIg5R1',
-      linkText: 'Watch',
-    },
-    {
-      icon: 'book',
-      title: 'Python pdf',
-      description: 'pdf on topic',
-      link: 'https://drive.google.com/file/d/1SlG7xt6UGPQ7qDwN4N57V7_pq4VX0g6N/view?usp=drive_link',
-      linkText: 'Visit',
-    },
-  ]
+    { icon: 'video', title: 'Topic video source', description: 'A comprehensive video', link: 'https://youtu.be/eezLhJ5oGYg?si=lOFViPvWWmZbMdEo', linkText: 'Watch' },
+    { icon: 'book', title: 'Python pdf', description: 'pdf on topic', link: 'https://drive.google.com/file/d/1Tc9Y0ByajXnX3BdBbcD02IQwp1hY2cN_/view?usp=drive_link', linkText: 'Visit' },
+  ],
 }
 export default data

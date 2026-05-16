@@ -1,4 +1,4 @@
-﻿/* ======================================================================
+/* ======================================================================
    JsAdvNavbar.css â€” JavaScript Advanced In My Style
    Brand: JS Yellow (#06b6d4) Â· Deep Navy (var(--bg))
    Dark mode: toggled via  html.dark  class on <html>
@@ -27,7 +27,7 @@
   --toggle-thumb:         #ffffff;
 }
 
-html.dark {
+html.dark .js-adv-course-root {
   --nav-bg:              rgba(14, 14, 28, 0.84);
   --nav-border:          rgba(6, 182, 212, 0.12);
   --nav-link:            #b8b8d8;
@@ -38,7 +38,6 @@ html.dark {
   --nav-btn-border:      rgba(6, 182, 212, 0.20);
   --nav-btn-clr:         #c8c8e0;
   --nav-btn-hover-bg:    rgba(6, 182, 212, 0.12);
-  --text-primary:        #eeeef6;
   --bg-surface:          #0f0f1e;
   --surface-alt:         #13132a;
   --mobile-header-border: rgba(6, 182, 212, 0.14);

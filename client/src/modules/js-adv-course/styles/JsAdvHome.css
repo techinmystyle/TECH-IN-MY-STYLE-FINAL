@@ -1,4 +1,4 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    JsAdvHome.css â€” Advanced JavaScript "In My Style" JsAdvHome Page
    Brand: PRIMARY #06b6d4 (JS Yellow)  |  DARK var(--bg) (Deep Navy)
    Design: Glassmorphism Â· Scroll Animations Â· Premium UI
@@ -23,7 +23,7 @@
 }
 
 
-html.dark {
+html.dark .js-adv-course-root {
   --glass-bg:      rgba(255, 255, 255, 0.04);
   --glass-border:  var(--border-color);
   --jsadv-hero-glow:     rgba(6, 182, 212, 0.12);
@@ -106,9 +106,9 @@ html.dark {
   position: relative;
   background: linear-gradient(
     145deg,
-    var(--navy)      0%,
-    var(--navy-mid)  50%,
-    #0a0a1a          100%
+    var(--bg)      0%,
+    var(--surface) 50%,
+    var(--surface-alt) 100%
   );
   overflow: hidden;
   padding: 7rem 0 5rem;
