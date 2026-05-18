@@ -20,56 +20,156 @@ export interface SubtopicData {
   resources: Resource[]
 }
 
-
-import booleans from './subtopics/booleans'
+// ── Getting Started ──────────────────────────────────────────────
 import pythonOverview from './subtopics/python-overview'
+import pythonInstallation from './subtopics/python-installation'
+import ides from './subtopics/ides'
+
+// ── Syntax and Semantics ─────────────────────────────────────────
+import indentation from './subtopics/indentation'
+import comments from './subtopics/comments'
+import statements from './subtopics/statements'
+
+// ── Data Types ───────────────────────────────────────────────────
+import numbers from './subtopics/numbers'
 import strings from './subtopics/strings'
+import booleans from './subtopics/booleans'
 import lists from './subtopics/lists'
+import tuples from './subtopics/tuples'
+import sets from './subtopics/sets'
+import dictionaries from './subtopics/dictionaries'
+import nonetype from './subtopics/nonetype'
+
+// ── Variables and Constants ──────────────────────────────────────
+import variableDeclaration from './subtopics/variable-declaration'
+import constants from './subtopics/constants'
+
+// ── Operators ────────────────────────────────────────────────────
+import arithmeticOperators from './subtopics/arithmetic-operators'
+import comparisonOperators from './subtopics/comparison-operators'
+import logicalOperators from './subtopics/logical-operators'
+import membershipOperators from './subtopics/membership-operators'
+import identityOperators from './subtopics/identity-operators'
+
+// ── Control Flow ─────────────────────────────────────────────────
+import conditionalStatements from './subtopics/conditional-statements'
+import loops from './subtopics/loops'
+import breakContinuePass from './subtopics/break-continue-pass'
+import listComprehensions from './subtopics/list-comprehensions'
+
+// ── Functions ────────────────────────────────────────────────────
 import functionDefinition from './subtopics/function-definition'
+import functionArguments from './subtopics/function-arguments'
+import returnStatement from './subtopics/return-statement'
+import lambdaFunctions from './subtopics/lambda-functions'
+import recursion from './subtopics/recursion'
+
+// ── Error Handling ───────────────────────────────────────────────
+import exceptions from './subtopics/exceptions'
+import raisingExceptions from './subtopics/raising-exceptions'
+import customExceptions from './subtopics/custom-exceptions'
+
+// ── Data Structures ──────────────────────────────────────────────
+import listsAdvanced from './subtopics/lists-advanced'
+import tuplesAdvanced from './subtopics/tuples-advanced'
+import setsAdvanced from './subtopics/sets-advanced'
+import dictionariesAdvanced from './subtopics/dictionaries-advanced'
+
+// ── OOP ──────────────────────────────────────────────────────────
 import classesObjects from './subtopics/classes-objects'
+import variablesOop from './subtopics/variables-oop'
+import methods from './subtopics/methods'
+import inheritance from './subtopics/inheritance'
+import encapsulation from './subtopics/encapsulation'
+import polymorphism from './subtopics/polymorphism'
+import abstraction from './subtopics/abstraction'
+import magicMethods from './subtopics/magic-methods'
+
+// ── Regular Expressions ──────────────────────────────────────────
+import regexIntro from './subtopics/regex-intro'
+import regexSyntax from './subtopics/regex-syntax'
+import reModule from './subtopics/re-module'
+
+// ── Advanced Topics ──────────────────────────────────────────────
+import iterators from './subtopics/iterators'
+import multithreading from './subtopics/multithreading'
 
 const subtopicsMap: Record<string, SubtopicData> = {
-  'booleans': booleans,
+  // Getting Started
   'python-overview': pythonOverview,
+  'python-installation': pythonInstallation,
+  'ides': ides,
+
+  // Syntax and Semantics
+  'indentation': indentation,
+  'comments': comments,
+  'statements': statements,
+
+  // Data Types
+  'numbers': numbers,
   'strings': strings,
+  'booleans': booleans,
   'lists': lists,
+  'tuples': tuples,
+  'sets': sets,
+  'dictionaries': dictionaries,
+  'nonetype': nonetype,
+
+  // Variables and Constants
+  'variable-declaration': variableDeclaration,
+  'constants': constants,
+
+  // Operators
+  'arithmetic-operators': arithmeticOperators,
+  'comparison-operators': comparisonOperators,
+  'logical-operators': logicalOperators,
+  'membership-operators': membershipOperators,
+  'identity-operators': identityOperators,
+
+  // Control Flow
+  'conditional-statements': conditionalStatements,
+  'loops': loops,
+  'break-continue-pass': breakContinuePass,
+  'list-comprehensions': listComprehensions,
+
+  // Functions
   'function-definition': functionDefinition,
+  'function-arguments': functionArguments,
+  'return-statement': returnStatement,
+  'lambda-functions': lambdaFunctions,
+  'recursion': recursion,
+
+  // Error Handling
+  'exceptions': exceptions,
+  'raising-exceptions': raisingExceptions,
+  'custom-exceptions': customExceptions,
+
+  // Data Structures
+  'lists-advanced': listsAdvanced,
+  'tuples-advanced': tuplesAdvanced,
+  'sets-advanced': setsAdvanced,
+  'dictionaries-advanced': dictionariesAdvanced,
+
+  // OOP
   'classes-objects': classesObjects,
+  'variables-oop': variablesOop,
+  'methods': methods,
+  'inheritance': inheritance,
+  'encapsulation': encapsulation,
+  'polymorphism': polymorphism,
+  'abstraction': abstraction,
+  'magic-methods': magicMethods,
+
+  // Regular Expressions
+  'regex-intro': regexIntro,
+  'regex-syntax': regexSyntax,
+  're-module': reModule,
+
+  // Advanced Topics
+  'iterators': iterators,
+  'multithreading': multithreading,
 }
 
 export function getSubtopic(slug: string): SubtopicData | null {
-  return subtopicsMap[slug] || makeGeneric(slug)
-}
-
-function makeGeneric(slug: string): SubtopicData {
-  const title = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
-  return {
-    slug, title, breadcrumb: 'Python Topics', readingTime: '10 min',
-    description: `Learn about ${title} in Python. This topic covers the fundamental concepts, syntax, and practical applications.`,
-    prerequisites: ['Basic Python knowledge', 'Understanding of Python syntax'],
-    examples: `# ${title} example\n# See the official Python documentation for detailed examples`,
-    realWorld: ['Used in real-world Python applications', 'Applied in software development', 'Used in data processing', 'Applied in automation scripts'],
-    applications: ['Web development', 'Data science', 'Automation', 'Machine learning'],
-    interviewQuestions: [
-      { q: `What is ${title} in Python?`, a: `${title} is a fundamental concept in Python used for building efficient and scalable applications.` },
-      { q: `How do you use ${title}?`, a: `You can use ${title} by following the standard Python syntax and best practices as shown in the examples above.` },
-      { q: `What are the benefits of ${title}?`, a: `Benefits include better code organization, improved readability, and more robust logic in your programs.` },
-    ],
-    resources: [
-      {
-        icon: 'video',
-        title: 'Topic video source',
-        description: 'A comprehensive video',
-        link: 'https://youtu.be/9OK32jb_TdI?si=xdrF6PINsEOIg5R1',
-        linkText: 'Watch',
-      },
-      {
-        icon: 'book',
-        title: 'Python pdf',
-        description: 'pdf on topic',
-        link: 'https://drive.google.com/file/d/1SlG7xt6UGPQ7qDwN4N57V7_pq4VX0g6N/view?usp=drive_link',
-        linkText: 'Visit',
-      },
-    ],
-  }
+  return subtopicsMap[slug] || null
 }
