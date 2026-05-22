@@ -86,37 +86,37 @@ function TopicCard({ topic, colorIdx, isOpen, onToggle }) {
       {/* ── Header button ── */}
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between px-5 py-4 sm:px-6 sm:py-5 text-left group focus:outline-none"
+        className="w-full flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4 md:px-6 md:py-5 text-left group focus:outline-none"
         aria-expanded={isOpen}
       >
-        <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+        <div className="flex items-center gap-2 sm:gap-3 md:gap-4 flex-1 min-w-0 overflow-hidden">
           {/* Gradient number badge */}
           <div
             className={`
-              w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex-shrink-0
+              w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl flex-shrink-0
               bg-gradient-to-br ${topicColors[colorIdx]}
               flex items-center justify-center
-              text-white font-bold text-base sm:text-lg font-poppins shadow-md
+              text-white font-bold text-sm sm:text-base md:text-lg font-poppins shadow-md
               group-hover:scale-105 transition-transform duration-200
             `}
           >
             {topic.number}
           </div>
 
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 overflow-hidden">
             <div className="flex items-center gap-2 flex-wrap">
-              <h2 className="java-topic-title font-poppins font-semibold text-gray-900 dark:text-white text-base sm:text-lg leading-tight group-hover:text-java-blue dark:group-hover:text-java-orange transition-colors">
+              <h2 className="java-topic-title font-poppins font-semibold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg leading-tight group-hover:text-java-blue dark:group-hover:text-java-orange transition-colors break-words overflow-wrap-anywhere">
                 {topic.title}
               </h2>
               {level && (
                 <span
-                  className={`text-xs px-2.5 py-0.5 rounded-full font-medium font-poppins ${levelColors[level]}`}
+                  className={`text-[10px] sm:text-xs px-2 sm:px-2.5 py-0.5 rounded-full font-medium font-poppins ${levelColors[level]} whitespace-nowrap`}
                 >
                   {level}
                 </span>
               )}
             </div>
-            <p className="text-gray-400 dark:text-gray-500 text-xs sm:text-sm mt-0.5 line-clamp-1">
+            <p className="text-gray-400 dark:text-gray-500 text-[11px] sm:text-xs md:text-sm mt-0.5 line-clamp-1 break-words overflow-wrap-anywhere">
               {topic.description}
               {" · "}
               <span className={`font-semibold ${topicTextColors[colorIdx]}`}>
@@ -128,7 +128,7 @@ function TopicCard({ topic, colorIdx, isOpen, onToggle }) {
 
         <ChevronDownIcon
           className={`
-            w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 ml-2 sm:ml-3
+            w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0 ml-1 sm:ml-2 md:ml-3
             text-gray-400 group-hover:text-java-blue dark:group-hover:text-java-orange
             transition-transform duration-300
             ${isOpen ? "rotate-180 !text-java-blue dark:!text-java-orange" : ""}
@@ -154,30 +154,31 @@ function TopicCard({ topic, colorIdx, isOpen, onToggle }) {
         />
 
         {/* Subtopics grid — each card is a Link */}
-        <div className="p-5 java-subtopic-grid">
+        <div className="p-3 sm:p-5 java-subtopic-grid">
           {topic.subtopics.map((sub, j) => (
             <Link
               key={j}
               to={`/java-course/topic/${topic.id}/${sub.slug}`}
               state={{ topicTitle: topic.title, subtopic: sub, colorIdx }}
               className="
-                java-subtopic-card group/sub flex gap-3 p-4 rounded-xl
+                java-subtopic-card group/sub flex gap-2 sm:gap-3 p-3 sm:p-4 rounded-xl
                 bg-gray-50 dark:bg-java-darker
                 border border-gray-100 dark:border-java-border-dark
                 hover:border-java-blue/50 dark:hover:border-java-orange/50
                 hover:bg-blue-50/60 dark:hover:bg-java-blue/5
                 hover:shadow-md
                 transition-all duration-200
+                w-full max-w-full overflow-hidden
               "
             >
               {/* Sub-number dot */}
               <div className="flex-shrink-0 mt-0.5">
                 <div
                   className={`
-                    w-6 h-6 rounded-full
+                    w-5 h-5 sm:w-6 sm:h-6 rounded-full
                     bg-gradient-to-br ${topicColors[colorIdx]}
                     flex items-center justify-center
-                    text-white text-xs font-bold shadow-sm
+                    text-white text-[10px] sm:text-xs font-bold shadow-sm
                     group-hover/sub:scale-110 transition-transform duration-200
                   `}
                 >
@@ -185,15 +186,15 @@ function TopicCard({ topic, colorIdx, isOpen, onToggle }) {
                 </div>
               </div>
 
-              <div className="java-subtopic-card-body min-w-0 flex-1">
-                <h4 className="java-subtopic-title font-medium text-gray-900 dark:text-white text-sm font-poppins leading-tight mb-1.5 group-hover/sub:text-java-blue dark:group-hover/sub:text-java-orange transition-colors">
+              <div className="java-subtopic-card-body min-w-0 flex-1 overflow-hidden">
+                <h4 className="java-subtopic-title font-medium text-gray-900 dark:text-white text-xs sm:text-sm font-poppins leading-tight mb-1 sm:mb-1.5 group-hover/sub:text-java-blue dark:group-hover/sub:text-java-orange transition-colors break-words overflow-wrap-anywhere">
                   {sub.title}
                 </h4>
-                <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2 mb-2">
+                <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2 mb-1.5 sm:mb-2 break-words overflow-wrap-anywhere">
                   {sub.desc}
                 </p>
-                <span className="inline-flex items-center gap-1 mt-auto text-xs font-semibold text-java-blue dark:text-java-orange opacity-0 group-hover/sub:opacity-100 transition-opacity duration-200">
-                  Learn now <ArrowRightIcon className="w-3 h-3" />
+                <span className="inline-flex items-center gap-1 mt-auto text-[10px] sm:text-xs font-semibold text-java-blue dark:text-java-orange opacity-0 group-hover/sub:opacity-100 transition-opacity duration-200">
+                  Learn now <ArrowRightIcon className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                 </span>
               </div>
             </Link>
@@ -201,15 +202,15 @@ function TopicCard({ topic, colorIdx, isOpen, onToggle }) {
         </div>
 
         {/* Per-topic footer */}
-        <div className="px-5 pb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-gray-100 dark:border-java-border-dark pt-4 mt-1 gap-3">
-          <p className="text-xs text-gray-400 dark:text-gray-500">
+        <div className="px-3 sm:px-5 pb-3 sm:pb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-gray-100 dark:border-java-border-dark pt-3 sm:pt-4 mt-1 gap-2 sm:gap-3">
+          <p className="text-[11px] sm:text-xs text-gray-400 dark:text-gray-500 break-words">
             {topic.subtopics.length} subtopics · Click any card to read the lesson
           </p>
           <Link
             to="/java-course/compiler"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-java-blue dark:text-java-orange hover:underline transition-colors shrink-0"
+            className="inline-flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-medium text-java-blue dark:text-java-orange hover:underline transition-colors shrink-0"
           >
-            <CodeBracketIcon className="w-4 h-4" />
+            <CodeBracketIcon className="w-3 h-3 sm:w-4 sm:h-4" />
             Practice in Compiler
           </Link>
         </div>
@@ -295,7 +296,7 @@ export default function Topics() {
         <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-java-blue/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-java-orange/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center w-full box-border">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-java-blue/10 border border-java-blue/20 text-java-orange text-sm font-medium mb-6">
             📚 Complete Curriculum
           </div>
@@ -336,7 +337,7 @@ export default function Topics() {
 
       {/* ── Quick-jump progress strip ─────────────────────────── */}
       <div className="sticky top-16 z-30 bg-white dark:bg-java-card-dark border-b border-gray-100 dark:border-java-border-dark shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 overflow-x-auto">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 overflow-x-auto w-full box-border">
           <div className="flex items-center gap-2 min-w-max">
             <span className="text-xs font-semibold text-gray-400 dark:text-gray-500 mr-2 shrink-0 uppercase tracking-wide">
               Jump to:
@@ -360,8 +361,8 @@ export default function Topics() {
       </div>
 
       {/* ── Main content ──────────────────────────────────────── */}
-      <section className="py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 w-full box-border">
           {/* Search + filter row */}
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <div className="relative flex-1">
