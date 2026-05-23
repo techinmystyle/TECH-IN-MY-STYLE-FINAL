@@ -1,4 +1,5 @@
 import React from 'react';
+import SdResources from '../../components/SdResources';
 import SDCard from '../../components/SDCard';
 import SDAccordion from '../../components/SDAccordion';
 
@@ -223,6 +224,8 @@ app.get('/:shortCode', async (req, res) => {
       </SDCard>
 
       {/* MISTAKES */}
+      <SdResources topicId="url-shortener" />
+
       <SDCard>
         <h2 className="text-xl font-semibold mb-2">Common Mistakes</h2>
         <ul className="list-disc pl-5 space-y-1">

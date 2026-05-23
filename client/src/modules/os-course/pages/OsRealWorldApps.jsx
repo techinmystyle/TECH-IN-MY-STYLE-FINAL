@@ -1,4 +1,5 @@
 import OsQuiz from '../components/OsQuiz';
+import OsResources from '../components/OsResources';
 import OsInterviewQuestion from '../components/OsInterviewQuestion';
 
 export default function OsRealWorldApps() {
@@ -187,6 +188,8 @@ export default function OsRealWorldApps() {
                     },
                 ]}
             />
+
+            <OsResources topicId="real-world" />
 
             <section className="module-section">
                 <h2>Interview Corner</h2>

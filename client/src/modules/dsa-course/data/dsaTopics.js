@@ -100,6 +100,38 @@ export const topicsData = {
       { q: 'How would you find two numbers that sum to a target?', a: 'Use a hash map: for each element, check if (target - element) exists in the map. O(n) time, O(n) space.' },
       { q: "What is Kadane's Algorithm?", a: 'An O(n) algorithm to find the maximum subarray sum. Track current sum and global max - if current sum goes negative, reset it.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Static & Dynamic Arrays - WilliamFiset",
+                "url": "https://www.youtube.com/watch?v=1d9IQRE8Loo"
+        },
+        {
+                "title": "Arrays & Hashing Playlist - NeetCode",
+                "url": "https://www.youtube.com/watch?v=KLlXCFG5TnA&list=PLot-Xpkr5xuh737C5L4ptT67Wpo9Zg5_F"
+        }
+],
+      docs: [
+        {
+                "title": "Python List Implementation Details",
+                "url": "https://docs.python.org/3/tutorial/datastructures.html"
+        },
+        {
+                "title": "Java Array Documentation - Oracle",
+                "url": "https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Descriptive Introduction to Arrays - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/what-is-array/"
+        },
+        {
+                "title": "LeetCode Arrays Explore Card",
+                "url": "https://leetcode.com/explore/learn/card/fun-with-arrays/"
+        }
+]
+    },
   },
 
   strings: {
@@ -129,6 +161,38 @@ export const topicsData = {
       { q: 'What is the difference between == and .equals() for strings in Java?', a: '== compares references. .equals() compares actual character content. Always use .equals() for string value comparison in Java.' },
       { q: 'How do you check if two strings are anagrams?', a: 'Sort both strings and compare O(n log n). Or use a frequency count hash map O(n) time, O(1) space for fixed alphabet.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "String Algorithms Overview - Abdul Bari",
+                "url": "https://www.youtube.com/watch?v=V5hZOwSh108"
+        },
+        {
+                "title": "LeetCode String Patterns - NeetCode",
+                "url": "https://www.youtube.com/watch?v=KLlXCFG5TnA"
+        }
+],
+      docs: [
+        {
+                "title": "Java String API Docs - Oracle",
+                "url": "https://docs.oracle.com/javase/8/docs/api/java/lang/String.html"
+        },
+        {
+                "title": "MDN String Reference - Mozilla",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+        }
+],
+      blogs: [
+        {
+                "title": "String Data Structure Guides - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/string-data-structure/"
+        },
+        {
+                "title": "Pattern Matching Algorithms Explained - Programiz",
+                "url": "https://www.programiz.com/dsa/naive-string-matching-algorithm"
+        }
+]
+    },
   },
 
   recursion: {
@@ -158,6 +222,38 @@ export const topicsData = {
       { q: 'What is tail recursion?', a: 'A recursive call where the recursive call is the last operation. Some compilers optimize this into iteration (tail call optimization), preventing stack overflow.' },
       { q: 'How do you convert a recursive solution to iterative?', a: 'Use an explicit stack data structure to simulate the call stack. Push the initial state, then loop: pop state, process it, push new states.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Recursion Demystified - Reducible",
+                "url": "https://www.youtube.com/watch?v=ngCos392W4w"
+        },
+        {
+                "title": "Recursion & Backtracking - Aditya Verma",
+                "url": "https://www.youtube.com/watch?v=kHi1DUhp9KP"
+        }
+],
+      docs: [
+        {
+                "title": "Recursion in Algorithms - Princeton CS",
+                "url": "https://introcs.cs.princeton.edu/java/23recursion/"
+        },
+        {
+                "title": "Python Recursion Limits & Customization",
+                "url": "https://docs.python.org/3/library/sys.html#sys.setrecursionlimit"
+        }
+],
+      blogs: [
+        {
+                "title": "How Recursion Works: A Visual Guide - freeCodeCamp",
+                "url": "https://www.freecodecamp.org/news/how-recursion-works-explained-with-diagrams/"
+        },
+        {
+                "title": "Recursive Algorithms Guide - Khan Academy",
+                "url": "https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/recursion"
+        }
+]
+    },
   },
 
 
@@ -191,6 +287,38 @@ export const topicsData = {
       { q: 'What is the lower bound for comparison-based sorting?', a: 'O(n log n). Proven via decision tree argument - any comparison-based sort needs at least log2(n!) comparisons, which is Theta(n log n) by Stirling approximation.' },
       { q: 'How does Counting Sort achieve O(n)?', a: 'Counting Sort is non-comparison based. It counts occurrences of each value, then reconstructs the sorted array. Works only for integers in a known range [0, k]. Time: O(n + k), Space: O(k).' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Merge Sort in 2 Minutes - Michael Sambol",
+                "url": "https://www.youtube.com/watch?v=4VqmGXwpLqc"
+        },
+        {
+                "title": "Quick Sort Algorithm Tutorial - Abdul Bari",
+                "url": "https://www.youtube.com/watch?v=7h1s2SojIRw"
+        }
+],
+      docs: [
+        {
+                "title": "Python Sorting HOWTO Guide",
+                "url": "https://docs.python.org/3/howto/sorting.html"
+        },
+        {
+                "title": "Java Arrays.sort() Specification",
+                "url": "https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#sort-int:A-"
+        }
+],
+      blogs: [
+        {
+                "title": "Visual Guide to Sorting Algorithms - Visualgo",
+                "url": "https://visualgo.net/en/sorting"
+        },
+        {
+                "title": "Analysis of Sorting Algorithms - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/sorting-algorithms/"
+        }
+]
+    },
   },
 
   'binary-search': {
@@ -220,6 +348,38 @@ export const topicsData = {
       { q: 'How do you search in a rotated sorted array?', a: 'At each step, one half is always sorted. Check which half is sorted, then determine if target falls in that range. If yes, search that half; otherwise search the other. O(log n).' },
       { q: 'What is binary search on the answer space?', a: 'Instead of searching for a value in an array, you binary search on the answer itself. Example: find minimum capacity to ship packages in D days. The answer lies in [max_weight, sum_weights]. Check feasibility at each mid.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Binary Search Tutorial - Errichto",
+                "url": "https://www.youtube.com/watch?v=GU7D9We2xEc"
+        },
+        {
+                "title": "Binary Search Playlist & Tips - NeetCode",
+                "url": "https://www.youtube.com/watch?v=s4DPM8ct1Ls"
+        }
+],
+      docs: [
+        {
+                "title": "Python bisect Module Documentation",
+                "url": "https://docs.python.org/3/library/bisect.html"
+        },
+        {
+                "title": "C++ std::binary_search Reference",
+                "url": "https://en.cppreference.com/w/cpp/algorithm/binary_search"
+        }
+],
+      blogs: [
+        {
+                "title": "Binary Search 101 Guide - LeetCode Discuss",
+                "url": "https://leetcode.com/discuss/general-discussion/786126/binary-search-101"
+        },
+        {
+                "title": "Detailed Guide to Binary Search - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/binary-search/"
+        }
+]
+    },
   },
 
   'two-pointer': {
@@ -249,6 +409,34 @@ export const topicsData = {
       { q: 'How do you find all triplets that sum to zero?', a: 'Sort the array. For each element nums[i], use two pointers on the remaining subarray. Skip duplicates. O(n^2) time, O(1) extra space.' },
       { q: 'What is the fast/slow pointer technique?', a: "Floyd's cycle detection. Slow moves 1 step, fast moves 2. If they meet, there is a cycle. Also used to find the middle of a linked list." },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Two Pointers Concept - NeetCode",
+                "url": "https://www.youtube.com/watch?v=cHP8LjQD5b4"
+        },
+        {
+                "title": "Two Pointer Technique Crash Course - Nick White",
+                "url": "https://www.youtube.com/watch?v=2wB1UCkD48o"
+        }
+],
+      docs: [
+        {
+                "title": "LeetCode Two Pointers Explore Card",
+                "url": "https://leetcode.com/explore/learn/card/fun-with-arrays/511/in-place-operations/"
+        }
+],
+      blogs: [
+        {
+                "title": "Two Pointer Technique Overview - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/two-pointers-technique/"
+        },
+        {
+                "title": "Mastering the Two-Pointer Pattern - Medium Article",
+                "url": "https://hackernoon.com/two-pointer-technique-solving-array-problems-with-ease"
+        }
+]
+    },
   },
 
   'prefix-sum': {
@@ -278,6 +466,34 @@ export const topicsData = {
       { q: 'What is a difference array and when do you use it?', a: 'Difference array allows O(1) range updates. diff[l] += val, diff[r+1] -= val. After all updates, take prefix sum to get final array. Use when you have many range update operations.' },
       { q: 'How do you find the equilibrium index of an array?', a: 'Equilibrium index: left sum equals right sum. Compute total sum. Iterate: if left_sum == total - left_sum - arr[i], found it. Update left_sum += arr[i]. O(n) time, O(1) space.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Prefix Sum Array & Range Queries - Luv",
+                "url": "https://www.youtube.com/watch?v=4jY56s1skDU"
+        },
+        {
+                "title": "Prefix Sum Problems Deep Dive - NeetCode",
+                "url": "https://www.youtube.com/watch?v=2pndA151yvM"
+        }
+],
+      docs: [
+        {
+                "title": "Subarray Sum Equals K Reference - LeetCode",
+                "url": "https://leetcode.com/problems/subarray-sum-equals-k/"
+        }
+],
+      blogs: [
+        {
+                "title": "Prefix Sum Array Tutorial - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/prefix-sum-array-implementation-and-applications/"
+        },
+        {
+                "title": "Prefix Sums Tutorial with Visuals - Codeforces",
+                "url": "https://codeforces.com/blog/entry/78216"
+        }
+]
+    },
   },
 
 
@@ -309,6 +525,34 @@ export const topicsData = {
       { q: 'How do you find the middle of a linked list?', a: 'Slow/fast pointer technique. Slow moves 1 step, fast moves 2. When fast reaches end, slow is at the middle. O(n) time, O(1) space.' },
       { q: 'What is an LRU Cache and how do you implement it?', a: 'Least Recently Used cache. Use a doubly linked list + hash map. O(1) get and put. The list maintains order of use; the map gives O(1) node access.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Singly & Doubly Linked Lists - WilliamFiset",
+                "url": "https://www.youtube.com/watch?v=58YAxp9WAek"
+        },
+        {
+                "title": "Linked List Interview Prep - NeetCode",
+                "url": "https://www.youtube.com/watch?v=G0_I-ZF0S38"
+        }
+],
+      docs: [
+        {
+                "title": "Java LinkedList API Reference - Oracle",
+                "url": "https://docs.oracle.com/javase/8/docs/api/java/util/LinkedList.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Linked List Data Structure - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/data-structures/linked-list/"
+        },
+        {
+                "title": "Linked List Conceptual Guide - tutorialspoint",
+                "url": "https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm"
+        }
+]
+    },
   },
 
   stacks: {
@@ -338,6 +582,38 @@ export const topicsData = {
       { q: 'How do you evaluate a postfix expression using a stack?', a: 'Scan left to right. If operand, push. If operator, pop two operands, apply operator, push result. Final stack top is the answer. O(n) time.' },
       { q: 'What is the min stack problem?', a: 'Design a stack that supports push, pop, and getMin in O(1). Solution: maintain a parallel min-stack. When pushing x, also push min(x, current_min) to the min-stack.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Stack Data Structure Tutorial - WilliamFiset",
+                "url": "https://www.youtube.com/watch?v=F1F2weyP95s"
+        },
+        {
+                "title": "Stack Playlist & LeetCode - NeetCode",
+                "url": "https://www.youtube.com/watch?v=lUe2nIr4n8g"
+        }
+],
+      docs: [
+        {
+                "title": "C++ std::stack Reference Docs",
+                "url": "https://en.cppreference.com/w/cpp/container/stack"
+        },
+        {
+                "title": "Java Stack API Reference - Oracle",
+                "url": "https://docs.oracle.com/javase/8/docs/api/java/util/Stack.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Stack Data Structure In-Depth - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/stack-data-structure/"
+        },
+        {
+                "title": "Stack Implementation Guide - Programiz",
+                "url": "https://www.programiz.com/dsa/stack"
+        }
+]
+    },
   },
 
   queues: {
@@ -367,6 +643,38 @@ export const topicsData = {
       { q: 'What is a circular queue and why is it useful?', a: 'A queue implemented with a fixed-size array where the rear wraps around to the front. Avoids wasted space from dequeuing. Uses modulo arithmetic: rear = (rear + 1) % capacity.' },
       { q: 'When would you use a priority queue over a regular queue?', a: "When elements have different priorities and higher-priority items should be processed first. Examples: Dijkstra shortest path, A* search, task scheduling, Huffman coding." },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Queue Data Structure Explained - WilliamFiset",
+                "url": "https://www.youtube.com/watch?v=jtKM7I9Z1Zk"
+        },
+        {
+                "title": "Queue Design & Operations - NeetCode",
+                "url": "https://www.youtube.com/watch?v=mDCi1AnMDd0"
+        }
+],
+      docs: [
+        {
+                "title": "Python collections.deque Class Docs",
+                "url": "https://docs.python.org/3/library/collections.html#collections.deque"
+        },
+        {
+                "title": "Java Queue Interface - Oracle Docs",
+                "url": "https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Queue Data Structure and Operations - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/queue-data-structure/"
+        },
+        {
+                "title": "Queues and Deques Overview - Programiz",
+                "url": "https://www.programiz.com/dsa/queue"
+        }
+]
+    },
   },
 
 
@@ -397,6 +705,38 @@ export const topicsData = {
       { q: 'How would you design a hash function for strings?', a: 'Polynomial rolling hash: h = sum(s[i] * p^i) % m, where p is a prime (31 or 37) and m is a large prime. This distributes strings uniformly. Java uses this approach in String.hashCode().' },
       { q: 'What is the difference between HashMap and HashSet?', a: 'HashMap stores key-value pairs. HashSet stores only keys (implemented as a HashMap with dummy values). Both offer O(1) average operations.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Hashing Techniques & Collisions - Abdul Bari",
+                "url": "https://www.youtube.com/watch?v=mFY0J5IvNy4"
+        },
+        {
+                "title": "Hash Table Design & Problems - NeetCode",
+                "url": "https://www.youtube.com/watch?v=UaCy54AdNyA"
+        }
+],
+      docs: [
+        {
+                "title": "Java HashMap Internals - Oracle Docs",
+                "url": "https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html"
+        },
+        {
+                "title": "Python dict Hash Table Details",
+                "url": "https://docs.python.org/3/c-api/dict.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Hashing Data Structure Tutorial - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/hashing-data-structure/"
+        },
+        {
+                "title": "Hash Tables Explore Card - LeetCode Explore",
+                "url": "https://leetcode.com/explore/learn/card/hash-table/"
+        }
+]
+    },
   },
 
   heaps: {
@@ -426,6 +766,38 @@ export const topicsData = {
       { q: 'Why is building a heap O(n) and not O(n log n)?', a: 'When heapifying from the bottom up, most nodes are near the leaves and require few swaps. The total work is sum of heights = O(n). This is tighter than the naive O(n log n) of inserting n elements one by one.' },
       { q: 'What is a priority queue and how is it different from a regular queue?', a: 'A priority queue serves elements by priority, not arrival order. Implemented with a heap. Regular queue is FIFO. Priority queue is used in Dijkstra, A*, task scheduling, Huffman coding.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Binary Heaps & Heap Sort - Abdul Bari",
+                "url": "https://www.youtube.com/watch?v=H5kA3yqObOM"
+        },
+        {
+                "title": "Binary Heap Priority Queue - WilliamFiset",
+                "url": "https://www.youtube.com/watch?v=t0Cq6tVNRBA"
+        }
+],
+      docs: [
+        {
+                "title": "Python heapq Module Documentation",
+                "url": "https://docs.python.org/3/library/heapq.html"
+        },
+        {
+                "title": "Java PriorityQueue API Docs - Oracle",
+                "url": "https://docs.oracle.com/javase/8/docs/api/java/util/PriorityQueue.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Binary Heap In-Depth Guide - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/binary-heap/"
+        },
+        {
+                "title": "Heaps and Priority Queues - Programiz",
+                "url": "https://www.programiz.com/dsa/heap-data-structure"
+        }
+]
+    },
   },
 
   'sliding-window': {
@@ -455,6 +827,34 @@ export const topicsData = {
       { q: 'How do you find the maximum of each window of size k?', a: 'Use a monotonic deque. Maintain indices of useful elements in decreasing order. For each new element, remove smaller elements from back. Remove elements outside window from front. Front is always the max. O(n) time.' },
       { q: 'When does sliding window NOT work?', a: 'When the window condition is not monotonic - shrinking the window does not necessarily fix the violation. Also does not work when you need non-contiguous subarrays (use DP instead).' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Sliding Window Playlist - Aditya Verma",
+                "url": "https://www.youtube.com/watch?v=EHCGAJxPk3Y&list=PL_z_8CaSLPWeM8OTgIpHdy7F5wCSz7EbA"
+        },
+        {
+                "title": "Sliding Window Concept & LeetCode - NeetCode",
+                "url": "https://www.youtube.com/watch?v=s5eC0Ff5nJg"
+        }
+],
+      docs: [
+        {
+                "title": "LeetCode Sliding Window Patterns Card",
+                "url": "https://leetcode.com/explore/learn/card/sliding-window/"
+        }
+],
+      blogs: [
+        {
+                "title": "Sliding Window Technique Explained - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/window-sliding-technique/"
+        },
+        {
+                "title": "Mastering the Sliding Window Pattern - Medium Guide",
+                "url": "https://medium.com/tech-life-prog/sliding-window-algorithm-pattern-dec37a9d0f41"
+        }
+]
+    },
   },
 
   'bit-manipulation': {
@@ -484,6 +884,34 @@ export const topicsData = {
       { q: 'What does n & (n-1) do?', a: 'It removes the lowest set bit of n. Example: n=12 (1100), n-1=11 (1011), n&(n-1)=8 (1000). Used to count set bits and check powers of 2.' },
       { q: 'How do you generate all subsets using bit manipulation?', a: 'For n elements, iterate mask from 0 to 2^n - 1. For each mask, bit i being set means element i is in the subset. This generates all 2^n subsets in O(2^n * n) time.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Bit Manipulation Tutorial - Errichto",
+                "url": "https://www.youtube.com/watch?v=NLKQEOgBAnw"
+        },
+        {
+                "title": "Bit Manipulation Playlist - NeetCode",
+                "url": "https://www.youtube.com/watch?v=KLlXCFG5TnA&list=PLot-Xpkr5xuhsMC3V0Cy0t436814S4323"
+        }
+],
+      docs: [
+        {
+                "title": "Python Bitwise Operations Reference Docs",
+                "url": "https://docs.python.org/3/reference/expressions.html#binary-bitwise-operations"
+        }
+],
+      blogs: [
+        {
+                "title": "Bit Manipulation Algorithms - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/bit-manipulation-important-tactics/"
+        },
+        {
+                "title": "Bits & Binary Manipulations - HackerEarth",
+                "url": "https://www.hackerearth.com/practice/basic-programming/bit-manipulation/basics-of-bit-manipulation/tutorial/"
+        }
+]
+    },
   },
 
 
@@ -515,6 +943,38 @@ export const topicsData = {
       { q: 'How do you find the Lowest Common Ancestor of two nodes?', a: 'Recursively: if root is null or equals p or q, return root. Recurse left and right. If both return non-null, root is the LCA. Otherwise return whichever is non-null. O(n) time.' },
       { q: 'What is a segment tree and when do you use it?', a: 'A tree for range queries (sum, min, max) with O(log n) query and update. Build in O(n). Used when you need both point updates and range queries on an array.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Binary Trees & Traversals - WilliamFiset",
+                "url": "https://www.youtube.com/watch?v=PrU0052oUOk"
+        },
+        {
+                "title": "Tree Data Structures Playlist - NeetCode",
+                "url": "https://www.youtube.com/watch?v=ihj4IQGZSAg"
+        }
+],
+      docs: [
+        {
+                "title": "Java TreeMap API Documentation - Oracle",
+                "url": "https://docs.oracle.com/javase/8/docs/api/java/util/TreeMap.html"
+        },
+        {
+                "title": "C++ std::map Reference Manual",
+                "url": "https://en.cppreference.com/w/cpp/container/map"
+        }
+],
+      blogs: [
+        {
+                "title": "Binary Tree Data Structure Guides - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/binary-tree-data-structure/"
+        },
+        {
+                "title": "Tree Visualizations & Algorithms - VisuAlgo",
+                "url": "https://visualgo.net/en/bst"
+        }
+]
+    },
   },
 
   graphs: {
@@ -545,6 +1005,34 @@ export const topicsData = {
       { q: 'How do you detect a cycle in a directed graph?', a: "DFS with a recursion stack. Mark nodes as visited and in-recursion-stack. If you visit a node already in the recursion stack, there is a cycle. O(V+E) time." },
       { q: 'What is Union-Find and when do you use it?', a: "A data structure for tracking connected components. Supports union (merge two sets) and find (which set does a node belong to) in near O(1) with path compression and union by rank. Used for Kruskal MST." },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Graph Theory & Algorithms - WilliamFiset",
+                "url": "https://www.youtube.com/watch?v=09_LlHjoEiY"
+        },
+        {
+                "title": "Graph Algorithms Prep Playlist - NeetCode",
+                "url": "https://www.youtube.com/watch?v=gXgEDyodO38"
+        }
+],
+      docs: [
+        {
+                "title": "Boost Graph Library (BGL) - C++ Reference",
+                "url": "https://www.boost.org/doc/libs/release/libs/graph/doc/"
+        }
+],
+      blogs: [
+        {
+                "title": "Graph Representations & Traversals - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/"
+        },
+        {
+                "title": "Interactive Graph Traversals - Khan Academy",
+                "url": "https://www.khanacademy.org/computing/computer-science/algorithms/graph-representation/a/representing-graphs"
+        }
+]
+    },
   },
 
   dp: {
@@ -575,6 +1063,34 @@ export const topicsData = {
       { q: 'What is the Longest Increasing Subsequence problem?', a: 'Find the length of the longest strictly increasing subsequence. O(n^2) DP: dp[i] = max(dp[j]+1) for all j<i where nums[j]<nums[i]. O(n log n) solution uses patience sorting with binary search.' },
       { q: 'What is the 0/1 Knapsack problem?', a: 'Given items with weights and values, maximize value within a weight capacity. Each item can be taken (1) or not (0). 2D DP: dp[i][w] = max value using first i items with capacity w. O(n*W) time and space.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Dynamic Programming Introduction - Abdul Bari",
+                "url": "https://www.youtube.com/watch?v=5CGyA0m1yPQ"
+        },
+        {
+                "title": "Dynamic Programming Playlist - NeetCode",
+                "url": "https://www.youtube.com/watch?v=73r3KWi1dBk&list=PLot-Xpkr5xuHPnnMpCisbhyH_7GslzpxR"
+        }
+],
+      docs: [
+        {
+                "title": "Dynamic Programming Course - MIT OpenCourseWare",
+                "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/"
+        }
+],
+      blogs: [
+        {
+                "title": "Introduction to Dynamic Programming - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/dynamic-programming/"
+        },
+        {
+                "title": "Dynamic Programming Study Guide - LeetCode Discuss",
+                "url": "https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns"
+        }
+]
+    },
   },
   arrays: {
     id: 'arrays', name: 'Arrays', realm: 'Arrays Realm', level: 'Beginner', icon: '\u2694\uFE0F',
@@ -977,6 +1493,34 @@ export const topicsData = {
       { q: 'How do you solve Sudoku with backtracking?', a: 'Find an empty cell. Try digits 1-9. For each digit, check if it is valid (not in same row, column, or 3x3 box). If valid, place it and recurse. If recursion fails, backtrack (remove digit, try next).' },
       { q: 'When should you use backtracking vs DP?', a: 'Use backtracking when you need all solutions or the problem has no overlapping subproblems. Use DP when you only need the count/optimal value and subproblems overlap.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Backtracking Algorithms - Abdul Bari",
+                "url": "https://www.youtube.com/watch?v=DKCtRlhJm9o"
+        },
+        {
+                "title": "Backtracking Prep Playlist - NeetCode",
+                "url": "https://www.youtube.com/watch?v=pfiQ_y1MowA&list=PLot-Xpkr5xuHn-15r407U41t4gK7_SUsS"
+        }
+],
+      docs: [
+        {
+                "title": "Backtracking Explanations - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/backtracking-algorithms/"
+        }
+],
+      blogs: [
+        {
+                "title": "Backtracking Explained with Diagrams - freeCodeCamp",
+                "url": "https://www.freecodecamp.org/news/backtracking-algorithms-explained-with-examples/"
+        },
+        {
+                "title": "LeetCode Backtracking Study Guide",
+                "url": "https://leetcode.com/discuss/general-discussion/112032/backtracking-template"
+        }
+]
+    },
   },
   tries: {
     id: 'tries', name: 'Tries', realm: 'Trie Realm', level: 'Advanced', icon: '\uD83C\uDF10',
@@ -999,6 +1543,34 @@ export const topicsData = {
       { q: 'What is a compressed Trie (Patricia Tree)?', a: 'A compressed Trie merges chains of single-child nodes into one edge with a string label. Reduces space from O(n*m*A) to O(n) nodes. Used in IP routing tables and suffix trees.' },
       { q: 'How would you find the longest common prefix of an array of strings?', a: 'Insert all strings into a Trie. Traverse from root, following the single-child path as long as each node has exactly one child and is not an end node. The path length is the longest common prefix.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Trie Data Structure & Insertion - WilliamFiset",
+                "url": "https://www.youtube.com/watch?v=TykR-7Q6T7s"
+        },
+        {
+                "title": "Trie Playlist & Problems - NeetCode",
+                "url": "https://www.youtube.com/watch?v=oobqoCJl500"
+        }
+],
+      docs: [
+        {
+                "title": "Trie Implementation Reference - LeetCode Learn",
+                "url": "https://leetcode.com/explore/learn/card/trie/"
+        }
+],
+      blogs: [
+        {
+                "title": "Trie Data Structure In-Depth - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/trie-insert-and-search/"
+        },
+        {
+                "title": "Tries and Autocomplete Applications - HackerEarth",
+                "url": "https://www.hackerearth.com/practice/data-structures/advanced-data-structures/trie/tutorial/"
+        }
+]
+    },
   },
   greedy: {
     id: 'greedy', name: 'Greedy Algorithms', realm: 'Greedy Realm', level: 'Advanced', icon: '\u26A1',
@@ -1021,6 +1593,34 @@ export const topicsData = {
       { q: 'What is Huffman Coding and why is it greedy?', a: 'Huffman Coding builds an optimal prefix-free binary code. Greedily merge the two lowest-frequency nodes into a new node. Repeat until one tree remains. The greedy choice (always merge smallest) produces the optimal code.' },
       { q: 'Explain the Jump Game problem and its greedy solution.', a: 'Given array where nums[i] = max jump from i, determine if you can reach the last index. Greedy: track the farthest reachable index. At each position, update farthest. If current position exceeds farthest, return false. O(n) time.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Greedy Algorithms Tutorial - Abdul Bari",
+                "url": "https://www.youtube.com/watch?v=ARvQurGDgXk"
+        },
+        {
+                "title": "Greedy Interview Playlist - NeetCode",
+                "url": "https://www.youtube.com/watch?v=H9n-c4U16mQ&list=PLot-Xpkr5xuh8T_PDrh4z9D5bJ84jL0zE"
+        }
+],
+      docs: [
+        {
+                "title": "Greedy Algorithms Overview - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/greedy-algorithms/"
+        }
+],
+      blogs: [
+        {
+                "title": "Greedy Approach & Fractional Knapsack - tutorialspoint",
+                "url": "https://www.tutorialspoint.com/data_structures_algorithms/greedy_algorithms.htm"
+        },
+        {
+                "title": "Greedy Algorithms Basics - HackerEarth",
+                "url": "https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/tutorial/"
+        }
+]
+    },
   },
   'union-find': {
     id: 'union-find', name: 'Union-Find', realm: 'Union-Find Realm', level: 'Advanced', icon: '\uD83D\uDD17',
@@ -1043,6 +1643,34 @@ export const topicsData = {
       { q: 'How does Kruskal MST algorithm use Union-Find?', a: 'Sort edges by weight. For each edge (u, v): if find(u) != find(v), add edge to MST and union(u, v). Skip edges that would create a cycle. O(E log E) for sorting + O(E * alpha(V)) for union-find.' },
       { q: 'What is the difference between Union-Find and BFS/DFS for connectivity?', a: 'BFS/DFS: O(V+E) per query, good for one-time connectivity check. Union-Find: O(alpha(n)) per query after O(n) build, good for dynamic connectivity with many union and find operations.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Union Find / Disjoint Set Kruskal - WilliamFiset",
+                "url": "https://www.youtube.com/watch?v=Ib9F8_W93iM"
+        },
+        {
+                "title": "Union Find / Disjoint Set Tutorial - NeetCode",
+                "url": "https://www.youtube.com/watch?v=ayW5B2W9hQM"
+        }
+],
+      docs: [
+        {
+                "title": "Disjoint-Set (Union Find) Algorithms - Princeton CS",
+                "url": "https://algs4.cs.princeton.edu/15uf/"
+        }
+],
+      blogs: [
+        {
+                "title": "Disjoint Set Data Structure Overview - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/disjoint-set-data-structure-union-find-algorithm/"
+        },
+        {
+                "title": "Disjoint Set / Union Find Explore Card - LeetCode",
+                "url": "https://leetcode.com/explore/learn/card/graph/618/disjoint-set/"
+        }
+]
+    },
   },
   dijkstra: {
     id: 'dijkstra', name: 'Dijkstra Algorithm', realm: 'Dijkstra Realm', level: 'Advanced', icon: '\uD83D\uDDFA\uFE0F',
@@ -1065,6 +1693,34 @@ export const topicsData = {
       { q: 'What is the difference between Dijkstra and BFS for shortest path?', a: 'BFS finds shortest path in unweighted graphs O(V+E). Dijkstra handles weighted graphs with non-negative weights O((V+E) log V). BFS is Dijkstra where all weights are 1.' },
       { q: 'How does A* differ from Dijkstra?', a: 'A* adds a heuristic h(n) estimating distance to goal. Priority = actual distance + heuristic. This guides search toward the goal. Dijkstra is A* with h(n) = 0.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Dijkstra's Shortest Path Algorithm - Abdul Bari",
+                "url": "https://www.youtube.com/watch?v=XB4MIexjvY0"
+        },
+        {
+                "title": "Dijkstra's Single Source Shortest Path - WilliamFiset",
+                "url": "https://www.youtube.com/watch?v=pSqmAO-m7Lk"
+        }
+],
+      docs: [
+        {
+                "title": "NetworkX Dijkstra Pathfinding - Python Reference",
+                "url": "https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.dijkstra_path.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Dijkstra's Shortest Path Algorithm - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/"
+        },
+        {
+                "title": "Dijkstra's Pathfinding Visual Guide - freeCodeCamp",
+                "url": "https://www.freecodecamp.org/news/dijkstras-shortest-path-algorithm-visual-introduction/"
+        }
+]
+    },
   },
 };
 

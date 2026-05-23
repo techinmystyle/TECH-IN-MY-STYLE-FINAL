@@ -11,11 +11,14 @@ import DbAccordion from '../components/DbAccordion';
 import DbMacCodeBlock from '../components/DbMacCodeBlock';
 import { useProgress } from '../hooks/useProgress';
 import { useState } from 'react';
+import { FaYoutube, FaFileAlt, FaBook } from 'react-icons/fa';
+
 
 export default function DbTopic() {
   const { id } = useParams();
   const { getProgress, toggleProgress, isBookmarked, toggleBookmark } = useProgress();
   const [activeTab, setActiveTab] = useState('sql');
+  const [activeResourceTab, setActiveResourceTab] = useState('text');
   const content = topicContent[id];
 
   let modColor = '#00f0ff';
@@ -182,6 +185,124 @@ export default function DbTopic() {
             <span style={{ fontSize: '0.72rem', fontWeight: 800, fontStyle: 'italic', color: 'var(--p5-red)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: 'Barlow Condensed, sans-serif' }}>▶ Interview Questions</span>
           </div>
           <DbAccordion items={content.interview} color={modColor} />
+        </motion.div>
+      )}
+
+      {content.resources && (
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
+          className="rog-card" style={{ padding: '1.5rem', marginBottom: '1.5rem', borderRadius: 6 }}>
+          <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginBottom: '1.25rem' }}>
+            <FontAwesomeIcon icon={faBookmark} style={{ color: modColor }} />
+            <span style={{ fontSize: '0.72rem', fontWeight: 800, fontStyle: 'italic', color: modColor, letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: 'Barlow Condensed, sans-serif' }}>▶ Suggested Resources</span>
+          </div>
+
+          {/* Resources Tab Switcher */}
+          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.25rem', borderBottom: '1px solid var(--border-dim)' }}>
+            <button
+              onClick={() => setActiveResourceTab('text')}
+              style={{
+                padding: '0.6rem 1.2rem',
+                background: activeResourceTab === 'text' ? 'rgba(0,212,255,0.1)' : 'transparent',
+                border: 'none',
+                borderBottom: activeResourceTab === 'text' ? '2px solid #00d4ff' : '2px solid transparent',
+                color: activeResourceTab === 'text' ? '#00d4ff' : 'var(--text-secondary)',
+                cursor: 'pointer',
+                fontFamily: 'Barlow Condensed, sans-serif',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                transition: 'all 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem'
+              }}
+            >
+              <FaBook style={{ fontSize: '0.85rem' }} /> Text Resources
+            </button>
+            <button
+              onClick={() => setActiveResourceTab('video')}
+              style={{
+                padding: '0.6rem 1.2rem',
+                background: activeResourceTab === 'video' ? 'rgba(118,185,0,0.1)' : 'transparent',
+                border: 'none',
+                borderBottom: activeResourceTab === 'video' ? '2px solid #76b900' : '2px solid transparent',
+                color: activeResourceTab === 'video' ? '#76b900' : 'var(--text-secondary)',
+                cursor: 'pointer',
+                fontFamily: 'Barlow Condensed, sans-serif',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                transition: 'all 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem'
+              }}
+            >
+              <FaYoutube style={{ fontSize: '0.9rem' }} /> Video Resources
+            </button>
+          </div>
+
+          {/* Resources Content */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
+            {activeResourceTab === 'text' && (
+              <>
+                {content.resources.docs && content.resources.docs.length > 0 && (
+                  <div style={{ padding: '1rem 1.25rem', borderRadius: 6, background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-dim)' }}>
+                    <div style={{ fontSize: '0.7rem', fontWeight: 800, color: '#00d4ff', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.75rem', fontFamily: 'Barlow Condensed, sans-serif', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      <FaFileAlt /> Official Documentation
+                    </div>
+                    <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {content.resources.docs.map((doc, idx) => (
+                        <li key={idx} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                          <span style={{ color: '#00d4ff', fontSize: '0.75rem' }}>➔</span>
+                          <a href={doc.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={(e) => e.target.style.color = '#00d4ff'} onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}>
+                            {doc.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {content.resources.blogs && content.resources.blogs.length > 0 && (
+                  <div style={{ padding: '1rem 1.25rem', borderRadius: 6, background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-dim)' }}>
+                    <div style={{ fontSize: '0.7rem', fontWeight: 800, color: '#00d4ff', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.75rem', fontFamily: 'Barlow Condensed, sans-serif', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      <FaBook /> Descriptive Articles & Blogs
+                    </div>
+                    <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {content.resources.blogs.map((blog, idx) => (
+                        <li key={idx} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                          <span style={{ color: '#00d4ff', fontSize: '0.75rem' }}>➔</span>
+                          <a href={blog.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={(e) => e.target.style.color = '#00d4ff'} onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}>
+                            {blog.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </>
+            )}
+
+            {activeResourceTab === 'video' && content.resources.youtube && content.resources.youtube.length > 0 && (
+              <div style={{ padding: '1rem 1.25rem', borderRadius: 6, background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-dim)', gridColumn: '1 / -1' }}>
+                <div style={{ fontSize: '0.7rem', fontWeight: 800, color: '#76b900', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.75rem', fontFamily: 'Barlow Condensed, sans-serif', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <FaYoutube /> Video Tutorials
+                </div>
+                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                  {content.resources.youtube.map((vid, idx) => (
+                    <li key={idx} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                      <span style={{ color: '#76b900', fontSize: '0.75rem' }}>➔</span>
+                      <a href={vid.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={(e) => e.target.style.color = '#76b900'} onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}>
+                        {vid.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         </motion.div>
       )}
 

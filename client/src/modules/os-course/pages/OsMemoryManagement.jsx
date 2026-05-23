@@ -1,4 +1,5 @@
 import OsCodeBlock from '../components/OsCodeBlock';
+import OsResources from '../components/OsResources';
 import OsQuiz from '../components/OsQuiz';
 import OsInterviewQuestion from '../components/OsInterviewQuestion';
 import { MemoryViz } from '../components/OsVisualization';
@@ -443,6 +444,8 @@ public class MemoryDemo {
                     },
                 ]}
             />
+
+            <OsResources topicId="memory" />
 
             <section className="module-section">
                 <h2>Interview Corner</h2>

@@ -1,4 +1,5 @@
 import React from 'react';
+import SdResources from '../../components/SdResources';
 import SDCard from '../../components/SDCard';
 import SDAccordion from '../../components/SDAccordion';
 
@@ -159,6 +160,8 @@ const monitorResources = () => {
       </SDCard>
 
       {/* MISTAKES */}
+      <SdResources topicId="scaling" />
+
       <SDCard>
         <h2 className="text-xl font-semibold mb-2">Common Mistakes</h2>
         <ul className="list-disc pl-5 space-y-1">

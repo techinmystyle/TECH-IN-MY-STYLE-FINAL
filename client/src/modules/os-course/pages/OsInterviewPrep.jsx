@@ -1,4 +1,5 @@
 import OsInterviewQuestion from '../components/OsInterviewQuestion';
+import OsResources from '../components/OsResources';
 
 export default function OsInterviewPrep() {
     return (
@@ -136,6 +137,7 @@ export default function OsInterviewPrep() {
                     </ul>
                 </div>
             </section>
+        <OsResources topicId="interview-prep" />
         </div>
     );
 }

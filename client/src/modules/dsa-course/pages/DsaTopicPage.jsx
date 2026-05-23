@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { IoBookmark, IoArrowBack, IoFlash, IoBook, IoCode, IoVideocam, IoChatbubbles, IoGrid } from 'react-icons/io5';
+import { IoBookmark, IoArrowBack, IoFlash, IoBook, IoCode, IoVideocam, IoChatbubbles, IoGrid, IoLogoYoutube } from 'react-icons/io5';
 import { MdCheckCircle } from 'react-icons/md';
 import { topicsData } from '../data/dsaTopics';
 import { useDsaProgress } from '../hooks/useDsaProgress';
@@ -37,6 +37,8 @@ const SECTIONS = [
   { id: 'code', label: 'CODE', Icon: IoCode },
   { id: 'visualization', label: 'VISUALIZE', Icon: IoVideocam },
   { id: 'interview', label: 'INTERVIEW', Icon: IoChatbubbles },
+  { id: 'text-resources', label: 'TEXT RESOURCES', Icon: IoBook },
+  { id: 'video-resources', label: 'VIDEO RESOURCES', Icon: IoLogoYoutube },
 ];
 
 function P5SectionTitle({ icon, label, title }) {
@@ -244,6 +246,75 @@ export default function DsaTopicPage() {
               <P5SectionTitle icon="🛡️" label="BATTLE" title="Interview Questions" />
               <p style={{ color: '#6a6070', fontSize: '0.82rem', marginBottom: '1.5rem', fontFamily: 'Bebas Neue, sans-serif', letterSpacing: '0.08em' }}>CLICK TO REVEAL THE ANSWER</p>
               <DsaInterviewAccordion questions={topic.interview} />
+            </div>
+          )}
+
+          {activeSection === 'text-resources' && topic.resources && (
+            <div>
+              <P5SectionTitle icon="📜" label="LIBRARY" title="Text Resources & Documentation" />
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
+                {topic.resources.docs && topic.resources.docs.length > 0 && (
+                  <div style={{ background: 'rgba(10,8,14,0.8)', border: '1px solid rgba(232,0,28,0.12)', borderRadius: 4, padding: '1.5rem', position: 'relative' }}>
+                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#e8001c' }} />
+                    <h3 style={{ fontFamily: 'Bebas Neue, sans-serif', color: '#e8001c', fontSize: '1.1rem', letterSpacing: '0.08em', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <IoBook /> OFFICIAL DOCUMENTATION
+                    </h3>
+                    <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                      {topic.resources.docs.map((doc, idx) => (
+                        <li key={idx} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                          <span style={{ color: '#e8001c', fontSize: '0.8rem' }}>➔</span>
+                          <a href={doc.url} target="_blank" rel="noopener noreferrer" style={{ color: '#c8c0b0', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={(e) => e.target.style.color = '#e8001c'} onMouseLeave={(e) => e.target.style.color = '#c8c0b0'}>
+                            {doc.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {topic.resources.blogs && topic.resources.blogs.length > 0 && (
+                  <div style={{ background: 'rgba(10,8,14,0.8)', border: '1px solid rgba(201,169,110,0.15)', borderRadius: 4, padding: '1.5rem', position: 'relative' }}>
+                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#c9a96e' }} />
+                    <h3 style={{ fontFamily: 'Bebas Neue, sans-serif', color: '#c9a96e', fontSize: '1.1rem', letterSpacing: '0.08em', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <IoBook /> DESCRIPTIVE ARTICLES & BLOGS
+                    </h3>
+                    <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                      {topic.resources.blogs.map((blog, idx) => (
+                        <li key={idx} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                          <span style={{ color: '#c9a96e', fontSize: '0.8rem' }}>➔</span>
+                          <a href={blog.url} target="_blank" rel="noopener noreferrer" style={{ color: '#c8c0b0', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={(e) => e.target.style.color = '#c9a96e'} onMouseLeave={(e) => e.target.style.color = '#c8c0b0'}>
+                            {blog.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {activeSection === 'video-resources' && topic.resources && (
+            <div>
+              <P5SectionTitle icon="🎬" label="THEATER" title="Video Resources & Lectures" />
+              {topic.resources.youtube && topic.resources.youtube.length > 0 && (
+                <div style={{ background: 'rgba(10,8,14,0.8)', border: '1px solid rgba(232,0,28,0.12)', borderRadius: 4, padding: '1.5rem', position: 'relative' }}>
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#e8001c' }} />
+                  <h3 style={{ fontFamily: 'Bebas Neue, sans-serif', color: '#e8001c', fontSize: '1.1rem', letterSpacing: '0.08em', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <IoLogoYoutube /> SUGGESTED VIDEO TUTORIALS
+                  </h3>
+                  <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                    {topic.resources.youtube.map((vid, idx) => (
+                      <li key={idx} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                        <span style={{ color: '#e8001c', fontSize: '0.8rem' }}>➔</span>
+                        <a href={vid.url} target="_blank" rel="noopener noreferrer" style={{ color: '#c8c0b0', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={(e) => e.target.style.color = '#e8001c'} onMouseLeave={(e) => e.target.style.color = '#c8c0b0'}>
+                          {vid.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           )}
 

@@ -1,4 +1,5 @@
 import OsCodeBlock from '../components/OsCodeBlock';
+import OsResources from '../components/OsResources';
 import OsQuiz from '../components/OsQuiz';
 import OsInterviewQuestion from '../components/OsInterviewQuestion';
 
@@ -613,6 +614,8 @@ public class SyncDemo {
                     },
                 ]}
             />
+
+            <OsResources topicId="threads" />
 
             <section className="module-section">
                 <h2>Interview Corner</h2>

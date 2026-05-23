@@ -34,6 +34,26 @@ db.agents.find({});`,
       { q: 'What are the types of databases?', a: 'Relational (SQL), Document (MongoDB), Key-Value (Redis), Column-family (Cassandra), Graph (Neo4j), Time-series (InfluxDB).' },
       { q: 'What is data integrity?', a: 'Data integrity ensures accuracy and consistency of data over its lifecycle using constraints, transactions, and validation rules.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "What is a Database? - freeCodeCamp",
+                "url": "https://www.youtube.com/watch?v=FR4QIeZaPeM"
+        }
+],
+      docs: [
+        {
+                "title": "Introduction to Databases - Oracle Docs",
+                "url": "https://www.oracle.com/database/what-is-database/"
+        }
+],
+      blogs: [
+        {
+                "title": "Understanding Databases - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/what-is-a-database/"
+        }
+]
+    },
   },
 
   'sql-vs-nosql': {
@@ -73,6 +93,26 @@ db.users.find({ "profile.skills": "SQL" });`,
       { q: 'What does BASE stand for?', a: 'Basically Available, Soft state, Eventually consistent — the NoSQL alternative to ACID.' },
       { q: 'Can you use both SQL and NoSQL in one application?', a: 'Yes — this is called polyglot persistence. Use SQL for transactional data and NoSQL for caching, sessions, or unstructured content.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "SQL vs NoSQL Explained - Fireship",
+                "url": "https://www.youtube.com/watch?v=ZS_kXvOe90o"
+        }
+],
+      docs: [
+        {
+                "title": "SQL and NoSQL Comparison - AWS Docs",
+                "url": "https://aws.amazon.com/nosql/"
+        }
+],
+      blogs: [
+        {
+                "title": "SQL vs NoSQL: The Ultimate Guide - Prisma",
+                "url": "https://www.prisma.io/dataguide/types/relational/comparing-sql-and-nosql"
+        }
+]
+    },
   },
 
   'tables-vs-collections': {
@@ -107,6 +147,26 @@ db.products.find({ category: "Electronics" });`,
       { q: 'What is a schema in SQL?', a: 'A schema defines the structure of a table — column names, data types, constraints, and relationships.' },
       { q: 'What is a BSON document?', a: 'BSON (Binary JSON) is MongoDB\'s data format — it extends JSON with additional types like Date, ObjectId, and Binary.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Tables vs Collections - MongoDB",
+                "url": "https://www.youtube.com/watch?v=Jm214v0zG0s"
+        }
+],
+      docs: [
+        {
+                "title": "MongoDB SQL to MongoDB Mapping Docs",
+                "url": "https://www.mongodb.com/docs/manual/reference/sql-comparison/"
+        }
+],
+      blogs: [
+        {
+                "title": "Relational Tables vs Document Collections",
+                "url": "https://www.mongodb.com/resources/compare/relational-vs-non-relational-databases"
+        }
+]
+    },
   },
 
   'rows-vs-documents': {
@@ -147,6 +207,26 @@ db.orders.findOne({ _id: 1 });`,
       { q: 'What is the maximum document size in MongoDB?', a: '16 MB. For larger data, use GridFS which splits files into chunks.' },
       { q: 'When should you embed vs reference in MongoDB?', a: 'Embed when data is always accessed together and doesn\'t change often. Reference when data is shared across documents or grows unboundedly.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Rows vs Documents in DB - Husayn Nasser",
+                "url": "https://www.youtube.com/watch?v=e8g9f7N34Xk"
+        }
+],
+      docs: [
+        {
+                "title": "MongoDB Document Model Manual",
+                "url": "https://www.mongodb.com/docs/manual/core/document/"
+        }
+],
+      blogs: [
+        {
+                "title": "Document Databases Overview - Couchbase Guide",
+                "url": "https://www.couchbase.com/resources/what-is-a-document-database/"
+        }
+]
+    },
   },
 
   'basic-sql': {
@@ -195,6 +275,26 @@ db.products.deleteOne({ name: "Tactical Drone" });`,
       { q: 'What is the difference between WHERE and HAVING?', a: 'WHERE filters rows before grouping. HAVING filters groups after GROUP BY.' },
       { q: 'What is the order of SQL clause execution?', a: 'FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "SQL Basics in 1 Hour - Programming with Mosh",
+                "url": "https://www.youtube.com/watch?v=7S_tz1z_5bA"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL SELECT Statement",
+                "url": "https://www.postgresql.org/docs/current/sql-select.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Interactive SQL Tutorial - W3Schools",
+                "url": "https://www.w3schools.com/sql/"
+        }
+]
+    },
   },
 
   'basic-mongodb': {
@@ -235,6 +335,26 @@ db.users.countDocuments({ active: true });`,
       { q: 'What is the _id field in MongoDB?', a: 'Every MongoDB document has a unique _id field. By default it is an ObjectId — a 12-byte BSON type encoding timestamp, machine ID, and sequence number.' },
       { q: 'What is the difference between updateOne and replaceOne?', a: 'updateOne modifies specific fields using operators like $set. replaceOne replaces the entire document except _id.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "MongoDB Crash Course - Traversy Media",
+                "url": "https://www.youtube.com/watch?v=-56x56CmiME"
+        }
+],
+      docs: [
+        {
+                "title": "MongoDB CRUD Operations Manual",
+                "url": "https://www.mongodb.com/docs/manual/crud/"
+        }
+],
+      blogs: [
+        {
+                "title": "MongoDB Query Guide - GeeksforGeeks Article",
+                "url": "https://www.geeksforgeeks.org/mongodb-query-document/"
+        }
+]
+    },
   },
 
   'sql-languages': {
@@ -294,6 +414,26 @@ db.missions.createIndex({ code: 1 }, { unique: true });`,
       { q: 'What is the difference between DROP and TRUNCATE?', a: 'DROP removes the table and its structure entirely. TRUNCATE removes all rows but keeps the table structure. TRUNCATE is faster and cannot be rolled back in most databases.' },
       { q: 'What is the difference between DELETE and TRUNCATE?', a: 'DELETE removes rows one by one and can be rolled back. TRUNCATE removes all rows at once, is faster, and resets auto-increment counters.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "DDL vs DML vs DCL vs TCL - Gate Smashers",
+                "url": "https://www.youtube.com/watch?v=WcoP0vLpA6s"
+        }
+],
+      docs: [
+        {
+                "title": "SQL Commands Categories - PostgreSQL Docs",
+                "url": "https://www.postgresql.org/docs/current/sql-commands.html"
+        }
+],
+      blogs: [
+        {
+                "title": "SQL Sublanguages Explained - GeeksforGeeks Article",
+                "url": "https://www.geeksforgeeks.org/sql-ddl-dml-dcl-tcl-commands/"
+        }
+]
+    },
   },
 
   'sql-joins': {
@@ -340,6 +480,26 @@ db.orders.aggregate([
       { q: 'What is the difference between INNER JOIN and LEFT JOIN?', a: 'INNER JOIN returns only matching rows. LEFT JOIN returns all rows from the left table, with NULLs for non-matching right rows.' },
       { q: 'What is a self join?', a: 'A self join joins a table to itself — useful for hierarchical data like employee-manager relationships.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "SQL Joins Explained - freeCodeCamp",
+                "url": "https://www.youtube.com/watch?v=9yeEl15Xe1k"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL Joins Documentation",
+                "url": "https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-JOIN"
+        }
+],
+      blogs: [
+        {
+                "title": "Visual Guide to SQL Joins - Coding Horror Blog",
+                "url": "https://blog.codinghorror.com/a-visual-explanation-of-sql-joins/"
+        }
+]
+    },
   },
 
   'group-by': {
@@ -381,6 +541,26 @@ ORDER BY revenue DESC;`,
       { q: 'Can you use aggregate functions without GROUP BY?', a: 'Yes — they apply to the entire result set. SELECT COUNT(*) FROM orders returns total row count.' },
       { q: 'What is the difference between COUNT(*) and COUNT(column)?', a: 'COUNT(*) counts all rows including NULLs. COUNT(column) counts only non-NULL values in that column.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "SQL GROUP BY & Aggregates - TechTFQ",
+                "url": "https://www.youtube.com/watch?v=Nidk2c4YqL0"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL GROUP BY Clause",
+                "url": "https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUP"
+        }
+],
+      blogs: [
+        {
+                "title": "Understanding SQL Aggregations - GeeksforGeeks Article",
+                "url": "https://www.geeksforgeeks.org/sql-group-by/"
+        }
+]
+    },
   },
 
   'subqueries': {
@@ -434,6 +614,26 @@ db.users.aggregate([
       { q: 'What is a correlated subquery?', a: 'A correlated subquery references columns from the outer query. It executes once per row of the outer query, making it potentially slow on large datasets.' },
       { q: 'When should you use EXISTS vs IN?', a: 'EXISTS is faster when the subquery returns many rows (stops at first match). IN is better for small, static lists. EXISTS handles NULLs more predictably.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "SQL Subqueries Tutorial - TechTFQ",
+                "url": "https://www.youtube.com/watch?v=nOItI0v6p50"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL Subquery Expressions",
+                "url": "https://www.postgresql.org/docs/current/functions-subquery.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Mastering SQL Subqueries - Prisma Dataguide",
+                "url": "https://www.prisma.io/dataguide/queries/sql-subqueries"
+        }
+]
+    },
   },
 
   'mongodb-crud': {
@@ -483,6 +683,26 @@ db.users.deleteMany({ score: { $lt: 50 } });`,
       { q: 'What is upsert in MongoDB?', a: 'Upsert is update + insert. If no document matches the filter, a new document is created. Use { upsert: true } option in updateOne/updateMany.' },
       { q: 'What does $inc do?', a: '$inc increments a field by a specified value. If the field doesn\'t exist, it creates it. Useful for counters and scores.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "MongoDB CRUD Operations Tutorial",
+                "url": "https://www.youtube.com/watch?v=FwYsObCluHw"
+        }
+],
+      docs: [
+        {
+                "title": "MongoDB CRUD Specification",
+                "url": "https://www.mongodb.com/docs/manual/crud/"
+        }
+],
+      blogs: [
+        {
+                "title": "Descriptive Guide to MongoDB CRUD - W3Schools",
+                "url": "https://www.w3schools.com/mongodb/mongodb_crud.php"
+        }
+]
+    },
   },
 
   'mongodb-queries': {
@@ -534,6 +754,26 @@ db.products.find().sort({ price: -1 }).limit(3).skip(1);`,
       { q: 'What is the difference between $in and $all?', a: '$in matches documents where the field equals any value in the array. $all matches documents where an array field contains all specified values.' },
       { q: 'How do you query nested documents in MongoDB?', a: 'Use dot notation: db.users.find({ "address.city": "New York" }). For arrays of objects, use $elemMatch.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "MongoDB Query Operators - Traversy Media",
+                "url": "https://www.youtube.com/watch?v=GFY2pSsnf6M"
+        }
+],
+      docs: [
+        {
+                "title": "MongoDB Query Operators Reference",
+                "url": "https://www.mongodb.com/docs/manual/reference/operator/query/"
+        }
+],
+      blogs: [
+        {
+                "title": "MongoDB Filtering Operators - GeeksforGeeks Article",
+                "url": "https://www.geeksforgeeks.org/mongodb-query-operators/"
+        }
+]
+    },
   },
 
   'indexing': {
@@ -586,6 +826,26 @@ db.users.dropIndex({ city: 1 });`,
       { q: 'What is a covering index?', a: 'A covering index contains all columns needed by a query, so the database can answer the query from the index alone without accessing the table.' },
       { q: 'When should you NOT create an index?', a: 'Avoid indexes on: small tables, low-cardinality columns (e.g., boolean), columns rarely used in WHERE/JOIN, and tables with very heavy write operations.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Database Indexing Explained - Husayn Nasser",
+                "url": "https://www.youtube.com/watch?v=fsG1XZOBKC0"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL Indexes Reference",
+                "url": "https://www.postgresql.org/docs/current/indexes.html"
+        }
+],
+      blogs: [
+        {
+                "title": "How Indexes Work in Databases - Prisma Guide",
+                "url": "https://www.prisma.io/dataguide/types/relational/what-are-database-indexes"
+        }
+]
+    },
   },
 
   'query-optimization': {
@@ -640,6 +900,26 @@ db.orders.aggregate([
       { q: 'What is an execution plan?', a: 'An execution plan shows how the database engine will execute a query — which indexes it uses, join methods, estimated rows. Use EXPLAIN or EXPLAIN ANALYZE to view it.' },
       { q: 'Why should you avoid functions on indexed columns in WHERE?', a: 'Functions like YEAR(date) or LOWER(name) prevent the database from using the index, causing a full table scan. Use range conditions instead.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Database Query Optimization - Husayn Nasser",
+                "url": "https://www.youtube.com/watch?v=Kz69Y8w8j9g"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL Performance Tuning Guide",
+                "url": "https://wiki.postgresql.org/wiki/Performance_Optimization"
+        }
+],
+      blogs: [
+        {
+                "title": "SQL Query Optimization Best Practices - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/sql-query-optimization/"
+        }
+]
+    },
   },
 
   'transactions': {
@@ -690,6 +970,26 @@ try {
       { q: 'What is a deadlock?', a: 'A deadlock occurs when two transactions each hold a lock the other needs, causing both to wait indefinitely. DBMSs detect and resolve deadlocks by rolling back one transaction.' },
       { q: 'What are transaction isolation levels?', a: 'READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, SERIALIZABLE. Higher isolation = fewer anomalies but lower concurrency.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Database Transactions & Concurrency - Husayn Nasser",
+                "url": "https://www.youtube.com/watch?v=pomxJOFleNk"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL Transactions and Locking",
+                "url": "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+        }
+],
+      blogs: [
+        {
+                "title": "What is a Database Transaction? - Prisma Guide",
+                "url": "https://www.prisma.io/dataguide/concepts/database-transactions"
+        }
+]
+    },
   },
 
   'acid-vs-base': {
@@ -722,6 +1022,26 @@ db.posts.find({ title: "New Post" });
       { q: 'What does Atomicity mean in ACID?', a: 'Atomicity means a transaction is all-or-nothing. If any part fails, the entire transaction is rolled back.' },
       { q: 'What is eventual consistency?', a: 'In distributed systems, eventual consistency means all nodes will eventually have the same data, but may temporarily differ.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "ACID vs BASE Explained - Fireship",
+                "url": "https://www.youtube.com/watch?v=yPf5GudnEeo"
+        }
+],
+      docs: [
+        {
+                "title": "CAP Theorem and ACID/BASE - IBM",
+                "url": "https://www.ibm.com/topics/cap-theorem"
+        }
+],
+      blogs: [
+        {
+                "title": "ACID vs BASE Consistency Models - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/difference-between-acid-and-base-properties-in-dbms/"
+        }
+]
+    },
   },
 
   'mongodb-aggregation': {
@@ -788,6 +1108,26 @@ LIMIT 5;`,
       { q: 'What is the difference between $match and $filter?', a: '$match is a pipeline stage that filters documents. $filter is an array operator used inside $project to filter array elements.' },
       { q: 'Why should $match come early in the pipeline?', a: 'Placing $match early reduces the number of documents processed by subsequent stages, improving performance. It can also use indexes.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "MongoDB Aggregation Pipeline - freeCodeCamp",
+                "url": "https://www.youtube.com/watch?v=Kk6Er0c7srU"
+        }
+],
+      docs: [
+        {
+                "title": "MongoDB Aggregation Stage Reference",
+                "url": "https://www.mongodb.com/docs/manual/aggregation/"
+        }
+],
+      blogs: [
+        {
+                "title": "Complete Guide to MongoDB Aggregations - W3Schools",
+                "url": "https://www.w3schools.com/mongodb/mongodb_aggregations.php"
+        }
+]
+    },
   },
 
   'scaling-systems': {
@@ -832,6 +1172,26 @@ db.orders.getShardDistribution();`,
       { q: 'What is the difference between sharding and replication?', a: 'Replication copies the same data to multiple nodes for high availability. Sharding splits data across nodes for horizontal scaling of storage and throughput.' },
       { q: 'What is a shard key?', a: 'A shard key determines how data is distributed across shards. A good shard key has high cardinality, even distribution, and aligns with common query patterns.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Sharding & Replication Explained - ByteByteGo",
+                "url": "https://www.youtube.com/watch?v=mQGg5S3cswc"
+        }
+],
+      docs: [
+        {
+                "title": "MongoDB Sharding Documentation",
+                "url": "https://www.mongodb.com/docs/manual/sharding/"
+        }
+],
+      blogs: [
+        {
+                "title": "Scaling Databases: Replication vs Sharding - Prisma",
+                "url": "https://www.prisma.io/dataguide/scaling/database-scaling-strategies"
+        }
+]
+    },
   },
 
   'window-functions': {
@@ -873,6 +1233,26 @@ FROM products;`,
       { q: 'What is the difference between RANK() and DENSE_RANK()?', a: 'RANK() leaves gaps after ties (1,1,3). DENSE_RANK() does not leave gaps (1,1,2).' },
       { q: 'Can window functions be used in WHERE clause?', a: 'No — window functions are evaluated after WHERE. Use a subquery or CTE to filter on window function results.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "SQL Window Functions Tutorial - TechTFQ",
+                "url": "https://www.youtube.com/watch?v=Ww71knvhQ-s"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL Window Functions Manual",
+                "url": "https://www.postgresql.org/docs/current/tutorial-window.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Mastering SQL Window Functions - GeeksforGeeks Article",
+                "url": "https://www.geeksforgeeks.org/sql-window-functions/"
+        }
+]
+    },
   },
 
   'views': {
@@ -927,6 +1307,26 @@ db.user_order_summary.find({ total_spent: { $gt: 500 } });`,
       { q: 'What is the difference between a view and a materialized view?', a: 'A view is virtual — it runs the query each time. A materialized view stores the result physically and must be refreshed. Materialized views are faster for complex queries.' },
       { q: 'Can you always update data through a view?', a: 'Not always. A view is updatable only if it maps directly to one table, has no GROUP BY, DISTINCT, aggregates, or UNION.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "SQL Views Explained - kudvenkat",
+                "url": "https://www.youtube.com/watch?v=q6g4hT_W9H4"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL CREATE VIEW Manual",
+                "url": "https://www.postgresql.org/docs/current/sql-createview.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Working with SQL Views - GeeksforGeeks Article",
+                "url": "https://www.geeksforgeeks.org/sql-views/"
+        }
+]
+    },
   },
 
   'stored-procedures': {
@@ -994,6 +1394,26 @@ function getUserOrders(userId) {
       { q: 'What are the advantages of stored procedures?', a: 'Precompiled (faster), reduced network traffic, centralized logic, security (grant EXECUTE without table access), reusability.' },
       { q: 'What is the difference between a stored procedure and a function?', a: 'Functions must return a value and can be used in SELECT. Procedures don\'t need to return a value and are called with CALL. Procedures can have side effects; functions typically cannot.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Stored Procedures & Functions - TechTFQ",
+                "url": "https://www.youtube.com/watch?v=Yf5-S7X0wG8"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL User-Defined Procedures Docs",
+                "url": "https://www.postgresql.org/docs/current/sql-createprocedure.html"
+        }
+],
+      blogs: [
+        {
+                "title": "SQL Stored Procedures Guide - W3Schools Article",
+                "url": "https://www.w3schools.com/sql/sql_stored_procedures.asp"
+        }
+]
+    },
   },
 
   'triggers': {
@@ -1059,6 +1479,26 @@ changeStream.on("change", (change) => {
       { q: 'What is the difference between BEFORE and AFTER triggers?', a: 'BEFORE triggers run before the DML operation — useful for validation and modifying NEW values. AFTER triggers run after — useful for audit logs and cascading changes.' },
       { q: 'What are the risks of using triggers?', a: 'Triggers can cause hidden side effects, make debugging difficult, create cascading trigger chains, and impact performance if not carefully designed.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Database Triggers Tutorial - kudvenkat",
+                "url": "https://www.youtube.com/watch?v=2t2Lp2D5Vco"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL Trigger Creation Docs",
+                "url": "https://www.postgresql.org/docs/current/sql-createtrigger.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Understanding Database Triggers - GeeksforGeeks Article",
+                "url": "https://www.geeksforgeeks.org/sql-trigger-student-database/"
+        }
+]
+    },
   },
 
   'constraints': {
@@ -1127,6 +1567,26 @@ db.createCollection("users", {
       { q: 'What is referential integrity?', a: 'Referential integrity ensures that a foreign key value always refers to an existing primary key. It prevents orphaned records and maintains consistent relationships.' },
       { q: 'What is the difference between UNIQUE and PRIMARY KEY?', a: 'A table can have multiple UNIQUE constraints but only one PRIMARY KEY. PRIMARY KEY columns cannot be NULL; UNIQUE columns can have one NULL value.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "SQL Constraints & Keys - freeCodeCamp",
+                "url": "https://www.youtube.com/watch?v=O135-eO4exs"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL Data Constraints Reference Docs",
+                "url": "https://www.postgresql.org/docs/current/ddl-constraints.html"
+        }
+],
+      blogs: [
+        {
+                "title": "SQL Constraints Overview - W3Schools Article",
+                "url": "https://www.w3schools.com/sql/sql_constraints.asp"
+        }
+]
+    },
   },
 
   'normalization': {
@@ -1180,6 +1640,26 @@ db.orders.insertOne({
       { q: 'What is a transitive dependency?', a: 'When column A → B → C (C depends on B which depends on A). 3NF removes these by separating B and C into their own table.' },
       { q: 'When would you denormalize?', a: 'When read performance is critical and data rarely changes — like analytics dashboards or reporting systems.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Database Normalization 1NF/2NF/3NF - Gate Smashers",
+                "url": "https://www.youtube.com/watch?v=5gr1O0f2q3A"
+        }
+],
+      docs: [
+        {
+                "title": "Database Normalization Rules - Microsoft Docs",
+                "url": "https://learn.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description"
+        }
+],
+      blogs: [
+        {
+                "title": "Database Normalization Guide - GeeksforGeeks Article",
+                "url": "https://www.geeksforgeeks.org/dbms-normalization-1nf-2nf-3nf-bcnf/"
+        }
+]
+    },
   },
 
   'schema-design': {
@@ -1233,6 +1713,26 @@ db.users.insertOne({
       { q: 'What is the 16MB document limit in MongoDB?', a: 'Each MongoDB document cannot exceed 16MB. For large data like files, use GridFS which splits data into 255KB chunks stored in separate collections.' },
       { q: 'What is the bucket pattern in MongoDB?', a: 'The bucket pattern groups related time-series data into documents (buckets) to reduce document count and improve query performance for IoT or analytics data.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Database Schema Design & Relationships - Mosh",
+                "url": "https://www.youtube.com/watch?v=Kz69Y8w8j9g"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL Schema Documentation Manual",
+                "url": "https://www.postgresql.org/docs/current/ddl-schemas.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Relational Database Schema Design Best Practices - Prisma",
+                "url": "https://www.prisma.io/dataguide/postgresql/schema-design-postgresql"
+        }
+]
+    },
   },
 
   'embedding-referencing': {
@@ -1289,6 +1789,26 @@ db.orders.insertOne({
       { q: 'What is data duplication in MongoDB and when is it acceptable?', a: 'Data duplication means storing the same data in multiple documents. It\'s acceptable when the duplicated data rarely changes and read performance is critical.' },
       { q: 'What is the extended reference pattern?', a: 'Store a reference ID plus a few frequently-accessed fields from the referenced document. Reduces $lookup calls while keeping data mostly normalized.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "MongoDB Data Modeling: Embedding vs Referencing",
+                "url": "https://www.youtube.com/watch?v=leNCfU5SYR8"
+        }
+],
+      docs: [
+        {
+                "title": "MongoDB Model Relationships Docs Manual",
+                "url": "https://www.mongodb.com/docs/manual/core/data-modeling-introduction/"
+        }
+],
+      blogs: [
+        {
+                "title": "Embedding vs Referencing in MongoDB - GeeksforGeeks Article",
+                "url": "https://www.geeksforgeeks.org/embedding-vs-referencing-in-mongodb/"
+        }
+]
+    },
   },
 
   'indexing-deep': {
@@ -1346,6 +1866,26 @@ db.products.createIndex({ "specs.$**": 1 });`,
       { q: 'What is the ESR rule for compound indexes?', a: 'Equality fields first, then Sort fields, then Range fields. This ordering maximizes index usage across different query patterns.' },
       { q: 'What is index intersection?', a: 'Some databases can combine multiple single-field indexes to answer a query. However, a well-designed compound index is usually more efficient.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "B-Trees & Database Indexing Deep Dive",
+                "url": "https://www.youtube.com/watch?v=aZjYr87r1b8"
+        }
+],
+      docs: [
+        {
+                "title": "MongoDB Indexing Deep Dive Manual Guide",
+                "url": "https://www.mongodb.com/docs/manual/indexes/"
+        }
+],
+      blogs: [
+        {
+                "title": "Database Indexes Under the Hood - PlanetScale Blog",
+                "url": "https://planetscale.com/blog/how-does-database-indexing-work"
+        }
+]
+    },
   },
 
   'performance-tuning': {
@@ -1403,6 +1943,26 @@ db.currentOp({ active: true, secs_running: { $gt: 5 } });`,
       { q: 'What is the N+1 query problem?', a: 'N+1 occurs when fetching N records then making 1 additional query per record. Solution: use JOINs or eager loading to fetch all data in one query.' },
       { q: 'What is connection pooling?', a: 'Connection pooling maintains a cache of database connections that can be reused. It reduces the overhead of creating new connections for each request.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Database Tuning & Explain Plan - Husayn Nasser",
+                "url": "https://www.youtube.com/watch?v=pomxJOFleNk"
+        }
+],
+      docs: [
+        {
+                "title": "PostgreSQL Explain Documentation Manual",
+                "url": "https://www.postgresql.org/docs/current/sql-explain.html"
+        }
+],
+      blogs: [
+        {
+                "title": "Database Performance Tuning Best Practices - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/database-tuning-in-dbms/"
+        }
+]
+    },
   },
 
   'cap-theorem': {
@@ -1444,6 +2004,26 @@ db.inventory.findOne(
       { q: 'Why can\'t we have all three CAP properties?', a: 'During a network partition, you must choose: either reject requests (sacrifice Availability) or serve potentially stale data (sacrifice Consistency).' },
       { q: 'Is CAP theorem still relevant?', a: 'Yes, but PACELC extends it — even without partitions, there\'s a latency vs consistency trade-off.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "CAP Theorem Simplified - Gaurav Sen",
+                "url": "https://www.youtube.com/watch?v=k-Yaq8AH194"
+        }
+],
+      docs: [
+        {
+                "title": "CAP Theorem Definition - IBM Topics Reference",
+                "url": "https://www.ibm.com/topics/cap-theorem"
+        }
+],
+      blogs: [
+        {
+                "title": "Understanding CAP Theorem in Distributed Databases - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/the-cap-theorem-in-dbms/"
+        }
+]
+    },
   },
 
   'data-modeling': {
@@ -1515,6 +2095,26 @@ db.orders.insertOne({
       { q: 'What is an ER diagram?', a: 'An Entity-Relationship diagram visually represents entities (tables), their attributes (columns), and relationships (foreign keys) in a database.' },
       { q: 'What is cardinality in data modeling?', a: 'Cardinality describes the numerical relationship between entities: one-to-one (1:1), one-to-many (1:N), or many-to-many (M:N).' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "Data Modeling 101 - freeCodeCamp",
+                "url": "https://www.youtube.com/watch?v=yPf5GudnEeo"
+        }
+],
+      docs: [
+        {
+                "title": "MongoDB Data Modeling Specifications Manual",
+                "url": "https://www.mongodb.com/docs/manual/core/data-model-design/"
+        }
+],
+      blogs: [
+        {
+                "title": "A Complete Guide to Database Data Modeling - GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/data-modeling-in-dbms/"
+        }
+]
+    },
   },
 
   'real-world-arch': {
@@ -1564,5 +2164,25 @@ db.orders.find({ user_id: 1 }).sort({ created_at: -1 });
       { q: 'What is CQRS?', a: 'Command Query Responsibility Segregation separates read and write operations into different models. Writes go to a normalized store; reads come from a denormalized, optimized read model.' },
       { q: 'What is polyglot persistence?', a: 'Using multiple database technologies in one application, each chosen for its strengths — e.g., PostgreSQL for transactions, Redis for caching, MongoDB for documents, Elasticsearch for search.' },
     ],
+    resources: {
+      youtube: [
+        {
+                "title": "How WhatsApp/Netflix Scaled Databases - ByteByteGo",
+                "url": "https://www.youtube.com/watch?v=mQGg5S3cswc"
+        }
+],
+      docs: [
+        {
+                "title": "AWS Distributed Database Systems Docs Manual",
+                "url": "https://aws.amazon.com/rds/features/multi-az/"
+        }
+],
+      blogs: [
+        {
+                "title": "Real World Database Architectures Case Studies - Prisma",
+                "url": "https://www.prisma.io/dataguide/scaling/database-scaling-strategies"
+        }
+]
+    },
   },
 };

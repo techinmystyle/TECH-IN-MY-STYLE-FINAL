@@ -1,4 +1,5 @@
 import OsCodeBlock from '../components/OsCodeBlock';
+import OsResources from '../components/OsResources';
 import OsQuiz from '../components/OsQuiz';
 import OsInterviewQuestion from '../components/OsInterviewQuestion';
 
@@ -464,6 +465,8 @@ os.unlink("test.txt")
                     },
                 ]}
             />
+
+            <OsResources topicId="introduction" />
 
             <section className="module-section">
                 <h2>Interview Corner</h2>

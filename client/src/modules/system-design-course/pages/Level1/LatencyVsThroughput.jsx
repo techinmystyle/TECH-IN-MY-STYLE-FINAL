@@ -1,4 +1,5 @@
 import React from 'react';
+import SdResources from '../../components/SdResources';
 import SDCard from '../../components/SDCard';
 import SDAccordion from '../../components/SDAccordion';
 
@@ -142,6 +143,8 @@ const batchSize = 100; // Balance both metrics`}
       </SDCard>
 
       {/* MISTAKES */}
+      <SdResources topicId="latency-vs-throughput" />
+
       <SDCard>
         <h2 className="text-xl font-semibold mb-2">Common Mistakes</h2>
         <ul className="list-disc pl-5 space-y-1">

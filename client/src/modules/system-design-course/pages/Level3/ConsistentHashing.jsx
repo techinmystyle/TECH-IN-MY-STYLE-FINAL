@@ -1,4 +1,5 @@
 import React from 'react';
+import SdResources from '../../components/SdResources';
 import SDCard from '../../components/SDCard';
 import SDAccordion from '../../components/SDAccordion';
 
@@ -198,6 +199,8 @@ ch.removeNode('server2'); // Only its keys move to adjacent servers`}
       </SDCard>
 
       {/* MISTAKES */}
+      <SdResources topicId="consistent-hashing" />
+
       <SDCard>
         <h2 className="text-xl font-semibold mb-2">Common Mistakes</h2>
         <ul className="list-disc pl-5 space-y-1">

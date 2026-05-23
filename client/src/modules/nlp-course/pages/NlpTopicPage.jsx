@@ -53,6 +53,7 @@ export default function NlpTopicPage() {
   const navigate = useNavigate();
   const data = nlpTopicDetails[topic];
   const [activeCode, setActiveCode] = useState(0);
+  const [activeResourceTab, setActiveResourceTab] = useState('text');
 
   if (!data) return <NlpComingSoon topic={topic} />;
 
@@ -180,30 +181,84 @@ export default function NlpTopicPage() {
         {/* 7. Resources */}
         <NlpSection>
           <NlpSectionLabel IconComp={FaBook} label="Resources" />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 16 }}>
+
+          {/* Tab Switcher */}
+          <div style={{ display: 'flex', gap: 8, marginBottom: 28 }}>
             {[
-              { label: 'Videos', IconComp: FaYoutube, items: data.resources.videos },
-              { label: 'Documentation', IconComp: FaFileAlt, items: data.resources.docs },
-              { label: 'Books', IconComp: FaBook, items: data.resources.books },
-            ].map(({ label, IconComp, items }) => (
-              <div key={label} style={{ padding: '24px', borderRadius: 14, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <p style={{ fontSize: 11, color: '#c9a84c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <IconComp size={12} /> {label}
-                </p>
-                <ul style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  {items.map((item, i) => (
-                    <li key={i} style={{ listStyle: 'none' }}>
-                      <a href={item.url} target="_blank" rel="noreferrer"
-                        style={{ fontSize: 13, color: '#8a9ab5', textDecoration: 'none', lineHeight: 1.5, transition: 'color 0.2s' }}
-                        onMouseEnter={e => e.target.style.color = '#c9a84c'}
-                        onMouseLeave={e => e.target.style.color = '#8a9ab5'}>
-                        → {item.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              { id: 'text', label: 'Text Resources', icon: FaFileAlt },
+              { id: 'video', label: 'Video Resources', icon: FaYoutube }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveResourceTab(tab.id)}
+                style={{
+                  padding: '8px 18px',
+                  borderRadius: 6,
+                  fontSize: 12,
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  letterSpacing: '0.03em',
+                  transition: 'all 0.2s',
+                  background: activeResourceTab === tab.id ? 'linear-gradient(135deg,#c9a84c,#e8c97a)' : 'rgba(255,255,255,0.04)',
+                  color: activeResourceTab === tab.id ? '#080b14' : '#8a9ab5',
+                  border: activeResourceTab === tab.id ? 'none' : '1px solid rgba(255,255,255,0.08)'
+                }}
+              >
+                <tab.icon size={11} style={{ marginRight: 6, verticalAlign: 'middle' }} />
+                {tab.label}
+              </button>
             ))}
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 16 }}>
+            {activeResourceTab === 'text' && [
+              { label: 'Documentation', IconComp: FaFileAlt, items: data.resources?.docs },
+              { label: 'Articles & Books', IconComp: FaBook, items: data.resources?.books },
+            ].map(({ label, IconComp, items }) =>
+              items && items.length > 0 && (
+                <div key={label} style={{ padding: '24px', borderRadius: 14, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <p style={{ fontSize: 11, color: '#c9a84c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <IconComp size={12} /> {label}
+                  </p>
+                  <ul style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    {items.map((item, i) => (
+                      <li key={i} style={{ listStyle: 'none' }}>
+                        <a href={item.url} target="_blank" rel="noreferrer"
+                          style={{ fontSize: 13, color: '#8a9ab5', textDecoration: 'none', lineHeight: 1.5, transition: 'color 0.2s' }}
+                          onMouseEnter={e => e.target.style.color = '#c9a84c'}
+                          onMouseLeave={e => e.target.style.color = '#8a9ab5'}>
+                          → {item.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            )}
+
+            {activeResourceTab === 'video' && [
+              { label: 'Video Tutorials', IconComp: FaYoutube, items: data.resources?.videos },
+            ].map(({ label, IconComp, items }) =>
+              items && items.length > 0 && (
+                <div key={label} style={{ padding: '24px', borderRadius: 14, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <p style={{ fontSize: 11, color: '#c9a84c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <IconComp size={12} /> {label}
+                  </p>
+                  <ul style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    {items.map((item, i) => (
+                      <li key={i} style={{ listStyle: 'none' }}>
+                        <a href={item.url} target="_blank" rel="noreferrer"
+                          style={{ fontSize: 13, color: '#8a9ab5', textDecoration: 'none', lineHeight: 1.5, transition: 'color 0.2s' }}
+                          onMouseEnter={e => e.target.style.color = '#c9a84c'}
+                          onMouseLeave={e => e.target.style.color = '#8a9ab5'}>
+                          → {item.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            )}
           </div>
         </NlpSection>
 

@@ -1,4 +1,5 @@
 import OsCodeBlock from '../components/OsCodeBlock';
+import OsResources from '../components/OsResources';
 import OsQuiz from '../components/OsQuiz';
 
 export default function OsProjects() {
@@ -1142,6 +1143,7 @@ public class MemAllocator {
                     },
                 ]}
             />
+        <OsResources topicId="projects" />
         </div>
     );
 }
