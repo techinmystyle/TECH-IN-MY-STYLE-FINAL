@@ -9,12 +9,13 @@ import GenAiAccordion from "../components/GenAiAccordion";
 import GenAiMCQ from "../components/GenAiMCQ";
 
 const tabs = [
-  { id: "overview",  label: "Overview"   },
-  { id: "code",      label: "Code"       },
-  { id: "apps",      label: "Real World" },
-  { id: "interview", label: "Interview"  },
-  { id: "mcq",       label: "MCQ"        },
-  { id: "resources", label: "Resources"  },
+  { id: "overview",        label: "Overview"        },
+  { id: "code",            label: "Code"            },
+  { id: "apps",            label: "Real World"      },
+  { id: "interview",       label: "Interview"       },
+  { id: "mcq",             label: "MCQ"             },
+  { id: "text-resources",  label: "Text Resources"  },
+  { id: "video-resources", label: "Video Resources" },
 ];
 
 export default function TopicPage() {
@@ -282,15 +283,52 @@ export default function TopicPage() {
                 </div>
               )}
 
-              {/* RESOURCES */}
-              {activeTab === "resources" && (
+              {/* TEXT RESOURCES */}
+              {activeTab === "text-resources" && (
                 <div className="space-y-10">
                   {[
-                    { key: "youtube", label: "Video",         icon: "fab fa-youtube",       color: "#f87171" },
                     { key: "docs",    label: "Documentation", icon: "fas fa-file-lines",    color: "#67e8f9" },
                     { key: "blogs",   label: "Articles",      icon: "fas fa-pen-to-square", color: "#34d399" },
                   ].map(({ key, label, icon, color }) =>
-                    topic.resources[key]?.length > 0 && (
+                    topic.resources?.[key]?.length > 0 && (
+                      <div key={key}>
+                        <div className="flex items-center gap-4 mb-5">
+                          <i className={`${icon} text-sm`} style={{ color }} />
+                          <span className="text-xs tracking-widest uppercase" style={{ color: "rgba(124,58,237,0.45)" }}>{label}</span>
+                          <div className="flex-1 h-px" style={{ background: "rgba(124,58,237,0.12)" }} />
+                        </div>
+                        <div className="space-y-0" style={{ borderTop: "1px solid rgba(124,58,237,0.08)" }}>
+                          {topic.resources[key].map((r, i) => (
+                            <a key={i} href={r.url} target="_blank" rel="noopener noreferrer"
+                              className="flex items-center gap-4 py-4 transition-colors duration-200 group rounded-lg px-2"
+                              style={{ borderBottom: "1px solid rgba(124,58,237,0.08)" }}
+                              onMouseEnter={e => e.currentTarget.style.background = "rgba(124,58,237,0.03)"}
+                              onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
+                              <span className="diamond-sm flex-shrink-0" style={{ background: color + "60" }} />
+                              <span className="text-sm font-light flex-1 transition-colors duration-200"
+                                style={{ color: "#94a3b8" }}
+                                onMouseEnter={e => e.currentTarget.style.color = "#f1f5f9"}
+                                onMouseLeave={e => e.currentTarget.style.color = "#94a3b8"}>
+                                {r.title}
+                              </span>
+                              <i className="fas fa-arrow-up-right-from-square text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+                                style={{ color: "rgba(124,58,237,0.45)" }} />
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )
+                  )}
+                </div>
+              )}
+
+              {/* VIDEO RESOURCES */}
+              {activeTab === "video-resources" && (
+                <div className="space-y-10">
+                  {[
+                    { key: "youtube", label: "Video Tutorials", icon: "fab fa-youtube",       color: "#f87171" },
+                  ].map(({ key, label, icon, color }) =>
+                    topic.resources?.[key]?.length > 0 && (
                       <div key={key}>
                         <div className="flex items-center gap-4 mb-5">
                           <i className={`${icon} text-sm`} style={{ color }} />
