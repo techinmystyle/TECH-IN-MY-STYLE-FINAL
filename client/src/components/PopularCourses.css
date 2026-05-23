@@ -197,7 +197,7 @@ html.dark .popular-course-card {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* background set inline via style prop (brand color) */
+  background-color: #ffffff !important;
   flex-shrink: 0;
 }
 
@@ -263,6 +263,7 @@ html.dark .popular-course-card {
   position: relative;
   z-index: 1;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.12));
+  mix-blend-mode: multiply;
 }
 
 .popular-course-card:hover .popular-course-card__img {
