@@ -481,19 +481,17 @@ const Courses = () => {
     : allCourses.filter(course => course.category === selectedCategory);
 
   const scrollToCourseCard = (courseName) => {
-    // Find the course card in the All Courses section
-    const courseCards = document.querySelectorAll('.all-courses .course-card');
-    courseCards.forEach((card) => {
-      const cardTitle = card.querySelector('h3');
-      if (cardTitle && cardTitle.textContent.includes(courseName)) {
+    const cards = document.querySelectorAll('.all-courses .course-card');
+    for (const card of cards) {
+      const title = card.querySelector('h3');
+      if (title && title.textContent.trim().toLowerCase().includes(courseName.toLowerCase())) {
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        // Add a highlight effect
-        card.style.animation = 'highlight-pulse 1s ease';
-        setTimeout(() => {
-          card.style.animation = '';
-        }, 1000);
+        card.style.transition = 'box-shadow 0.3s ease';
+        card.style.boxShadow = '0 0 0 3px #2563eb';
+        setTimeout(() => { card.style.boxShadow = ''; }, 1500);
+        break;
       }
-    });
+    }
   };
 
   const courseRouteMap = {
@@ -522,7 +520,7 @@ const Courses = () => {
   const handleCourseClick = (course) => {
     const route = courseRouteMap[course.name];
     if (route) {
-      window.open(route, '_blank', 'noopener,noreferrer');
+      navigate(route);
     } else {
       alert(`${course.name} is coming soon!`);
     }
@@ -551,11 +549,11 @@ const Courses = () => {
           {/* Web Development Courses */}
           <h3 className="category-title" data-aos="fade-up">Web Development</h3>
           <div className="courses-cards-grid" data-aos="fade-up">
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('HTML')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('HTML in My Style')}>
               <i className="fab fa-html5"></i>
               <h4>HTML</h4>
             </div>
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('CSS')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('CSS in My Style')}>
               <i className="fab fa-css3-alt"></i>
               <h4>CSS</h4>
             </div>
@@ -576,11 +574,11 @@ const Courses = () => {
           {/* Programming Languages */}
           <h3 className="category-title" data-aos="fade-up">Programming Languages</h3>
           <div className="courses-cards-grid" data-aos="fade-up">
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('Python')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('Python in My Style')}>
               <i className="fab fa-python"></i>
               <h4>Python</h4>
             </div>
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('Java')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('Java in My Style')}>
               <i className="fab fa-java"></i>
               <h4>Java</h4>
             </div>
@@ -588,23 +586,23 @@ const Courses = () => {
               <i className="fas fa-copyright"></i>
               <h4>C</h4>
             </div>
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('DSA')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('DSA in My Style')}>
               <i className="fas fa-sitemap"></i>
               <h4>DSA</h4>
             </div>
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('OS')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('OS in My Style')}>
               <i className="fas fa-microchip"></i>
               <h4>OS</h4>
             </div>
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('System Design')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('System Design in My Style')}>
               <i className="fas fa-server"></i>
               <h4>System Design</h4>
             </div>
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('Full Stack Python')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('Full Stack Python in My Style')}>
               <i className="fab fa-python"></i>
               <h4>Full Stack Python</h4>
             </div>
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('Full Stack Java')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('Full Stack Java in My Style')}>
               <i className="fab fa-java"></i>
               <h4>Full Stack Java</h4>
             </div>
@@ -613,23 +611,23 @@ const Courses = () => {
           {/* AI & Machine Learning */}
           <h3 className="category-title" data-aos="fade-up">AI & Machine Learning</h3>
           <div className="courses-cards-grid" data-aos="fade-up">
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('AI')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('AI in My Style')}>
               <i className="fas fa-robot"></i>
               <h4>AI</h4>
             </div>
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('ML')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('ML in My Style')}>
               <i className="fas fa-brain"></i>
               <h4>ML</h4>
             </div>
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('DL')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('DL in My Style')}>
               <i className="fas fa-network-wired"></i>
               <h4>DL</h4>
             </div>
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('NLP')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('NLP in My Style')}>
               <i className="fas fa-language"></i>
               <h4>NLP</h4>
             </div>
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('Gen AI')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('Gen AI in My Style')}>
               <i className="fas fa-wand-magic-sparkles"></i>
               <h4>Gen AI</h4>
             </div>
@@ -638,11 +636,11 @@ const Courses = () => {
           {/* Data Science */}
           <h3 className="category-title" data-aos="fade-up">Data Science</h3>
           <div className="courses-cards-grid" data-aos="fade-up">
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('DSC')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('DSC in My Style')}>
               <i className="fas fa-chart-bar"></i>
               <h4>DSC</h4>
             </div>
-            <div className="course-mini-card" onClick={() => scrollToCourseCard('Database')}>
+            <div className="course-mini-card" onClick={() => scrollToCourseCard('Database in My Style')}>
               <i className="fas fa-database"></i>
               <h4>Database</h4>
             </div>

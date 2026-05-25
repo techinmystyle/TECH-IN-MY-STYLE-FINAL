@@ -6,7 +6,7 @@
 
 /* â”€â”€ Base JsIntNavbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .js-int-course-root .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
@@ -576,7 +576,7 @@ html.dark .js-int-course-root .navbar__mobile-theme-label {
   color: #8b5cf6;
 }
 
-/* â”€â”€ Custom toggle switch â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── Custom toggle switch ────────────────────────────────────────────────── */
 .js-int-course-root .navbar__toggle-switch {
   position: relative;
   display: inline-block;
@@ -736,30 +736,30 @@ html.dark .js-int-course-root .navbar__mobile-socials-label {
 
 /* â”€â”€ Hide desktop nav, show hamburger below 768px â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 768px) {
-  .navbar__nav {
+  .js-int-course-root .navbar__nav {
     display: none;
   }
 
-  .navbar__hamburger {
+  .js-int-course-root .navbar__hamburger {
     display: inline-flex;
   }
 }
 
 /* â”€â”€ Hide hamburger on desktop, keep drawer off-screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (min-width: 769px) {
-  .navbar__hamburger {
+  .js-int-course-root .navbar__hamburger {
     display: none;
   }
 
   /* Ensure drawer stays off-screen and overlay stays invisible on desktop */
-  .navbar__mobile-menu {
+  .js-int-course-root .navbar__mobile-menu {
     transform: translateX(100%) !important;
     box-shadow: none !important;
     pointer-events: none;
     visibility: hidden;
   }
 
-  .navbar__overlay {
+  .js-int-course-root .navbar__overlay {
     pointer-events: none !important;
     background: rgba(0, 0, 0, 0) !important;
     backdrop-filter: none !important;
@@ -769,35 +769,35 @@ html.dark .js-int-course-root .navbar__mobile-socials-label {
 
 /* â”€â”€ Tighten inner padding on small phones â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 480px) {
-  .navbar__inner {
+  .js-int-course-root .navbar__inner {
     padding: 0 14px;
     height: 58px;
   }
 
-  .navbar__logo-badge {
+  .js-int-course-root .navbar__logo-badge {
     width: 38px;
     height: 38px;
   }
 
-  .navbar__logo-int {
+  .js-int-course-root .navbar__logo-int {
     font-size: 0.95rem;
   }
 }
 
 /* â”€â”€ Reduce motion for accessibility â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (prefers-reduced-motion: reduce) {
-  .navbar,
-  .navbar__progress,
-  .navbar__logo-badge,
-  .navbar__nav-link,
-  .navbar__theme-btn,
-  .navbar__hamburger,
-  .navbar__mobile-menu,
-  .navbar__overlay,
-  .navbar__mobile-link,
-  .navbar__social-btn,
-  .navbar__toggle-slider,
-  .navbar__toggle-slider::before {
+  .js-int-course-root .navbar,
+  .js-int-course-root .navbar__progress,
+  .js-int-course-root .navbar__logo-badge,
+  .js-int-course-root .navbar__nav-link,
+  .js-int-course-root .navbar__theme-btn,
+  .js-int-course-root .navbar__hamburger,
+  .js-int-course-root .navbar__mobile-menu,
+  .js-int-course-root .navbar__overlay,
+  .js-int-course-root .navbar__mobile-link,
+  .js-int-course-root .navbar__social-btn,
+  .js-int-course-root .navbar__toggle-slider,
+  .js-int-course-root .navbar__toggle-slider::before {
     transition: none !important;
     animation: none !important;
   }

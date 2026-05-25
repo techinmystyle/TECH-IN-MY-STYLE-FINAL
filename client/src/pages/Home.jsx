@@ -98,14 +98,14 @@ const Home = () => {
       name: 'CSS IN MY STYLE',
       icon: 'fab fa-css3-alt',
       description: 'Create stunning designs and layouts with advanced CSS techniques',
-      link: '/CSS IN MY STYLE/index.html'
+      link: '/css-course'
     },
     {
       id: 3,
       name: 'JAVASCRIPT BASIC IN MY STYLE',
       icon: 'fab fa-js-square',
       description: 'Learn the building blocks of JavaScript, step by step',
-      link: '/JAVASCRIPT IN MY STYLE - BASIC/index.html'
+      link: '/js-basic-course'
     }
   ];
 

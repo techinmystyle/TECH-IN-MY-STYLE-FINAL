@@ -10,7 +10,7 @@ const QUICK_LINKS = [
 export default function JsFooter() {
   return (
     <CourseFooter
-      courseName="JAVASCRIPT BASICS"
+      courseName="JAVASCRIPT BASIC"
       courseRoute="/js-basic-course"
       tagline="Start your JavaScript journey — variables, functions, DOM manipulation, and modern ES6+ features."
       logoImg="/img/JS-BEGINNERS.png"

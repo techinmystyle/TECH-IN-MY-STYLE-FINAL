@@ -38,7 +38,7 @@ export default function SystemDesignRoutes() {
     <div className="system-design-course-root">
       <DarkModeProvider>
         <SDNavbar />
-        <div className="sd-course min-h-screen transition-colors pb-10 flex flex-col">
+        <div className="sd-course min-h-screen transition-colors flex flex-col">
           <div className="flex-1">
             <Routes>
               <Route index element={<SystemDesignHome />} />

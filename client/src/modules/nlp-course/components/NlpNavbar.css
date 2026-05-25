@@ -1,0 +1,631 @@
+/* ======================================================================
+   NlpNavbar.css — NLP in My Style
+   Theme: Gold (#c9a84c / #e8c97a) on dark navy (#080b14)
+   Luxe serif typography, glass-morphism dark panel
+   ====================================================================== */
+
+/* ── Skip link ───────────────────────────────────────────────────────── */
+.nlp-course-root .nlp-navbar__skip {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.6rem 1.2rem;
+  background: #c9a84c;
+  color: #080b14;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.nlp-course-root .nlp-navbar__skip:focus {
+  top: 0;
+  outline: none;
+}
+
+/* ── Navbar shell ────────────────────────────────────────────────────── */
+.nlp-course-root .nlp-navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(8, 11, 20, 0.82);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.nlp-course-root .nlp-navbar--scrolled {
+  background: rgba(8, 11, 20, 0.96);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.6);
+  border-bottom-color: rgba(201, 168, 76, 0.22);
+}
+
+/* ── Scroll progress bar ─────────────────────────────────────────────── */
+.nlp-course-root .nlp-navbar__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  max-width: 100%;
+  background: linear-gradient(90deg, #c9a84c 0%, #e8c97a 50%, #c9a84c 100%);
+  border-radius: 0 3px 3px 0;
+  transition: width 0.12s linear;
+  z-index: 1001;
+  pointer-events: none;
+  will-change: width;
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.70);
+}
+
+/* ── Inner container ─────────────────────────────────────────────────── */
+.nlp-course-root .nlp-navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  width: 100%;
+  height: 68px;
+  margin: 0 auto;
+  padding: 0 5%;
+  gap: 14px;
+}
+
+/* ══ LOGO ════════════════════════════════════════════════════════════════ */
+.nlp-course-root .nlp-navbar__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  outline-offset: 4px;
+}
+
+.nlp-course-root .nlp-navbar__logo:hover {
+  opacity: 0.85;
+  transform: scale(1.03);
+}
+
+.nlp-course-root .nlp-navbar__logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #c9a84c, #e8c97a);
+  color: #080b14;
+  font-size: 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(201, 168, 76, 0.30);
+}
+
+.nlp-course-root .nlp-navbar__logo-text {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+.nlp-course-root .nlp-navbar__logo-nlp {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #c9a84c, #e8c97a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.01em;
+}
+
+.nlp-course-root .nlp-navbar__logo-suffix {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(240, 236, 228, 0.50);
+  margin-left: 4px;
+  letter-spacing: 0.01em;
+}
+
+/* Mobile logo: hide suffix */
+.nlp-course-root .nlp-navbar__logo--mobile .nlp-navbar__logo-suffix {
+  display: none;
+}
+
+/* ══ DESKTOP NAV ═════════════════════════════════════════════════════════ */
+.nlp-course-root .nlp-navbar__nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.1rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.nlp-course-root .nlp-navbar__nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 7px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(138, 154, 181, 0.9);
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  position: relative;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+  outline-offset: 2px;
+}
+
+.nlp-course-root .nlp-navbar__nav-link i {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.nlp-course-root .nlp-navbar__nav-link:hover {
+  background: rgba(201, 168, 76, 0.08);
+  color: #c9a84c;
+}
+
+.nlp-course-root .nlp-navbar__nav-link.active {
+  background: rgba(201, 168, 76, 0.12);
+  color: #c9a84c;
+  font-weight: 600;
+}
+
+.nlp-course-root .nlp-navbar__nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2px;
+  background: linear-gradient(90deg, #c9a84c, #e8c97a);
+  border-radius: 2px 2px 0 0;
+}
+
+/* ── Back link pill ── */
+.nlp-course-root .nlp-navbar__back-link {
+  font-size: 0.8rem !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 0.22rem 0.75rem !important;
+  color: rgba(138, 154, 181, 0.7) !important;
+  opacity: 0.85;
+  transition: all 0.2s ease !important;
+}
+
+.nlp-course-root .nlp-navbar__back-link:hover {
+  opacity: 1;
+  transform: translateX(-3px);
+  border-color: rgba(201, 168, 76, 0.35);
+  color: #c9a84c !important;
+  background: rgba(201, 168, 76, 0.06) !important;
+}
+
+.nlp-course-root .nlp-navbar__back-link::after {
+  display: none !important;
+}
+
+/* ══ RIGHT CONTROLS ══════════════════════════════════════════════════════ */
+.nlp-course-root .nlp-navbar__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* ── CTA button (desktop) ── */
+.nlp-course-root .nlp-navbar__cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #c9a84c, #e8c97a);
+  color: #080b14;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  box-shadow: 0 4px 18px rgba(201, 168, 76, 0.28);
+  outline-offset: 3px;
+}
+
+.nlp-course-root .nlp-navbar__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201, 168, 76, 0.42);
+  filter: brightness(1.08);
+}
+
+/* ── Hamburger (mobile only) ── */
+.nlp-course-root .nlp-navbar__hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(201, 168, 76, 0.20);
+  background: transparent;
+  color: rgba(240, 236, 228, 0.80);
+  font-size: 1.3rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+  outline-offset: 3px;
+}
+
+.nlp-course-root .nlp-navbar__hamburger:hover {
+  background: rgba(201, 168, 76, 0.12);
+  border-color: rgba(201, 168, 76, 0.45);
+  color: #c9a84c;
+}
+
+.nlp-course-root .nlp-navbar__hamburger--open {
+  background: rgba(201, 168, 76, 0.12);
+  border-color: rgba(201, 168, 76, 0.45);
+  color: #c9a84c;
+}
+
+/* ══ OVERLAY ══════════════════════════════════════════════════════════════ */
+.nlp-course-root .nlp-navbar__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.nlp-course-root .nlp-navbar__overlay--visible {
+  background: rgba(0, 0, 0, 0.60);
+  pointer-events: auto;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+/* ══ MOBILE SLIDE-IN DRAWER ══════════════════════════════════════════════ */
+.nlp-course-root .nlp-navbar__mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(300px, 85vw);
+  z-index: 1001;
+  background: rgba(8, 11, 20, 0.98);
+  border-left: 1px solid rgba(201, 168, 76, 0.15);
+  transform: translateX(100%);
+  transition:
+    transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.32s ease;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  will-change: transform;
+}
+
+.nlp-course-root .nlp-navbar__mobile-menu.open {
+  transform: translateX(0);
+  box-shadow: -8px 0 52px rgba(0, 0, 0, 0.70);
+}
+
+/* ── Drawer header ── */
+.nlp-course-root .nlp-navbar__mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+  flex-shrink: 0;
+  background: rgba(201, 168, 76, 0.04);
+}
+
+.nlp-course-root .nlp-navbar__mobile-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(240, 236, 228, 0.65);
+  font-size: 0.9rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  outline-offset: 2px;
+}
+
+.nlp-course-root .nlp-navbar__mobile-close:hover {
+  background: rgba(201, 168, 76, 0.16);
+  color: #c9a84c;
+  transform: rotate(90deg);
+}
+
+/* ── Drawer nav links ── */
+.nlp-course-root .nlp-navbar__mobile-nav {
+  flex: 1;
+  padding: 12px 10px 8px;
+  overflow-y: auto;
+}
+
+.nlp-course-root .nlp-navbar__mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.nlp-course-root .nlp-navbar__mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: rgba(138, 154, 181, 0.9);
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.nlp-course-root .nlp-navbar__mobile-link i:first-child {
+  font-size: 1rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  color: rgba(201, 168, 76, 0.45);
+}
+
+.nlp-course-root .nlp-navbar__mobile-link span {
+  flex: 1;
+}
+
+.nlp-course-root .nlp-navbar__mobile-link:hover {
+  background: rgba(201, 168, 76, 0.08);
+  color: #c9a84c;
+  transform: translateX(4px);
+}
+
+.nlp-course-root .nlp-navbar__mobile-link:hover i:first-child {
+  color: #c9a84c;
+}
+
+.nlp-course-root .nlp-navbar__mobile-link--active {
+  background: rgba(201, 168, 76, 0.12);
+  color: #c9a84c;
+  font-weight: 700;
+}
+
+.nlp-course-root .nlp-navbar__mobile-link--active i:first-child {
+  color: #c9a84c;
+}
+
+.nlp-course-root .nlp-navbar__active-check {
+  font-size: 0.82rem !important;
+  width: auto !important;
+  color: #c9a84c;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Back link in mobile drawer */
+.nlp-course-root .nlp-navbar__mobile-back {
+  color: rgba(138, 154, 181, 0.55);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 8px;
+  padding-top: 14px;
+}
+
+.nlp-course-root .nlp-navbar__mobile-back:hover {
+  background: rgba(201, 168, 76, 0.06);
+  color: #e8c97a;
+}
+
+/* ── Mobile CTA wrap ── */
+.nlp-course-root .nlp-navbar__mobile-cta-wrap {
+  padding: 0 14px 16px;
+  flex-shrink: 0;
+}
+
+.nlp-course-root .nlp-navbar__mobile-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #c9a84c, #e8c97a);
+  color: #080b14;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 18px rgba(201, 168, 76, 0.30);
+}
+
+.nlp-course-root .nlp-navbar__mobile-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201, 168, 76, 0.45);
+}
+
+/* ── Social icons ── */
+.nlp-course-root .nlp-navbar__mobile-socials {
+  padding: 12px 18px 28px;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nlp-course-root .nlp-navbar__mobile-socials-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: rgba(138, 154, 181, 0.40);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.nlp-course-root .nlp-navbar__mobile-socials-row {
+  display: flex;
+  gap: 10px;
+}
+
+.nlp-course-root .nlp-navbar__social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 1.5px solid rgba(201, 168, 76, 0.12);
+  color: rgba(138, 154, 181, 0.55);
+  background: transparent;
+  transition:
+    background 0.22s ease,
+    color 0.22s ease,
+    transform 0.2s ease,
+    box-shadow 0.22s ease;
+  outline-offset: 3px;
+}
+
+.nlp-course-root .nlp-navbar__social-btn:hover {
+  transform: translateY(-3px);
+}
+
+.nlp-course-root .nlp-navbar__social-btn--instagram:hover {
+  background: linear-gradient(135deg, #fd1d1d, #e1306c, #833ab4);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(225, 48, 108, 0.38);
+}
+
+.nlp-course-root .nlp-navbar__social-btn--youtube:hover {
+  background: #ff0000;
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(255, 0, 0, 0.38);
+}
+
+.nlp-course-root .nlp-navbar__social-btn--telegram:hover {
+  background: #0088cc;
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(0, 136, 204, 0.38);
+}
+
+/* ══ RESPONSIVE BREAKPOINTS ══════════════════════════════════════════════ */
+
+/* Tablet/mobile: hide desktop nav, show hamburger, hide CTA */
+@media (max-width: 900px) {
+  .nlp-course-root .nlp-navbar__nav {
+    display: none;
+  }
+
+  .nlp-course-root .nlp-navbar__cta {
+    display: none;
+  }
+
+  .nlp-course-root .nlp-navbar__hamburger {
+    display: flex;
+  }
+}
+
+/* Desktop: always show nav + CTA, hide hamburger + drawer */
+@media (min-width: 901px) {
+  .nlp-course-root .nlp-navbar__hamburger {
+    display: none !important;
+  }
+
+  .nlp-course-root .nlp-navbar__mobile-menu {
+    transform: translateX(100%) !important;
+    box-shadow: none !important;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  .nlp-course-root .nlp-navbar__overlay {
+    pointer-events: none !important;
+    background: rgba(0, 0, 0, 0) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .nlp-course-root .nlp-navbar__inner {
+    padding: 0 4%;
+    height: 62px;
+  }
+
+  .nlp-course-root .nlp-navbar__logo-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+
+  .nlp-course-root .nlp-navbar__logo-nlp {
+    font-size: 1rem;
+  }
+
+  .nlp-course-root .nlp-navbar__mobile-menu {
+    width: 100vw;
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .nlp-course-root .nlp-navbar,
+  .nlp-course-root .nlp-navbar__progress,
+  .nlp-course-root .nlp-navbar__logo,
+  .nlp-course-root .nlp-navbar__nav-link,
+  .nlp-course-root .nlp-navbar__cta,
+  .nlp-course-root .nlp-navbar__hamburger,
+  .nlp-course-root .nlp-navbar__overlay,
+  .nlp-course-root .nlp-navbar__mobile-menu,
+  .nlp-course-root .nlp-navbar__mobile-link,
+  .nlp-course-root .nlp-navbar__mobile-close,
+  .nlp-course-root .nlp-navbar__mobile-cta,
+  .nlp-course-root .nlp-navbar__social-btn {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .nlp-course-root .nlp-navbar__logo:hover         { transform: none; }
+  .nlp-course-root .nlp-navbar__cta:hover           { transform: none; }
+  .nlp-course-root .nlp-navbar__mobile-close:hover  { transform: none; }
+  .nlp-course-root .nlp-navbar__social-btn:hover    { transform: none; }
+  .nlp-course-root .nlp-navbar__mobile-link:hover   { transform: none; }
+  .nlp-course-root .nlp-navbar__mobile-cta:hover    { transform: none; }
+}

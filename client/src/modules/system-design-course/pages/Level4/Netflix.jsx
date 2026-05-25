@@ -6,16 +6,16 @@ import SDAccordion from '../../components/SDAccordion';
 export default function Netflix() {
   const interviewQuestions = [
     {
-      question: "How would you design Netflix's streaming system?",
+      question: "How would you design a video streaming system?",
       answer: "Use adaptive streaming with multiple video qualities, CDN for global content delivery, recommendation engine for personalization, and microservices for different functionalities. Implement offline download, multiple device support, and real-time streaming analytics."
     },
     {
-      question: "How does Netflix handle video encoding and storage?",
+      question: "How does a streaming platform handle video encoding and storage?",
       answer: "Store original files, encode into multiple resolutions (1080p, 720p, 480p), create different bitrates for adaptive streaming, use object storage for cost efficiency, and implement CDN caching for popular content."
     },
     {
-      question: "How does Netflix scale to millions of concurrent streams?",
-      answer: "Through CDN edge servers, load balancing, adaptive bitrate streaming, efficient compression algorithms, and predictive caching based on viewing patterns. Uses peer-to-peer for some content and implements sophisticated traffic management."
+      question: "How does a streaming service scale to millions of concurrent streams?",
+      answer: "Through CDN edge servers, load balancing, adaptive bitrate streaming, efficient compression algorithms, and predictive caching based on viewing patterns. Uses sophisticated traffic management and regional distribution."
     }
   ];
 
@@ -24,8 +24,11 @@ export default function Netflix() {
       {/* HEADER */}
       <SDCard>
         <div className="bg-gradient-to-r from-red-500 to-red-700 text-white p-6 rounded-2xl">
-          <h1 className="text-3xl font-bold">Netflix System Design</h1>
-          <p className="text-sm mt-2 opacity-90">Global video streaming platform</p>
+          <h1 className="text-3xl font-bold">Video Streaming System Design</h1>
+          <p className="text-sm mt-2 opacity-90">Global video streaming platform at scale</p>
+          <p className="text-xs mt-1 opacity-70 italic">
+            Educational case study. Concepts are based on publicly known architectures used by streaming platforms.
+          </p>
         </div>
       </SDCard>
 
@@ -33,7 +36,7 @@ export default function Netflix() {
       <SDCard>
         <h2 className="text-xl font-semibold mb-2">Thinking</h2>
         <p>
-          Netflix is like a global movie theater that streams any movie to any device instantly. When you click play, the system finds the closest movie theater (CDN server), determines your internet speed, and streams the perfect quality version. If your connection changes, it seamlessly switches to a different quality, ensuring smooth playback without buffering.
+          A video streaming platform is like a global movie theater that delivers any movie to any device instantly. When you click play, the system finds the closest server (CDN edge), determines your internet speed, and streams the perfect quality version. If your connection changes, it seamlessly switches to a different quality, ensuring smooth playback without buffering.
         </p>
       </SDCard>
 
@@ -41,7 +44,7 @@ export default function Netflix() {
       <SDCard>
         <h2 className="text-xl font-semibold mb-2">Description</h2>
         <p>
-          Netflix is a global video streaming platform serving over 220 million subscribers worldwide. The system must handle massive video encoding, provide adaptive streaming for various network conditions, deliver personalized recommendations, support multiple devices, and ensure high availability during peak viewing hours.
+          A global video streaming platform serving hundreds of millions of subscribers worldwide. The system must handle massive video encoding, provide adaptive streaming for various network conditions, deliver personalized recommendations, support multiple devices, and ensure high availability during peak viewing hours.
         </p>
 
         <ul className="list-disc pl-5 mt-2 space-y-1">
@@ -53,8 +56,8 @@ export default function Netflix() {
         </ul>
 
         <div className="mt-4 bg-yellow-100 dark:bg-yellow-900 p-3 rounded-lg">
-          <span className="text-yellow-800 dark:text-yellow-200">Important Insight:</span> 
-          <span className="text-yellow-700 dark:text-yellow-300"> Netflix streams over 140 million hours of content daily with 99.95% uptime and sub-second start times.</span>
+          <span className="text-yellow-800 dark:text-yellow-200">Important Insight:</span>{' '}
+          <span className="text-yellow-700 dark:text-yellow-300">Large streaming platforms stream hundreds of millions of hours of content daily with 99.95% uptime and sub-second start times.</span>
         </div>
       </SDCard>
 
@@ -90,13 +93,13 @@ Streaming Flow:
       <SDCard>
         <h2 className="text-xl font-semibold mb-2">Real World Implementation</h2>
         <p>
-          <strong>Technology Stack:</strong> Netflix uses a custom content delivery network (Open Connect), microservices architecture, Python/Java for backend services, Node.js for web, and native apps for mobile. Uses NoSQL databases for user data and specialized systems for video processing.
+          <strong>Technology Stack:</strong> Streaming platforms commonly use custom CDNs with servers inside ISP networks, microservices architecture, Python/Java for backend services, Node.js for web, and native apps for mobile. NoSQL databases handle user data while specialized systems manage video processing.
         </p>
         <p className="mt-2">
-          <strong>Infrastructure:</strong> Operates its own CDN with servers inside ISP networks globally. Uses predictive caching to pre-load popular content. Implements sophisticated load balancing and traffic management.
+          <strong>Infrastructure:</strong> Edge CDN servers placed inside ISP networks globally. Predictive caching pre-loads popular content. Sophisticated load balancing and traffic management ensures consistent quality.
         </p>
         <p className="mt-2">
-          <strong>Performance:</strong> Sub-second video start times, seamless quality switching, and 4K streaming support. Uses advanced compression algorithms to optimize bandwidth usage.
+          <strong>Performance:</strong> Sub-second video start times, seamless quality switching, and 4K streaming support. Advanced compression algorithms optimize bandwidth usage across different network conditions.
         </p>
       </SDCard>
 
@@ -197,10 +200,10 @@ class RecommendationEngine {
           <strong>Quality vs Bandwidth:</strong> Higher video quality provides better experience but uses more bandwidth. Adaptive streaming balances quality based on network conditions.
         </p>
         <p className="mt-2">
-          <strong>Storage Cost vs Content Variety:</strong> Storing all content in multiple qualities is expensive but ensures compatibility. Netflix optimizes by encoding popular content in more formats.
+          <strong>Storage Cost vs Content Variety:</strong> Storing all content in multiple qualities is expensive but ensures compatibility. Optimize by encoding popular content in more formats.
         </p>
         <p className="mt-2">
-          <strong>Latency vs Quality:</strong> Lower latency requires more edge servers and caching. Netflix invests heavily in infrastructure to minimize startup time while maintaining quality.
+          <strong>Latency vs Quality:</strong> Lower latency requires more edge servers and caching. Investing in infrastructure minimizes startup time while maintaining quality.
         </p>
       </SDCard>
 
@@ -211,7 +214,7 @@ class RecommendationEngine {
         <h2 className="text-xl font-semibold mb-2">Common Mistakes</h2>
         <ul className="list-disc pl-5 space-y-1">
           <li>Not implementing proper adaptive streaming</li>
-          <li>Ignoring CDN edge server placement</li>
+          <li>Ignoring CDN edge server placement strategy</li>
           <li>Not planning for peak viewing hours and traffic spikes</li>
           <li>Poor video encoding and compression strategies</li>
           <li>Not implementing proper content recommendation algorithms</li>

@@ -63,11 +63,11 @@ export function useDarkMode() {
    Helpers
 ───────────────────────────────────────────────────────────────────────────── */
 function getPageKey(pathname) {
-  if (pathname === '/')                    return 'home'
-  if (pathname.startsWith('/js-int'))      return 'js-int'
-  if (pathname.startsWith('/resources'))   return 'resources'
-  if (pathname.startsWith('/compiler'))    return 'compiler'
-  if (pathname.startsWith('/connect'))     return 'connect'
+  if (pathname === '/js-int-course' || pathname === '/js-int-course/')  return 'home'
+  if (pathname.startsWith('/js-int-course/js-int'))      return 'js-int'
+  if (pathname.startsWith('/js-int-course/resources'))   return 'resources'
+  if (pathname.startsWith('/js-int-course/compiler'))    return 'compiler'
+  if (pathname.startsWith('/js-int-course/connect'))     return 'connect'
   return ''
 }
 

@@ -174,9 +174,10 @@ const CODE_LINES = [
    STATS — animated counters
 ───────────────────────────────────────────────────────────────────────────── */
 const STATS = [
-  { icon: 'bi bi-book-fill',             end: 54,  suffix: '+',  label: 'Topics'   },
-  { icon: 'bi bi-grid-3x3-gap-fill',     end: 13,  suffix: '',   label: 'Modules'  },
-  { icon: 'bi bi-people-fill',           end: 10,  suffix: 'K+', label: 'Learners' },
+  { icon: 'bi bi-book-fill',             end: 54,  suffix: '+',  label: 'Topics'       },
+  { icon: 'bi bi-grid-3x3-gap-fill',     end: 13,  suffix: '',   label: 'Modules'      },
+  { icon: 'bi bi-collection-fill',       end: 20,  suffix: '+',  label: 'Courses'      },
+  { icon: 'bi bi-gift-fill',             end: 100, suffix: '%',  label: 'Free Forever' },
 ]
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -203,32 +204,6 @@ const FEATURES = [
     desc:  'JsAdvConnect, share, and grow alongside thousands of fellow JS developers.',
     link:  '/js-adv-course/connect',
     color: 'pink',
-  },
-]
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   TESTIMONIALS
-───────────────────────────────────────────────────────────────────────────── */
-const TESTIMONIALS = [
-  {
-    quote:  'The closures and prototype sections completely transformed how I think about JavaScript. Incredibly clear and practical.',
-    author: 'Priya M.',
-    role:   'Frontend Developer',
-  },
-  {
-    quote:  'Finally understood the event loop and async/await deeply after years of confusion. The code examples here are perfection.',
-    author: 'Rahul K.',
-    role:   'Full-Stack Engineer',
-  },
-  {
-    quote:  'Design patterns section is pure gold. I apply what I learned here every single day at work. Absolutely 10 out of 10.',
-    author: 'Sarah L.',
-    role:   'Software Architect',
-  },
-  {
-    quote:  'The live compiler is a game changer — I can practice advanced concepts right in the browser without any environment setup.',
-    author: 'Ahmed R.',
-    role:   'JavaScript Enthusiast',
   },
 ]
 
@@ -530,71 +505,6 @@ export default function JsAdvHome() {
                     <i className="bi bi-arrow-right-short" />
                   </span>
                 </Link>
-              ))}
-            </div>
-
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════════════════════════════════
-            TESTIMONIALS
-        ══════════════════════════════════════════════════════════════ */}
-        <section
-          className="jsadv-testimonials-section"
-          aria-labelledby="testimonials-heading"
-        >
-          <div className="container">
-
-            <div className="jsadv-testimonials-section__header">
-              <div className="jsadv-testimonials-section__pill">
-                <i className="bi bi-star-fill" aria-hidden="true" />
-                Learner Reviews
-              </div>
-              <h2
-                className="jsadv-testimonials-section__title"
-                id="testimonials-heading"
-              >
-                What Our Learners Say
-              </h2>
-            </div>
-
-            <div className="testimonials-grid">
-              {TESTIMONIALS.map((t, i) => (
-                <div
-                  key={t.author}
-                  className="jsadv-testimonial-card"
-                  style={{ animationDelay: `${i * 0.1}s` }}
-                >
-                  <div
-                    className="jsadv-testimonial-card__stars"
-                    aria-label="5 stars rating"
-                  >
-                    {[...Array(5)].map((_, s) => (
-                      <i
-                        key={s}
-                        className="bi bi-star-fill"
-                        aria-hidden="true"
-                      />
-                    ))}
-                  </div>
-
-                  <blockquote className="jsadv-testimonial-card__quote">
-                    &ldquo;{t.quote}&rdquo;
-                  </blockquote>
-
-                  <div className="jsadv-testimonial-card__author">
-                    <div
-                      className="jsadv-testimonial-card__avatar"
-                      aria-hidden="true"
-                    >
-                      <i className="bi bi-person-fill" />
-                    </div>
-                    <div className="jsadv-testimonial-card__info">
-                      <span className="jsadv-testimonial-card__name">{t.author}</span>
-                      <span className="jsadv-testimonial-card__role">{t.role}</span>
-                    </div>
-                  </div>
-                </div>
               ))}
             </div>
 

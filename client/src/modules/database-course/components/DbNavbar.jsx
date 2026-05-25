@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDatabase, faBars, faTimes, faSearch, faBookmark } from '@fortawesome/free-solid-svg-icons';
+import { faDatabase, faBars, faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 
 const links = [
@@ -95,7 +95,6 @@ export default function DbNavbar() {
         <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
           {[
             { to: '/database-course/search', icon: faSearch },
-            { to: '/database-course/bookmarks', icon: faBookmark },
           ].map(({ to, icon }) => (
             <Link key={to} to={to}>
               <motion.div whileHover={{ scale: 1.1, color: 'var(--p5-red)' }} whileTap={{ scale: 0.9 }}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaJava, FaDatabase, FaRocket, FaShieldAlt, FaNetworkWired } from 'react-icons/fa'
@@ -40,7 +40,7 @@ export default function FsJavaHome() {
   ]
 
   return (
-    <div className="fsjava-module" style={{ minHeight: '100vh', paddingTop: '60px' }}>
+    <div id="main-content" style={{ minHeight: '100vh' }}>
       <FsJavaParticleGrid />
 
       {/* ─── HERO SECTION ─────────────────────────────────────────────────── */}

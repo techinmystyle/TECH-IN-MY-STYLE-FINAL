@@ -11,6 +11,7 @@ import { useSearchParams } from 'react-router-dom';
 import { runMongoQuery } from '../utils/mongoSimulator';
 import { analyzeSQLQuery, analyzeMongoQuery } from '../utils/queryAnalyzer';
 import { getErrorSuggestion } from '../utils/errorHelper';
+import DbFooter from '../components/DbFooter';
 
 const MONGO_PLACEHOLDER = `// MongoDB Simulation
 // Supported: find(), insertOne(), updateOne(), deleteOne(), aggregate()
@@ -576,6 +577,7 @@ export default function DbEditor() {
           </button>
         ))}
       </div>
+      <DbFooter />
     </div>
   );
 }

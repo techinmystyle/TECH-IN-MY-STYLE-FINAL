@@ -68,7 +68,7 @@ const Footer = () => {
                 <a href="https://www.instagram.com/techinmystyle" target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-instagram"></i> Instagram
                 </a>
-                <a href="https://youtube.com/@tech-in-my-style" target="_blank" rel="noopener noreferrer">
+                <a href="https://youtube.com/@TECHINMYSTYLE" target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-youtube"></i> YouTube
                 </a>
                 <a href="https://wa.me/919390119848" target="_blank" rel="noopener noreferrer">
@@ -78,11 +78,25 @@ const Footer = () => {
                   <i className="fab fa-telegram"></i> Telegram
                 </a>
               </div>
+              <div className="footer-column">
+                <h4>Legal</h4>
+                <Link to="/privacy-policy"><i className="fas fa-shield-alt"></i> Privacy Policy</Link>
+                <Link to="/terms-and-conditions"><i className="fas fa-file-contract"></i> Terms &amp; Conditions</Link>
+                <Link to="/disclaimer"><i className="fas fa-exclamation-circle"></i> Disclaimer</Link>
+                <Link to="/about-us"><i className="fas fa-info-circle"></i> About Us</Link>
+              </div>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2025 TECH IN MY STYLE. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} TECH IN MY STYLE. All rights reserved.</p>
+          <div className="footer-legal-links">
+            <Link to="/privacy-policy">Privacy Policy</Link>
+            <span>|</span>
+            <Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
+            <span>|</span>
+            <Link to="/disclaimer">Disclaimer</Link>
+          </div>
           <div className="scroll-top" onClick={scrollToTop}>
             <i className="fas fa-arrow-up"></i>
           </div>

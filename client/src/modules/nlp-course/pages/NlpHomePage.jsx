@@ -48,7 +48,7 @@ export default function NlpHomePage() {
   const navigate = useNavigate();
 
   return (
-    <div style={{ minHeight: '100vh', paddingTop: 68, position: 'relative', zIndex: 1 }}>
+    <div id="main-content" style={{ minHeight: '100vh', position: 'relative', zIndex: 1 }}>
 
       {/* Hero */}
       <section style={{ position: 'relative', padding: '100px 24px 120px', textAlign: 'center', overflow: 'hidden' }}>

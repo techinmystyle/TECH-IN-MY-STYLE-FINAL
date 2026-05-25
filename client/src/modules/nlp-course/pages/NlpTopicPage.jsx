@@ -32,7 +32,7 @@ const NlpComingSoon = ({ topic }) => {
   const navigate = useNavigate();
   const meta = nlpTopicsList.find(t => t.id === topic);
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 24px', paddingTop: 68 }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 24px' }}>
       <div style={{ width: 72, height: 72, borderRadius: 20, marginBottom: 24, background: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <NlpIcon name={meta?.iconKey || 'book'} size={28} style={{ color: '#c9a84c' }} />
       </div>
@@ -62,7 +62,7 @@ export default function NlpTopicPage() {
   const next = nlpTopicsList[topicIndex + 1];
 
   return (
-    <div style={{ minHeight: '100vh', paddingTop: 68, position: 'relative', zIndex: 1 }}>
+    <div id="main-content" style={{ minHeight: '100vh', position: 'relative', zIndex: 1 }}>
 
       {/* Hero */}
       <div style={{ position: 'relative', padding: '64px 24px 56px', textAlign: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', overflow: 'hidden' }}>

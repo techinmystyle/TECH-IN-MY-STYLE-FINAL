@@ -13,9 +13,9 @@ export default function FsJavaFooter() {
       courseRoute="/fullstack-java-platform-course"
       tagline="Build scalable backend systems with Java and Spring Boot. Master microservices and deployment."
       logoImg="/img/JAVA.png"
-      color="#ff6f00"
-      color2="#ff8f00"
-      colorRgb="255,111,0"
+      color="#7c4dff"
+      color2="#651fff"
+      colorRgb="124,77,255"
       quickLinks={QUICK_LINKS}
     />
   );

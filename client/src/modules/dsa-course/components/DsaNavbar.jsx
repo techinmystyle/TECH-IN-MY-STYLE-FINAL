@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { IoClose, IoSearch, IoBookmark, IoMenu } from 'react-icons/io5';
+import { IoClose, IoSearch, IoMenu } from 'react-icons/io5';
 const GiRobberMask = ({ style }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '1em', height: '1em', display: 'inline-block', ...style }}>
     <path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zm1 14h-2v-1h2v1zm1.07-7.75l-.9.92C12.45 9.9 12 10.5 12 12h-2c0-1.5.45-2.1 1.17-2.83l.9-.92c.36-.36.59-.86.59-1.41C12.66 5.8 11.86 5 10.92 5c-.93 0-1.74.8-1.74 1.74H7.44C7.44 4.68 9.03 3 10.92 3c1.89 0 3.48 1.68 3.48 3.74 0 .82-.34 1.57-.83 2.09l-.5.42z"/>
@@ -35,9 +35,6 @@ export default function DsaNavbar() {
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 60 }}>
         {/* Logo */}
         <Link to="/dsa-course" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-          <div style={{ width: 28, height: 28, background: '#e8001c', borderRadius: 3, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: 'skewX(-8deg)' }}>
-            <GiRobberMask style={{ color: '#fff', fontSize: '1rem' }} />
-          </div>
           <span style={{ fontFamily: 'Bebas Neue, sans-serif', color: '#e8e0d0', fontSize: '1.1rem', letterSpacing: '0.12em' }}>
             DSA <span style={{ color: '#e8001c' }}>IN MY</span> STYLE
           </span>
@@ -66,11 +63,7 @@ export default function DsaNavbar() {
             style={{ background: searchOpen ? 'rgba(232,0,28,0.1)' : 'none', border: searchOpen ? '1px solid rgba(232,0,28,0.3)' : '1px solid transparent', borderRadius: 3, color: searchOpen ? '#e8001c' : '#6a6070', cursor: 'pointer', padding: '0.35rem 0.5rem', transition: 'all 0.2s', display: 'flex', alignItems: 'center' }}>
             <IoSearch style={{ fontSize: '1.1rem' }} />
           </button>
-          <Link to="/dsa-course/bookmarks" style={{ color: '#6a6070', padding: '0.35rem 0.5rem', transition: 'color 0.2s', textDecoration: 'none', display: 'flex', alignItems: 'center' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#c9a96e'}
-            onMouseLeave={e => e.currentTarget.style.color = '#6a6070'}>
-            <IoBookmark style={{ fontSize: '1.1rem' }} />
-          </Link>
+
           <button onClick={() => setMenuOpen(o => !o)}
             style={{ background: 'none', border: 'none', color: '#6a6070', cursor: 'pointer', display: 'none', padding: '0.35rem 0.5rem', alignItems: 'center' }} className="menu-btn">
             {menuOpen ? <IoClose style={{ fontSize: '1.2rem' }} /> : <IoMenu style={{ fontSize: '1.2rem' }} />}

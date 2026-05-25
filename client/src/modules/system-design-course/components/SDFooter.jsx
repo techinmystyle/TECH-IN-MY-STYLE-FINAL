@@ -13,7 +13,7 @@ export default function SDFooter() {
       courseName="SYSTEM DESIGN"
       courseRoute="/system-design-course"
       tagline="Master system design — distributed systems, caching, scaling, databases, and microservices."
-      logoImg="/img/TECH.png"
+      logoImg="/img/SYSTEM-DESIGN.png"
       color="#3949ab"
       color2="#5c6bc0"
       colorRgb="57,73,171"

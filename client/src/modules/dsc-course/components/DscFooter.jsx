@@ -10,7 +10,7 @@ const QUICK_LINKS = [
 export default function DscFooter() {
   return (
     <CourseFooter
-      courseName="DATA SCIENCE IN MY STYLE"
+      courseName="DATA SCIENCE"
       courseRoute="/dsc-course"
       tagline="Master Data Science — statistics, data wrangling, visualization, and analytics with Python."
       logoImg="/img/DSC.png"

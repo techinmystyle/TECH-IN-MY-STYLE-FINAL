@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faTrash, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { useProgress } from '../hooks/useProgress';
 import { courseModules } from '../data/courseData';
+import DbFooter from '../components/DbFooter';
 
 export default function DbBookmarks() {
   const { getBookmarks, toggleBookmark } = useProgress();
@@ -57,6 +58,7 @@ export default function DbBookmarks() {
           </div>
         </>
       )}
+      <DbFooter />
     </div>
   );
 }

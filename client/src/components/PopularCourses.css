@@ -8,7 +8,7 @@
 /* ── Section wrapper ── */
 .popular-courses-section {
   padding: 5rem 1.5rem 6rem;
-  background: var(--bg);
+  background: #ffffff;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -123,7 +123,7 @@
   font-family: 'Inter', sans-serif;
   font-size: clamp(1.9rem, 4vw, 2.6rem);
   font-weight: 900;
-  color: var(--text);
+  color: #000000;
   line-height: 1.15;
   letter-spacing: -0.03em;
   margin-bottom: 0.85rem;
@@ -139,10 +139,10 @@
 .popular-section-desc {
   max-width: 560px;
   margin: 0 auto;
-  color: var(--text-secondary);
+  color: #000000;
   font-size: 0.97rem;
   line-height: 1.65;
-  opacity: 0.85;
+  opacity: 1;
 }
 
 /* ── 4-Column Grid ── */
@@ -154,7 +154,7 @@
 
 /* ── Card Shell ── */
 .popular-course-card {
-  background: var(--surface, #ffffff);
+  background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
   display: flex;
@@ -166,9 +166,9 @@
     box-shadow 0.3s ease;
   /* Unique: top accent line via border-top */
   border-top: 3px solid var(--card-accent, #6366f1);
-  border-left: 1px solid var(--border-color, rgba(0,0,0,0.07));
-  border-right: 1px solid var(--border-color, rgba(0,0,0,0.07));
-  border-bottom: 1px solid var(--border-color, rgba(0,0,0,0.07));
+  border-left: 1px solid rgba(0,0,0,0.07);
+  border-right: 1px solid rgba(0,0,0,0.07);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
   box-shadow: 0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
 }
 
@@ -323,7 +323,7 @@ html.dark .popular-course-card {
   font-family: 'Inter', sans-serif;
   font-size: 0.92rem;
   font-weight: 800;
-  color: var(--text);
+  color: #000000;
   line-height: 1.3;
   margin: 0;
   letter-spacing: -0.01em;
@@ -331,11 +331,11 @@ html.dark .popular-course-card {
 
 .popular-course-card__desc {
   font-size: 0.78rem;
-  color: var(--text-secondary);
+  color: #000000;
   line-height: 1.55;
   flex: 1;
   margin: 0;
-  opacity: 0.82;
+  opacity: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;

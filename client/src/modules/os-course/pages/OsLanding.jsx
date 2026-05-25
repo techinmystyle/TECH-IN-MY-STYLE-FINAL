@@ -28,9 +28,14 @@ export default function OsLanding() {
           <span className="os-landing-logo">OS</span>
           <span>Kernel <strong>Lab</strong></span>
         </div>
-        <button className="os-primary-btn" onClick={() => navigate('/os-course/overview')}>
-          Start Learning
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <button className="os-secondary-btn" onClick={() => navigate('/courses')}>
+            ← Courses
+          </button>
+          <button className="os-primary-btn" onClick={() => navigate('/os-course/overview')}>
+            Start Learning
+          </button>
+        </div>
       </nav>
 
       <section className="os-hero">

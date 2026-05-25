@@ -522,7 +522,7 @@ export default function Connect() {
               aria-hidden="true"
             >
               <img
-                src="/img/TECH.png"
+                src="/img/CSS-TECH.png"
                 alt="TECH IN MY STYLE"
                 style={{
                   width: 140,

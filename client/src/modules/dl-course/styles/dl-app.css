@@ -14,31 +14,13 @@
     transparent;
 }
 
+/* ── Navbar overrides for DL theme ── */
 .dl-course-root .dl-navbar {
-  padding: 0.9rem clamp(1rem, 4vw, 2.6rem);
-  background: rgba(7, 7, 18, 0.74);
-  border-bottom: 1px solid var(--dl-border-glass);
-  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.26);
-  backdrop-filter: blur(18px);
+  padding: 0;
 }
 
-.dl-course-root .dl-navbar.transparent {
-  background: rgba(7, 7, 18, 0.36);
-  box-shadow: none;
-}
-
-.dl-course-root .dl-navbar.scrolled {
-  background: rgba(7, 7, 18, 0.86);
-  box-shadow: var(--dl-shadow-sm);
-}
-
-.dl-course-root .dl-logo {
-  color: #fff;
-  font-weight: 900;
-  letter-spacing: 0;
-}
-
-.dl-course-root .dl-logo span,
+.dl-course-root .dl-navbar__logo-deep,
+.dl-course-root .dl-navbar__logo-learning,
 .dl-course-root .dl-grad {
   color: transparent;
   background: linear-gradient(90deg, var(--dl-primary-color), var(--dl-accent-color), var(--dl-secondary-color));
@@ -46,35 +28,11 @@
   background-clip: text;
 }
 
-.dl-course-root .dl-nav-links {
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.dl-course-root .dl-nav-links a {
-  min-height: 40px;
-  padding: 0.35rem 0.9rem;
-  color: #dbe7ff;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  font-weight: 800;
-}
-
-.dl-course-root .dl-nav-links a::after {
-  display: none;
-}
-
-.dl-course-root .dl-nav-links a:hover,
-.dl-course-root .dl-nav-links a.active {
+.dl-course-root .dl-navbar__logo-learning {
   color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 77, 141, 0.34);
-}
-
-.dl-course-root .dl-nav-links .dl-back-link {
-  color: #071019;
-  background: linear-gradient(135deg, var(--dl-accent-color), var(--dl-primary-light));
-  border-color: rgba(255, 255, 255, 0.26);
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
 }
 
 .dl-course-root .dl-bar {
@@ -595,15 +553,8 @@
   }
 }
 
+/* ── Mobile: narrow drawer background (already handled in DlNavbar.css) ── */
 @media (max-width: 768px) {
-  .dl-course-root .dl-nav-links {
-    top: 70px;
-    width: min(82%, 340px);
-    background: rgba(7, 7, 18, 0.96);
-    border-left: 1px solid var(--dl-border-glass);
-    backdrop-filter: blur(18px);
-  }
-
   .dl-course-root .dl-hero {
     width: min(100% - 1.5rem, 1240px);
   }

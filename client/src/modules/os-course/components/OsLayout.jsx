@@ -39,6 +39,9 @@ export default function OsLayout() {
             <span className="topbar-pill-dot" />
             10 Modules
           </span>
+          <NavLink to="/courses" className="topbar-back-btn">
+            ← Courses
+          </NavLink>
         </div>
       </header>
 
@@ -63,7 +66,7 @@ export default function OsLayout() {
         </nav>
         <div className="sidebar-footer">
           <span className="sidebar-footer-version">v3.0</span>
-          <span className="sidebar-footer-copy">2026</span>
+          <span className="sidebar-footer-copy">2024</span>
         </div>
       </aside>
 

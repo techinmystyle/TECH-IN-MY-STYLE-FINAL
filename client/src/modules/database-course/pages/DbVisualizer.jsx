@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { datasets } from '../data/datasets';
 import { analyzeSQLQuery, analyzeMongoQuery } from '../utils/queryAnalyzer';
+import DbFooter from '../components/DbFooter';
 
 const SAMPLE_QUERIES = {
   sql: [
@@ -337,6 +338,7 @@ export default function DbVisualizer() {
           )}
         </motion.div>
       </div>
+      <DbFooter />
     </div>
   );
 }

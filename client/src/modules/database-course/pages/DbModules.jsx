@@ -11,6 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { courseModules } from '../data/courseData';
 import { useProgress } from '../hooks/useProgress';
+import DbFooter from '../components/DbFooter';
 
 const iconMap = {
   database: faDatabase, terminal: faTerminal, leaf: faLeaf, link: faLink,
@@ -29,6 +30,7 @@ export default function DbModules() {
   const { getProgress, toggleProgress } = useProgress();
 
   return (
+    <>
     <div style={{ maxWidth: 1200, margin: '0 auto', padding: '3rem 2rem' }}>
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} style={{ marginBottom: '3rem' }}>
         <p className="section-label">Mission Control</p>
@@ -124,5 +126,7 @@ export default function DbModules() {
         </motion.div>
       ))}
     </div>
+    <DbFooter />
+  </>
   );
 }

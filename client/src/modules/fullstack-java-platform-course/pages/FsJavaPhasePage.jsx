@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+﻿import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   FaJava, FaDatabase, FaRocket, FaShieldAlt, FaNetworkWired,
@@ -47,7 +47,7 @@ export default function FsJavaPhasePage() {
   const completedInPhase = phase.topics.filter(t => progress[t.id]).length
 
   return (
-    <div className="fsjava-module" style={{ minHeight: '100vh', background: 'var(--java-darker)', paddingTop: 80 }}>
+    <div id="main-content" style={{ minHeight: '100vh', background: 'var(--java-darker)' }}>
       <div className="grid-overlay" style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }} />
 
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 1100, margin: '0 auto', padding: '2rem 1.5rem' }}>

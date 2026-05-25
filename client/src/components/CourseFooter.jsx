@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ALL_COURSES } from '../shared/courseLinks';
+import { COURSE_CATEGORIES } from '../shared/courseLinks';
 import './CourseFooter.css';
 
 /* ── Shared social links ── */
@@ -66,7 +66,7 @@ export default function CourseFooter({
   colorRgb = '99,102,241',
   quickLinks = [],
 }) {
-  const [year] = useState(() => new Date().getFullYear());
+  const year = new Date().getFullYear();
   const [showBackTop, setShowBackTop] = useState(false);
 
   const gradColor2 = color2 || color;
@@ -79,10 +79,7 @@ export default function CourseFooter({
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  /* Split all courses into 2 halves for the All Courses column */
-  const half = Math.ceil(ALL_COURSES.length / 2);
-  const col1 = ALL_COURSES.slice(0, half);
-  const col2 = ALL_COURSES.slice(half);
+
 
   return (
     <footer
@@ -177,30 +174,25 @@ export default function CourseFooter({
           </ul>
         </div>
 
-        {/* ── Column 4: All Courses — two sub-columns ── */}
+        {/* ── Column 4: All Courses — categorized grid ── */}
         <div className="cf-col cf-col--courses">
           <h3 className="cf-col-heading">All Courses</h3>
           <div className="cf-all-courses-grid">
-            <ul className="cf-links" role="list">
-              {col1.map(({ label, href }) => (
-                <li key={href}>
-                  <Link to={href} className="cf-link">
-                    <i className="bi bi-chevron-right" aria-hidden="true" />
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <ul className="cf-links" role="list">
-              {col2.map(({ label, href }) => (
-                <li key={href}>
-                  <Link to={href} className="cf-link">
-                    <i className="bi bi-chevron-right" aria-hidden="true" />
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {COURSE_CATEGORIES.map(({ category, courses }) => (
+              <div key={category} className="cf-course-cat">
+                <div className="cf-course-cat-heading">{category}</div>
+                <ul className="cf-links" role="list">
+                  {courses.map(({ label, href }) => (
+                    <li key={href}>
+                      <Link to={href} className="cf-link">
+                        <i className="bi bi-chevron-right" aria-hidden="true" />
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -221,11 +213,11 @@ export default function CourseFooter({
 
         <div className="cf-bottom-right">
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: '1.5rem' }}>
-            <Link to={courseRoute} className="cf-bottom-link">Privacy Policy</Link>
+            <Link to="/privacy-policy" className="cf-bottom-link">Privacy Policy</Link>
             <span className="cf-bottom-sep" aria-hidden="true">●</span>
-            <Link to={courseRoute} className="cf-bottom-link">Terms of Use</Link>
+            <Link to="/terms-and-conditions" className="cf-bottom-link">Terms of Use</Link>
             <span className="cf-bottom-sep" aria-hidden="true">●</span>
-            <Link to={courseRoute} className="cf-bottom-link">Sitemap</Link>
+            <Link to="/disclaimer" className="cf-bottom-link">Disclaimer</Link>
           </span>
 
           <button

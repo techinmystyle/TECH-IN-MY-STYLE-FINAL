@@ -12,6 +12,7 @@ import DbMacCodeBlock from '../components/DbMacCodeBlock';
 import { useProgress } from '../hooks/useProgress';
 import { useState } from 'react';
 import { FaYoutube, FaFileAlt, FaBook } from 'react-icons/fa';
+import DbFooter from '../components/DbFooter';
 
 
 export default function DbTopic() {
@@ -324,6 +325,7 @@ export default function DbTopic() {
           </Link>
         ) : <div style={{ flex: 1 }} />}
       </div>
+      <DbFooter />
     </div>
   );
 }

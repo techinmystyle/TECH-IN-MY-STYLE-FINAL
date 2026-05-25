@@ -17,6 +17,7 @@ export default function DscHeader() {
           <li><NavLink to="/dsc-course" end className={({ isActive }) => isActive ? 'active' : ''} onClick={closeMenu}>Home</NavLink></li>
           <li><NavLink to="/dsc-course/topics" className={({ isActive }) => isActive ? 'active' : ''} onClick={closeMenu}>Topics</NavLink></li>
           <li><NavLink to="/dsc-course/about" className={({ isActive }) => isActive ? 'active' : ''} onClick={closeMenu}>About</NavLink></li>
+          <li><NavLink to="/courses" className={({ isActive }) => isActive ? 'active' : ''} onClick={closeMenu}>← Back</NavLink></li>
         </ul>
       </nav>
       <button

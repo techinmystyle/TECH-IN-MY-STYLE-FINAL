@@ -23,9 +23,6 @@ export default function AiHeader() {
     <header className={scrolled ? 'scrolled' : ''}>
       <div className="header-inner">
         <Link to="/ai-course" className="logo-link">
-          <div className="logo-icon">
-            <img src="/Ai.svg" alt="AI In My Style" />
-          </div>
           <span className="logo-text">AI <span>In My Style</span></span>
         </Link>
 
@@ -36,6 +33,9 @@ export default function AiHeader() {
                 <Link to={l.to} className={pathname === l.to ? 'active' : ''}>{l.label}</Link>
               </li>
             ))}
+            <li>
+              <Link to="/courses" className="">← Back</Link>
+            </li>
           </ul>
           <Link to="/ai-course/topics" className="btn nav-cta">
             <i className="fas fa-rocket"></i> Explore Topics

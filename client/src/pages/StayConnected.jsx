@@ -55,40 +55,6 @@ const StayConnected = () => {
     };
   }, []);
 
-  const contactInfo = [
-    {
-      icon: 'fas fa-clock',
-      title: 'Contact Times',
-      description: 'Best times to reach us',
-      details: [
-        'Sunday: 10 AM to 10 PM',
-        'Evening: After 6:00 PM',
-        'Morning: 7:45 to 9:00 AM'
-      ]
-    },
-    {
-      icon: 'fas fa-phone',
-      title: 'Call Us',
-      description: 'Reach out to us directly',
-      details: [
-        '+91 9491342710',
-        '+91 6301208580',
-        'Mon - Fri: 9AM - 6PM'
-      ],
-      buttons: [
-        { text: 'Call-1', phone: '+919491342710' },
-        { text: 'Call-2', phone: '+916301208580' }
-      ]
-    },
-    {
-      icon: 'fas fa-envelope',
-      title: 'Email Us',
-      description: 'Send us your queries',
-      details: ['techinmystyle@gmail.com'],
-      email: 'techinmystyle@gmail.com'
-    }
-  ];
-
   const socialMedia = [
     {
       platform: 'instagram',
@@ -157,42 +123,6 @@ const StayConnected = () => {
           <div className="hero-content" data-aos="fade-up">
             <h1>Stay <span className="color-change">Connected</span></h1>
             <p>Join our community and never miss an update</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Information */}
-      <section className="contact-info">
-        <div className="container">
-          <h2 data-aos="fade-up">Get In Touch</h2>
-          <div className="contact-grid">
-            {contactInfo.map((contact, index) => (
-              <div className="contact-card" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
-                <div className="contact-icon">
-                  <i className={contact.icon}></i>
-                </div>
-                <h3>{contact.title}</h3>
-                <p>{contact.description}</p>
-                {contact.details && contact.details.map((detail, idx) => (
-                  <p key={idx}><strong>{detail}</strong></p>
-                ))}
-                {contact.buttons && (
-                  <div className="call-buttons">
-                    {contact.buttons.map((btn, idx) => (
-                      <a key={idx} href={`tel:${btn.phone}`} className="btn secondary">{btn.text}</a>
-                    ))}
-                  </div>
-                )}
-                {contact.email && (
-                  <button 
-                    className="btn secondary" 
-                    onClick={() => window.location.href = `mailto:${contact.email}`}
-                  >
-                    Send Email
-                  </button>
-                )}
-              </div>
-            ))}
           </div>
         </div>
       </section>

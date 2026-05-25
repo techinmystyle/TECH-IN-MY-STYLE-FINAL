@@ -11,6 +11,9 @@ import Register from '@pages/Register';
 import ForgotPassword from '@pages/ForgotPassword';
 import ResetPassword from '@pages/ResetPassword';
 import ProtectedRoute from '@components/ProtectedRoute';
+import PrivacyPolicy from '@pages/PrivacyPolicy';
+import TermsAndConditions from '@pages/TermsAndConditions';
+import Disclaimer from '@pages/Disclaimer';
 import HtmlCourseRoutes from '@modules/html-course/routes';
 import CssCourseRoutes from '@modules/css-course/routes';
 import PythonCourseRoutes from '@modules/python-course/routes';
@@ -45,6 +48,11 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
         
+        {/* ── Legal Pages (PUBLIC — no auth, required for AdSense) ── */}
+        <Route path="/privacy-policy"      element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/disclaimer"           element={<Disclaimer />} />
+
         {/* Protected Routes */}
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/courses" element={<ProtectedRoute><Courses /></ProtectedRoute>} />

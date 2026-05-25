@@ -12,7 +12,7 @@ export default function FsPyFooter() {
       courseName="FULL STACK PYTHON"
       courseRoute="/fullstack-python-course"
       tagline="Master Python from fundamentals to deployment. Build REST APIs and ship production-ready apps."
-      logoImg="/img/PYTHON.png"
+      logoImg="/img/FULL-STACK-PYTHON.png"
       color="#1b5e20"
       color2="#2e7d32"
       colorRgb="27,94,32"

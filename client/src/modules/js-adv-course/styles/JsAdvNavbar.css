@@ -1,4 +1,4 @@
-/* ======================================================================
+﻿/* ======================================================================
    JsAdvNavbar.css â€” JavaScript Advanced In My Style
    Brand: JS Yellow (#06b6d4) Â· Deep Navy (var(--bg))
    Dark mode: toggled via  html.dark  class on <html>
@@ -713,50 +713,50 @@ html.dark .js-adv-course-root .navbar--scrolled {
 
 /* â”€â”€ Tablet: hide desktop nav, show hamburger â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 900px) {
-  .navbar__nav {
+  .js-adv-course-root .navbar__nav {
     display: none;
   }
 
-  .navbar__hamburger {
+  .js-adv-course-root .navbar__hamburger {
     display: flex;
   }
 }
 
 /* â”€â”€ Desktop: always show nav, hide drawer UI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (min-width: 901px) {
-  .navbar__hamburger {
+  .js-adv-course-root .navbar__hamburger {
     display: none !important;
   }
 
-  .navbar__mobile-menu,
-  .navbar__overlay {
+  .js-adv-course-root .navbar__mobile-menu,
+  .js-adv-course-root .navbar__overlay {
     display: none !important;
   }
 }
 
 /* â”€â”€ Small mobile â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 480px) {
-  .navbar__inner {
+  .js-adv-course-root .navbar__inner {
     padding: 0 4%;
     height: 64px;
   }
 
-  .navbar__logo-tag {
+  .js-adv-course-root .navbar__logo-tag {
     font-size: 0.95rem;
   }
 
-  .navbar__logo-brand {
+  .js-adv-course-root .navbar__logo-brand {
     font-size: 1.05rem;
   }
 
-  .navbar__mobile-menu {
+  .js-adv-course-root .navbar__mobile-menu {
     width: 100vw;
   }
 }
 
 /* â”€â”€ Extra large: cap desktop padding â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (min-width: 1400px) {
-  .navbar__inner {
+  .js-adv-course-root .navbar__inner {
     padding: 0 3%;
   }
 }
@@ -765,31 +765,31 @@ html.dark .js-adv-course-root .navbar--scrolled {
    REDUCED MOTION
    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media (prefers-reduced-motion: reduce) {
-  .navbar,
-  .navbar__progress,
-  .navbar__logo,
-  .navbar__logo-brand,
-  .navbar__nav-link,
-  .navbar__nav-link i,
-  .navbar__theme-btn,
-  .navbar__hamburger,
-  .navbar__overlay,
-  .navbar__mobile-menu,
-  .navbar__mobile-link,
-  .navbar__mobile-close,
-  .navbar__social-btn,
-  .navbar__toggle-slider,
-  .navbar__toggle-slider::before {
+  .js-adv-course-root .navbar,
+  .js-adv-course-root .navbar__progress,
+  .js-adv-course-root .navbar__logo,
+  .js-adv-course-root .navbar__logo-brand,
+  .js-adv-course-root .navbar__nav-link,
+  .js-adv-course-root .navbar__nav-link i,
+  .js-adv-course-root .navbar__theme-btn,
+  .js-adv-course-root .navbar__hamburger,
+  .js-adv-course-root .navbar__overlay,
+  .js-adv-course-root .navbar__mobile-menu,
+  .js-adv-course-root .navbar__mobile-link,
+  .js-adv-course-root .navbar__mobile-close,
+  .js-adv-course-root .navbar__social-btn,
+  .js-adv-course-root .navbar__toggle-slider,
+  .js-adv-course-root .navbar__toggle-slider::before {
     transition: none !important;
     animation: none !important;
   }
 
-  .navbar__logo:hover       { transform: none; }
-  .navbar__theme-btn:hover  { transform: none; }
-  .navbar__mobile-close:hover { transform: none; }
-  .navbar__social-btn:hover { transform: none; }
-  .navbar__mobile-link:hover { transform: none; }
-  .navbar__nav-link:hover i  { transform: none; }
+  .js-adv-course-root .navbar__logo:hover       { transform: none; }
+  .js-adv-course-root .navbar__theme-btn:hover  { transform: none; }
+  .js-adv-course-root .navbar__mobile-close:hover { transform: none; }
+  .js-adv-course-root .navbar__social-btn:hover { transform: none; }
+  .js-adv-course-root .navbar__mobile-link:hover { transform: none; }
+  .js-adv-course-root .navbar__nav-link:hover i  { transform: none; }
 }
 
 

@@ -58,7 +58,7 @@
 }
 
 .footer-row-2 {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .footer-column h4 {
@@ -111,6 +111,39 @@
 
 .footer-bottom p {
   color: white !important;
+}
+
+/* Legal links in footer bottom bar */
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-legal-links a {
+  color: rgba(255,255,255,0.85) !important;
+  text-decoration: none;
+  font-size: 0.82rem;
+  transition: color 0.2s ease;
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  transform: none !important;
+}
+
+.footer-legal-links a:hover {
+  color: #fff !important;
+  text-decoration: underline;
+  background: none !important;
+  transform: none !important;
+  padding-left: 0 !important;
+}
+
+.footer-legal-links span {
+  color: rgba(255,255,255,0.40);
+  font-size: 0.7rem;
 }
 
 .scroll-top {

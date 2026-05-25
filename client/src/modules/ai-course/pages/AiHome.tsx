@@ -67,9 +67,6 @@ export default function AiHome() {
             <div className="hero-card-stack">
               <div className="hero-main-card">
                 <div className="hmc-header">
-                  <div className="hmc-icon">
-                    <img src="/Ai.svg" alt="AI" />
-                  </div>
                   <div>
                     <div className="hmc-title">AI Chatbot</div>
                     <div className="hmc-sub">Simple NLP Example</div>

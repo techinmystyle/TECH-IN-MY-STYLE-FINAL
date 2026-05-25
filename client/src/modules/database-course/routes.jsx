@@ -7,11 +7,13 @@ import DbVisualizer from './pages/DbVisualizer';
 import DbInterview from './pages/DbInterview';
 import DbSearch from './pages/DbSearch';
 import DbBookmarks from './pages/DbBookmarks';
+import DbNavbar from './components/DbNavbar';
 import './styles/db-index.css';
 
 export default function DatabaseCourseRoutes() {
   return (
     <div className="database-course-root">
+      <DbNavbar />
       <Routes>
         <Route path="/" element={<DbHome />} />
         <Route path="/modules" element={<DbModules />} />

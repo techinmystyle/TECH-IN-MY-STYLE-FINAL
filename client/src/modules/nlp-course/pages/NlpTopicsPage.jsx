@@ -13,7 +13,7 @@ export default function NlpTopicsPage() {
   );
 
   return (
-    <div style={{ minHeight: '100vh', paddingTop: 68, position: 'relative', zIndex: 1 }}>
+    <div id="main-content" style={{ minHeight: '100vh', position: 'relative', zIndex: 1 }}>
       {/* Page Header */}
       <div style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.01)', padding: '60px 24px 48px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>

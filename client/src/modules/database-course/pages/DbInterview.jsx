@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faDatabase, faLeaf, faBolt, faShieldAlt, faFilter } from '@fortawesome/free-solid-svg-icons';
+import DbFooter from '../components/DbFooter';
 
 const categories = [
   {
@@ -194,6 +195,7 @@ export default function DbInterview() {
           </div>
         ))}
       </div>
+      <DbFooter />
     </div>
   );
 }

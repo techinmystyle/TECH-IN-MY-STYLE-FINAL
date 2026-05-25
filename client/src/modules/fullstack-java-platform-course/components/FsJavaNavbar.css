@@ -1,0 +1,578 @@
+/* ======================================================================
+   FsJavaNavbar.css — Full Stack Java In My Style
+   Theme: Orange (#f89820) + Blue (#5382a1) on dark navy (#070b17)
+   Orbitron font, sci-fi HUD aesthetic
+   ====================================================================== */
+
+/* ── Skip link ───────────────────────────────────────────────────────── */
+.fsjava-module .fsjava-navbar__skip {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.6rem 1.2rem;
+  background: #f89820;
+  color: #070b17;
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.fsjava-module .fsjava-navbar__skip:focus {
+  top: 0;
+  outline: none;
+}
+
+/* ── Navbar shell ────────────────────────────────────────────────────── */
+.fsjava-module .fsjava-navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(6, 10, 20, 0.75);
+  border-bottom: 1px solid rgba(83, 130, 161, 0.18);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.fsjava-module .fsjava-navbar--scrolled {
+  background: rgba(6, 10, 20, 0.97);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.55);
+  border-bottom-color: rgba(248, 152, 32, 0.22);
+}
+
+/* ── Top animated accent line ────────────────────────────────────────── */
+.fsjava-module .fsjava-navbar__accent {
+  height: 2px;
+  background: linear-gradient(90deg, var(--java-blue, #5382a1), var(--java-orange, #f89820), var(--java-blue, #5382a1));
+  background-size: 200% 100%;
+  animation: fsjava-nav-flow 4s linear infinite;
+  opacity: 0.75;
+}
+
+@keyframes fsjava-nav-flow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ── Scroll progress bar ─────────────────────────────────────────────── */
+.fsjava-module .fsjava-navbar__progress {
+  position: absolute;
+  top: 2px; /* below accent line */
+  left: 0;
+  height: 2px;
+  max-width: 100%;
+  background: linear-gradient(90deg, #f89820 0%, #5382a1 50%, #3ddc84 100%);
+  border-radius: 0 2px 2px 0;
+  transition: width 0.12s linear;
+  z-index: 1001;
+  pointer-events: none;
+  will-change: width;
+  box-shadow: 0 0 10px rgba(248, 152, 32, 0.65);
+}
+
+/* ── Inner container ─────────────────────────────────────────────────── */
+.fsjava-module .fsjava-navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  width: 100%;
+  height: 58px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  gap: 12px;
+}
+
+/* ══ LOGO ════════════════════════════════════════════════════════════════ */
+.fsjava-module .fsjava-navbar__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  outline-offset: 4px;
+}
+
+.fsjava-module .fsjava-navbar__logo:hover {
+  opacity: 0.85;
+  transform: scale(1.03);
+}
+
+.fsjava-module .fsjava-navbar__logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(248, 152, 32, 0.15), rgba(83, 130, 161, 0.15));
+  border: 1px solid rgba(248, 152, 32, 0.35);
+  color: #f89820;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  animation: fsjava-javaShimmer 2.5s ease-in-out infinite;
+}
+
+.fsjava-module .fsjava-navbar__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.fsjava-module .fsjava-navbar__logo-top {
+  font-family: 'Orbitron', monospace;
+  color: #f89820;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.fsjava-module .fsjava-navbar__logo-bottom {
+  font-family: 'Orbitron', monospace;
+  color: #5382a1;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+}
+
+/* Mobile logo hides bottom line */
+.fsjava-module .fsjava-navbar__logo--mobile .fsjava-navbar__logo-bottom {
+  display: none;
+}
+
+/* ══ DESKTOP NAV ═════════════════════════════════════════════════════════ */
+.fsjava-module .fsjava-navbar__nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.15rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.fsjava-module .fsjava-navbar__nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #4a6070;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+  outline-offset: 2px;
+}
+
+.fsjava-module .fsjava-navbar__nav-link i {
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.fsjava-module .fsjava-navbar__nav-link:hover {
+  background: rgba(248, 152, 32, 0.08);
+  color: #f89820;
+  border-color: rgba(248, 152, 32, 0.20);
+}
+
+.fsjava-module .fsjava-navbar__nav-link.active {
+  background: rgba(248, 152, 32, 0.08);
+  color: #f89820;
+  border-color: rgba(248, 152, 32, 0.25);
+}
+
+/* ── Back link ── */
+.fsjava-module .fsjava-navbar__back-link {
+  margin-left: 0.5rem;
+  background: linear-gradient(135deg, rgba(248, 152, 32, 0.18), rgba(83, 130, 161, 0.12));
+  border-color: rgba(248, 152, 32, 0.40) !important;
+  color: #f89820 !important;
+  box-shadow: 0 0 12px rgba(248, 152, 32, 0.15);
+}
+
+.fsjava-module .fsjava-navbar__back-link:hover {
+  background: linear-gradient(135deg, rgba(248, 152, 32, 0.28), rgba(83, 130, 161, 0.20)) !important;
+  box-shadow: 0 0 20px rgba(248, 152, 32, 0.28) !important;
+  transform: translateX(-3px);
+  color: #f89820 !important;
+}
+
+/* ══ RIGHT CONTROLS ══════════════════════════════════════════════════════ */
+.fsjava-module .fsjava-navbar__controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Hamburger (mobile only) ── */
+.fsjava-module .fsjava-navbar__hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid rgba(248, 152, 32, 0.28);
+  background: rgba(248, 152, 32, 0.06);
+  color: #4a6070;
+  font-size: 1.3rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+  outline-offset: 3px;
+}
+
+.fsjava-module .fsjava-navbar__hamburger:hover {
+  background: rgba(248, 152, 32, 0.14);
+  border-color: rgba(248, 152, 32, 0.50);
+  color: #f89820;
+}
+
+.fsjava-module .fsjava-navbar__hamburger--open {
+  background: rgba(248, 152, 32, 0.14);
+  border-color: rgba(248, 152, 32, 0.50);
+  color: #f89820;
+}
+
+/* ══ OVERLAY ══════════════════════════════════════════════════════════════ */
+.fsjava-module .fsjava-navbar__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.fsjava-module .fsjava-navbar__overlay--visible {
+  background: rgba(0, 0, 0, 0.65);
+  pointer-events: auto;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+/* ══ MOBILE SLIDE-IN DRAWER ══════════════════════════════════════════════ */
+.fsjava-module .fsjava-navbar__mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(300px, 85vw);
+  z-index: 1001;
+  background: rgba(6, 10, 20, 0.99);
+  border-left: 1px solid rgba(248, 152, 32, 0.18);
+  transform: translateX(100%);
+  transition:
+    transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.32s ease;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  will-change: transform;
+}
+
+.fsjava-module .fsjava-navbar__mobile-menu.open {
+  transform: translateX(0);
+  box-shadow: -8px 0 48px rgba(0, 0, 0, 0.70);
+}
+
+/* ── Drawer header ── */
+.fsjava-module .fsjava-navbar__mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(248, 152, 32, 0.12);
+  flex-shrink: 0;
+  background: rgba(248, 152, 32, 0.04);
+}
+
+.fsjava-module .fsjava-navbar__mobile-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  border: 1px solid rgba(248, 152, 32, 0.18);
+  background: rgba(248, 152, 32, 0.06);
+  color: #4a6070;
+  font-size: 0.9rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  outline-offset: 2px;
+}
+
+.fsjava-module .fsjava-navbar__mobile-close:hover {
+  background: rgba(248, 152, 32, 0.18);
+  color: #f89820;
+  transform: rotate(90deg);
+}
+
+/* ── Drawer nav links ── */
+.fsjava-module .fsjava-navbar__mobile-nav {
+  flex: 1;
+  padding: 12px 10px 8px;
+  overflow-y: auto;
+}
+
+.fsjava-module .fsjava-navbar__mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.fsjava-module .fsjava-navbar__mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #4a6070;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.fsjava-module .fsjava-navbar__mobile-link i:first-child {
+  font-size: 1rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  color: rgba(248, 152, 32, 0.35);
+}
+
+.fsjava-module .fsjava-navbar__mobile-link span {
+  flex: 1;
+}
+
+.fsjava-module .fsjava-navbar__mobile-link:hover {
+  background: rgba(248, 152, 32, 0.08);
+  color: #f89820;
+  border-color: rgba(248, 152, 32, 0.20);
+  transform: translateX(4px);
+}
+
+.fsjava-module .fsjava-navbar__mobile-link:hover i:first-child {
+  color: #f89820;
+}
+
+.fsjava-module .fsjava-navbar__mobile-link--active {
+  background: rgba(248, 152, 32, 0.10);
+  color: #f89820;
+  border-color: rgba(248, 152, 32, 0.28);
+}
+
+.fsjava-module .fsjava-navbar__mobile-link--active i:first-child {
+  color: #f89820;
+}
+
+.fsjava-module .fsjava-navbar__active-check {
+  font-size: 0.82rem !important;
+  width: auto !important;
+  color: #3ddc84;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Back link in drawer */
+.fsjava-module .fsjava-navbar__mobile-back {
+  color: rgba(74, 96, 112, 0.6);
+  border-top: 1px solid rgba(83, 130, 161, 0.10);
+  margin-top: 8px;
+  padding-top: 14px;
+  background: linear-gradient(135deg, rgba(248, 152, 32, 0.06), rgba(83, 130, 161, 0.06));
+  border-color: rgba(248, 152, 32, 0.20) !important;
+  color: #f89820 !important;
+}
+
+.fsjava-module .fsjava-navbar__mobile-back:hover {
+  background: linear-gradient(135deg, rgba(248, 152, 32, 0.14), rgba(83, 130, 161, 0.10)) !important;
+}
+
+/* ── Social icons ── */
+.fsjava-module .fsjava-navbar__mobile-socials {
+  padding: 14px 16px 28px;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(83, 130, 161, 0.10);
+}
+
+.fsjava-module .fsjava-navbar__mobile-socials-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: rgba(74, 96, 112, 0.55);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.fsjava-module .fsjava-navbar__mobile-socials-row {
+  display: flex;
+  gap: 10px;
+}
+
+.fsjava-module .fsjava-navbar__social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 1px solid rgba(248, 152, 32, 0.14);
+  color: #4a6070;
+  background: transparent;
+  transition:
+    background 0.22s ease,
+    color 0.22s ease,
+    transform 0.2s ease,
+    box-shadow 0.22s ease;
+  outline-offset: 3px;
+}
+
+.fsjava-module .fsjava-navbar__social-btn:hover {
+  transform: translateY(-3px);
+}
+
+.fsjava-module .fsjava-navbar__social-btn--instagram:hover {
+  background: linear-gradient(135deg, #fd1d1d, #e1306c, #833ab4);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(225, 48, 108, 0.38);
+}
+
+.fsjava-module .fsjava-navbar__social-btn--youtube:hover {
+  background: #ff0000;
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(255, 0, 0, 0.38);
+}
+
+.fsjava-module .fsjava-navbar__social-btn--telegram:hover {
+  background: #0088cc;
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(0, 136, 204, 0.38);
+}
+
+/* ══ RESPONSIVE BREAKPOINTS ══════════════════════════════════════════════ */
+
+/* Tablet/mobile: hide desktop nav, show hamburger */
+@media (max-width: 900px) {
+  .fsjava-module .fsjava-navbar__nav {
+    display: none;
+  }
+
+  .fsjava-module .fsjava-navbar__hamburger {
+    display: flex;
+  }
+}
+
+/* Desktop: show nav, hide hamburger and drawer */
+@media (min-width: 901px) {
+  .fsjava-module .fsjava-navbar__hamburger {
+    display: none !important;
+  }
+
+  .fsjava-module .fsjava-navbar__mobile-menu {
+    transform: translateX(100%) !important;
+    box-shadow: none !important;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  .fsjava-module .fsjava-navbar__overlay {
+    pointer-events: none !important;
+    background: rgba(0, 0, 0, 0) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .fsjava-module .fsjava-navbar__inner {
+    padding: 0 1rem;
+    height: 54px;
+  }
+
+  .fsjava-module .fsjava-navbar__logo-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .fsjava-module .fsjava-navbar__logo-top {
+    font-size: 0.62rem;
+  }
+
+  .fsjava-module .fsjava-navbar__mobile-menu {
+    width: 100vw;
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .fsjava-module .fsjava-navbar,
+  .fsjava-module .fsjava-navbar__progress,
+  .fsjava-module .fsjava-navbar__accent,
+  .fsjava-module .fsjava-navbar__logo,
+  .fsjava-module .fsjava-navbar__logo-icon,
+  .fsjava-module .fsjava-navbar__nav-link,
+  .fsjava-module .fsjava-navbar__hamburger,
+  .fsjava-module .fsjava-navbar__overlay,
+  .fsjava-module .fsjava-navbar__mobile-menu,
+  .fsjava-module .fsjava-navbar__mobile-link,
+  .fsjava-module .fsjava-navbar__mobile-close,
+  .fsjava-module .fsjava-navbar__social-btn {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .fsjava-module .fsjava-navbar__logo:hover        { transform: none; }
+  .fsjava-module .fsjava-navbar__mobile-close:hover { transform: none; }
+  .fsjava-module .fsjava-navbar__social-btn:hover   { transform: none; }
+  .fsjava-module .fsjava-navbar__mobile-link:hover  { transform: none; }
+  .fsjava-module .fsjava-navbar__back-link:hover    { transform: none; }
+}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
 import Editor from '@monaco-editor/react'
@@ -88,7 +88,7 @@ export default function FsJavaApiLab() {
   const responseStr = response ? JSON.stringify(response, null, 2) : ''
 
   return (
-    <div className="fsjava-module" style={{ minHeight: '100vh', background: 'var(--java-darker)', paddingTop: 80 }}>
+    <div id="main-content" style={{ minHeight: '100vh', background: 'var(--java-darker)' }}>
       <div className="grid-overlay" style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }} />
 
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 1200, margin: '0 auto', padding: '2rem 1.5rem' }}>

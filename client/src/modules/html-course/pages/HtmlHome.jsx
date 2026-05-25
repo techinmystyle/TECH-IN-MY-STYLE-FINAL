@@ -10,7 +10,7 @@ const courses = [
     title: "HTML IN MY STYLE",
     description:
       "Learn semantic HTML5, document structure, forms, and accessibility with our comprehensive course.",
-    image: "/img/HTML.png",
+    image: "/img/HTML-BG.png",
     link: "/html-course",
     internal: true,
     badge: "Available Now",

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faDatabase, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { courseModules } from '../data/courseData';
+import DbFooter from '../components/DbFooter';
 
 export default function DbSearch() {
   const [query, setQuery] = useState('');
@@ -90,6 +91,7 @@ export default function DbSearch() {
           ))}
         </div>
       )}
+      <DbFooter />
     </div>
   );
 }

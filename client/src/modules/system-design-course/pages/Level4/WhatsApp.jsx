@@ -7,16 +7,16 @@ import SDMermaidDiagram from '../../components/SDMermaidDiagram';
 export default function WhatsApp() {
   const interviewQuestions = [
     {
-      question: "How would you design WhatsApp's messaging system?",
+      question: "How would you design a real-time messaging system?",
       answer: "Use WebSocket for real-time messaging, message queues for offline delivery, database sharding by user ID, and push notifications for alerts. Store messages in NoSQL for scalability, use Redis for online status, and implement end-to-end encryption."
     },
     {
-      question: "How does WhatsApp handle billions of messages daily?",
-      answer: "Through horizontal scaling with Erlang/BEAM VM, message routing through Mnesia database, connection pooling, and geographic distribution. Uses custom protocols for efficiency and implements load balancing at multiple levels."
+      question: "How does a chat system handle billions of messages daily?",
+      answer: "Through horizontal scaling, message routing with efficient queues, connection pooling, and geographic distribution. Use custom protocols for efficiency and implement load balancing at multiple levels."
     },
     {
-      question: "How does WhatsApp ensure message delivery?",
-      answer: "Through acknowledgments (single/double ticks), offline message queuing, retry mechanisms with exponential backoff, and push notifications. Messages persist until delivery is confirmed, with fallback to SMS for critical notifications."
+      question: "How do you ensure reliable message delivery in a chat app?",
+      answer: "Through acknowledgments (single/double ticks), offline message queuing, retry mechanisms with exponential backoff, and push notifications. Messages persist until delivery is confirmed, with fallback strategies for critical notifications."
     }
   ];
 
@@ -25,8 +25,11 @@ export default function WhatsApp() {
       {/* HEADER */}
       <SDCard>
         <div className="bg-gradient-to-r from-green-500 to-teal-600 text-white p-6 rounded-2xl">
-          <h1 className="text-3xl font-bold">WhatsApp System Design</h1>
+          <h1 className="text-3xl font-bold">Chat App System Design</h1>
           <p className="text-sm mt-2 opacity-90">Real-time messaging for billions of users</p>
+          <p className="text-xs mt-1 opacity-70 italic">
+            Educational case study. Concepts are based on publicly known architectures used by messaging platforms.
+          </p>
         </div>
       </SDCard>
 
@@ -34,7 +37,7 @@ export default function WhatsApp() {
       <SDCard>
         <h2 className="text-xl font-semibold mb-2">Thinking</h2>
         <p>
-          WhatsApp is like a global postal service that delivers messages instantly. When you send a message, it's like dropping a letter in a mailbox that instantly teleports to your friend's mailbox. The system needs to handle billions of letters daily, ensure they arrive in order, protect privacy with sealed envelopes (encryption), and notify recipients when they have mail.
+          A chat app is like a global postal service that delivers messages instantly. When you send a message, it's like dropping a letter in a mailbox that instantly teleports to your friend's mailbox. The system needs to handle billions of messages daily, ensure they arrive in order, protect privacy with end-to-end encryption, and notify recipients in real time.
         </p>
       </SDCard>
 
@@ -42,7 +45,7 @@ export default function WhatsApp() {
       <SDCard>
         <h2 className="text-xl font-semibold mb-2">Description</h2>
         <p>
-          WhatsApp is a real-time messaging application serving over 2 billion users worldwide. The system must handle massive scale with low latency, ensure message reliability, provide end-to-end encryption, and support various media types. Key challenges include real-time delivery, offline message handling, group messaging, and media sharing.
+          A real-time messaging application serving billions of users worldwide. The system must handle massive scale with low latency, ensure message reliability, provide end-to-end encryption, and support various media types. Key challenges include real-time delivery, offline message handling, group messaging, and media sharing.
         </p>
 
         <ul className="list-disc pl-5 mt-2 space-y-1">
@@ -54,15 +57,15 @@ export default function WhatsApp() {
         </ul>
 
         <div className="mt-4 bg-yellow-100 dark:bg-yellow-900 p-3 rounded-lg">
-          <span className="text-yellow-800 dark:text-yellow-200">Important Insight:</span> 
-          <span className="text-yellow-700 dark:text-yellow-300"> WhatsApp processes over 100 billion messages daily with 99.9% uptime and sub-second delivery times.</span>
+          <span className="text-yellow-800 dark:text-yellow-200">Important Insight:</span>{' '}
+          <span className="text-yellow-700 dark:text-yellow-300">Large-scale chat platforms process over 100 billion messages daily with 99.9% uptime and sub-second delivery times.</span>
         </div>
       </SDCard>
 
       {/* ARCHITECTURE */}
       <SDCard>
         <h2 className="text-xl font-semibold mb-2">System Architecture</h2>
-        <SDMermaidDiagram 
+        <SDMermaidDiagram
           chart={`
 flowchart TD
     subgraph "Client Layer"
@@ -96,7 +99,7 @@ flowchart TD
     style J fill:#e8e8e8,stroke:#333,stroke-width:2px
     style K fill:#e8e8e8,stroke:#333,stroke-width:2px
           `}
-          id="whatsapp-arch"
+          id="chatapp-arch"
         />
       </SDCard>
 
@@ -104,13 +107,13 @@ flowchart TD
       <SDCard>
         <h2 className="text-xl font-semibold mb-2">Real World Implementation</h2>
         <p>
-          <strong>Technology Stack:</strong> WhatsApp uses Erlang/OTP for its core messaging system due to its concurrency and fault tolerance. Mnesia (Erlang's database) stores user data and messages. FreeBSD servers handle the infrastructure with custom-built protocols optimized for mobile networks.
+          <strong>Technology Stack:</strong> Messaging platforms commonly use Erlang/OTP for core messaging due to its concurrency and fault tolerance. Distributed databases store user data and messages. Custom-built protocols optimized for mobile networks minimize battery and bandwidth usage.
         </p>
         <p className="mt-2">
-          <strong>Scale:</strong> Handles 2+ billion users with 65+ billion messages daily. Uses data centers globally with geographic distribution to minimize latency. Each data center can handle millions of concurrent connections.
+          <strong>Scale:</strong> Handles billions of users with tens of billions of messages daily. Uses data centers globally with geographic distribution to minimize latency. Each data center can handle millions of concurrent connections.
         </p>
         <p className="mt-2">
-          <strong>Reliability:</strong> 99.9% uptime with automatic failover. Messages persist until delivery confirmed. Implements sophisticated retry mechanisms and fallback strategies.
+          <strong>Reliability:</strong> 99.9% uptime with automatic failover. Messages persist until delivery is confirmed. Implements sophisticated retry mechanisms and fallback strategies.
         </p>
       </SDCard>
 
@@ -194,10 +197,10 @@ const messageSchema = {
           <strong>Real-time vs Battery Life:</strong> Constant WebSocket connections provide instant messaging but drain battery. Implement smart connection management and heartbeat optimization.
         </p>
         <p className="mt-2">
-          <strong>Storage vs Privacy:</strong> Message history provides better user experience but raises privacy concerns. WhatsApp balances this with end-to-end encryption and optional backup features.
+          <strong>Storage vs Privacy:</strong> Message history provides better user experience but raises privacy concerns. Balance this with end-to-end encryption and optional backup features.
         </p>
         <p className="mt-2">
-          <strong>Complexity vs Features:</strong> Rich features (status, stories, payments) add complexity but improve user engagement. WhatsApp maintains simplicity in core messaging while adding features gradually.
+          <strong>Complexity vs Features:</strong> Rich features (status, stories, payments) add complexity but improve user engagement. Maintain simplicity in core messaging while adding features gradually.
         </p>
       </SDCard>
 

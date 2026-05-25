@@ -12,7 +12,7 @@ export default function GenAiFooter() {
       courseName="GEN AI IN MY STYLE"
       courseRoute="/genai-course"
       tagline="Master Generative AI — LLMs, RAG, agents, embeddings, and production-ready AI applications."
-      logoImg="/img/AI.png"
+      logoImg="/img/GEN-AI.png"
       color="#c62828"
       color2="#e53935"
       colorRgb="198,40,40"

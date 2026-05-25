@@ -10,6 +10,7 @@ import { useProgress } from '../hooks/useProgress';
 import DbRadarWidget from '../components/DbRadarWidget';
 import DbHUDCard from '../components/DbHUDCard';
 import PopularCourses from '../../../components/PopularCourses';
+import DbFooter from '../components/DbFooter';
 
 export default function DbHome() {
   const { getCompletedCount } = useProgress();
@@ -365,6 +366,7 @@ export default function DbHome() {
       </section>
 
       <PopularCourses />
+      <DbFooter />
     </div>
   );
 }
