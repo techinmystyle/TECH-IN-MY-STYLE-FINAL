@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import AOS from 'aos';
 import './Landing.css';
 
@@ -26,6 +26,10 @@ const stats = [
 ];
 
 const Landing = () => {
+  // If already logged in → skip landing, go straight to dashboard
+  const token = localStorage.getItem('token');
+  if (token) return <Navigate to="/home" replace />;
+
   useEffect(() => {
     AOS.init({ duration: 900, once: true });
   }, []);
