@@ -295,10 +295,10 @@ const forgotPassword = async (req, res) => {
     } catch (emailErr) {
       // Revert token on email failure
       if (mode === 'local') {
-        localUpdateUser(user._id, { resetPasswordToken: undefined, resetPasswordExpire: undefined });
+        localUpdateUser(user._id, { resetPasswordToken: null, resetPasswordExpire: null });
       } else {
-        user.resetPasswordToken = undefined;
-        user.resetPasswordExpire = undefined;
+        user.resetPasswordToken = null;
+        user.resetPasswordExpire = null;
         await user.save();
       }
       return res.status(500).json({ message: 'Email could not be sent. Check your EMAIL_PASSWORD in .env' });
@@ -334,13 +334,13 @@ const resetPassword = async (req, res) => {
       const hashedPassword = await bcrypt.hash(req.body.password, salt);
       localUpdateUser(user._id, {
         password: hashedPassword,
-        resetPasswordToken: undefined,
-        resetPasswordExpire: undefined
+        resetPasswordToken: null,
+        resetPasswordExpire: null
       });
     } else {
       user.password = req.body.password;
-      user.resetPasswordToken = undefined;
-      user.resetPasswordExpire = undefined;
+      user.resetPasswordToken = null;
+      user.resetPasswordExpire = null;
       await user.save();
     }
 
