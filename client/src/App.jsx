@@ -35,11 +35,13 @@ import FsPyCourseRoutes from '@modules/fullstack-python-course/routes';
 import FsJavaCourseRoutes from '@modules/fullstack-java-platform-course/routes';
 import './App.css';
 import ScrollToTop from './utils/ScrollToTop';
+import GlobalSEO from '@components/GlobalSEO';
 
 function App() {
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <ScrollToTop />
+      <GlobalSEO />
       <Routes>
         {/* Public Auth Routes */}
         <Route path="/login" element={<Login />} />
