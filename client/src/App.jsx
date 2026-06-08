@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from '@pages/Home';
 import Courses from '@pages/Courses';
 import AboutUs from '@pages/AboutUs';
@@ -57,6 +57,7 @@ function App() {
         {/* Protected Routes */}
         <Route path="/"               element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/home"           element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/index.html"     element={<Navigate to="/" replace />} />
         <Route path="/courses"        element={<ProtectedRoute><Courses /></ProtectedRoute>} />
         <Route path="/about-us"       element={<ProtectedRoute><AboutUs /></ProtectedRoute>} />
         <Route path="/stay-connected" element={<ProtectedRoute><StayConnected /></ProtectedRoute>} />
