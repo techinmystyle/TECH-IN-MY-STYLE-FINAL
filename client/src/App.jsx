@@ -54,12 +54,12 @@ function App() {
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/disclaimer"           element={<Disclaimer />} />
 
-        {/* Protected Routes */}
-        <Route path="/"               element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        {/* Public Routes — accessible to all visitors including Googlebot */}
+        <Route path="/"               element={<Home />} />
         <Route path="/home"           element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/index.html"     element={<Navigate to="/" replace />} />
-        <Route path="/courses"        element={<ProtectedRoute><Courses /></ProtectedRoute>} />
-        <Route path="/about-us"       element={<ProtectedRoute><AboutUs /></ProtectedRoute>} />
+        <Route path="/courses"        element={<Courses />} />
+        <Route path="/about-us"       element={<AboutUs />} />
         <Route path="/stay-connected" element={<ProtectedRoute><StayConnected /></ProtectedRoute>} />
         <Route path="/feedback"       element={<ProtectedRoute><Feedback /></ProtectedRoute>} />
 

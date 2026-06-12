@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -8,13 +8,19 @@ import './Home.css';
 import AOS from 'aos';
 
 const Home = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState('Guest');
+
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
 
-    // Welcome message
-    const username = localStorage.getItem('username') || 'Guest';
-    const welcomeEl = document.getElementById('welcome');
-    if (welcomeEl) welcomeEl.textContent = `Welcome, ${username}!`;
+    // Check auth state
+    const token = localStorage.getItem('token');
+    const storedName = localStorage.getItem('username');
+    if (token && storedName) {
+      setIsLoggedIn(true);
+      setUsername(storedName);
+    }
 
     // Custom cursor (desktop only)
     if (window.innerWidth <= 768) return;
@@ -94,8 +100,9 @@ const Home = () => {
   return (
     <div className="home-page">
       <SEO 
-        title="Learn Programming & Web Development" 
-        description="Learn coding the smart way with premium, free programming courses in HTML, CSS, JavaScript, Python, Java, AI, ML, Deep Learning, NLP, Data Science, DSA, and Full Stack Development."
+        title="Tech In My Style — Free Programming Courses"
+        description="Tech In My Style — Learn coding the smart way with 20+ free programming courses in HTML, CSS, JavaScript, Python, Java, AI, Machine Learning, Deep Learning, NLP, Data Science, DSA, System Design, and Full Stack Development."
+        keywords="tech in my style, techinmystyle, programming courses, learn to code free, HTML tutorial, CSS tutorial, JavaScript course, Python programming, Java course, machine learning, deep learning, NLP, data science, DSA, system design, full stack development, free coding courses India"
       />
       <WebGLBackground />
       <Header />
@@ -103,11 +110,20 @@ const Home = () => {
       {/* Hero */}
       <section className="hero">
         <div className="hero-center" data-aos="fade-up">
-          <div className="welcome-message" id="welcome"></div>
+          {isLoggedIn ? (
+            <div className="welcome-message">Welcome back, {username}!</div>
+          ) : (
+            <div className="welcome-message" style={{fontSize:'1rem', fontWeight:600, letterSpacing:'0.08em', textTransform:'uppercase', opacity:0.85}}>🚀 Free Programming Courses — No Credit Card Required</div>
+          )}
+          <h1 style={{fontSize:'clamp(1.4rem,4vw,2.2rem)', fontWeight:700, color:'inherit', marginBottom:'0.5rem', opacity:0, position:'absolute', pointerEvents:'none'}}>Tech In My Style — Learn Programming, Web Development, AI and Data Science for Free</h1>
           <h2>Learn to <span className="color-change">code</span> and <span className="color-change">create</span> with <span className="color-change">confidence</span></h2>
           <div className="hero-buttons">
-            <Link to="/courses" className="btn primary">Explore Courses</Link>
-            <button className="btn secondary" onClick={() => document.getElementById('learn-more').scrollIntoView({ behavior: 'smooth' })}>Learn More</button>
+            <Link to="/courses" className="btn primary" id="explore-courses-btn">Explore Courses</Link>
+            {!isLoggedIn ? (
+              <Link to="/register" className="btn secondary" id="join-free-btn">Join Free</Link>
+            ) : (
+              <button className="btn secondary" id="learn-more-btn" onClick={() => document.getElementById('learn-more').scrollIntoView({ behavior: 'smooth' })}>Learn More</button>
+            )}
           </div>
         </div>
       </section>

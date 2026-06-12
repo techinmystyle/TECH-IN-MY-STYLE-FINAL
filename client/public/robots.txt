@@ -1,26 +1,62 @@
 # robots.txt — Tech In My Style
 # https://techinmystyle.com
+# Last updated: 2026-06-12
 
 User-agent: *
 Allow: /
+
+# Allow all content pages explicitly
+Allow: /courses
+Allow: /about-us
+Allow: /privacy-policy
+Allow: /terms-and-conditions
+Allow: /disclaimer
+Allow: /html-course
+Allow: /css-course
+Allow: /js-basic-course
+Allow: /js-int-course
+Allow: /js-adv-course
+Allow: /python-course
+Allow: /java-course
+Allow: /c-course
+Allow: /ai-course
+Allow: /ml-course
+Allow: /dl-course
+Allow: /nlp-course
+Allow: /genai-course
+Allow: /dsc-course
+Allow: /dsa-course
+Allow: /database-course
+Allow: /os-course
+Allow: /system-design-course
+Allow: /fullstack-python-course
+Allow: /fullstack-java-platform-course
 
 # Allow Google AdSense crawler
 User-agent: Mediapartners-Google
 Allow: /
 
-# Allow all search engines
+# Allow all major search engines
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-# Disallow admin/auth paths from being indexed
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: facebot
+Allow: /
+
+# Disallow auth/private paths from being indexed
 Disallow: /login
 Disallow: /register
 Disallow: /forgot-password
 Disallow: /reset-password/
-Disallow: /leaderboard
 
 # Sitemap location
 Sitemap: https://techinmystyle.com/sitemap.xml

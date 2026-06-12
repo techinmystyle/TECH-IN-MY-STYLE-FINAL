@@ -10,10 +10,10 @@ const GlobalSEO = () => {
 
   useEffect(() => {
     const siteUrl = 'https://techinmystyle.com';
-    const defaultTitle = 'Tech In My Style — Learn Programming & Web Development';
-    const defaultDescription = 'Tech In My Style offers free programming courses in HTML, CSS, JavaScript, Python, Java, C, AI, Machine Learning, Deep Learning, NLP, Data Science, DSA, System Design, and Full Stack Development. Learn to code the smart way.';
-    const defaultKeywords = 'programming courses, learn to code, HTML tutorial, CSS tutorial, JavaScript course, Python programming, Java course, machine learning, deep learning, NLP, data science, DSA, system design, full stack development, tech education India';
-    const defaultOgImage = 'https://techinmystyle.com/favicon.png';
+    const defaultTitle = 'Tech In My Style — Free Programming & Web Development Courses';
+    const defaultDescription = 'Tech In My Style (techinmystyle.com) offers 20+ free programming courses in HTML, CSS, JavaScript, Python, Java, C, AI, Machine Learning, Deep Learning, NLP, Data Science, DSA, System Design, and Full Stack Development. Learn to code the smart way.';
+    const defaultKeywords = 'tech in my style, techinmystyle, techinmystyle.com, free programming courses, learn to code, HTML tutorial, CSS tutorial, JavaScript course, Python programming, Java course, C programming, machine learning, deep learning, NLP, data science, DSA, system design, full stack development, tech education India, free coding courses';
+    const defaultOgImage = 'https://techinmystyle.com/og-image.png';
 
     // Parse location path to determine SEO properties
     const pathname = location.pathname.replace(/\/$/, ""); // Strip trailing slash
@@ -35,12 +35,12 @@ const GlobalSEO = () => {
       finalKeywords = defaultKeywords;
     } else if (pathname === '/courses') {
       finalTitle = 'All Free Programming Courses — Tech In My Style';
-      finalDescription = 'Explore our collection of 20+ free, interactive programming and tech courses. Learn HTML, CSS, JS, Python, AI, Machine Learning, DSA, System Design, and more.';
-      finalKeywords = 'free coding courses, learn programming, web development courses, python courses, machine learning tutorial, system design, dsa course';
+      finalDescription = 'Explore 20+ free, interactive programming and tech courses by Tech In My Style. Learn HTML, CSS, JavaScript, Python, Java, C, AI, Machine Learning, DSA, System Design, and more. All courses are 100% free.';
+      finalKeywords = 'tech in my style courses, techinmystyle courses, free coding courses, learn programming, web development courses, python courses, machine learning tutorial, system design, dsa course, full stack development India';
     } else if (pathname === '/about-us') {
       finalTitle = 'About Our Team & Mission — Tech In My Style';
-      finalDescription = 'Meet the passionate team behind Tech In My Style: G Rama Krishna Prasad (UI/UX Architect), Rameez Basha Shaik (Technical Lead), Syed Asadullah (Developer & Course Designer), and others. We make tech education free and accessible to all.';
-      finalKeywords = 'about us, tech in my style founder, G Rama Krishna Prasad, Rama Krishna Prasad, Rameez Basha, Syed Asadullah, tech education mission';
+      finalDescription = 'Meet the passionate team behind Tech In My Style (techinmystyle.com): G Rama Krishna Prasad (UI/UX Architect & Founder), Rameez Basha Shaik (Technical Lead), Syed Asadullah (Developer & Course Designer), and others. We make tech education free and accessible to all.';
+      finalKeywords = 'tech in my style team, techinmystyle founder, G Rama Krishna Prasad, Rama Krishna Prasad, Rameez Basha, Syed Asadullah, tech education mission, about tech in my style';
     } else if (pathname === '/stay-connected') {
       finalTitle = 'Stay Connected & Community — Tech In My Style';
       finalDescription = 'Connect with the Tech In My Style community. Follow us on Instagram, YouTube, Telegram, and WhatsApp to get the latest tech news, resources, and updates.';
@@ -98,9 +98,9 @@ const GlobalSEO = () => {
         if (courseName) {
           if (parts.length === 1) {
             // Course Home Page
-            finalTitle = `${courseName} Course — Learn ${courseName} in My Style`;
-            finalDescription = `Master ${courseName} from beginner to advanced concepts with our free interactive course. Includes interactive lessons, code compilers, resources, and live exercises.`;
-            finalKeywords = `${courseName}, learn ${courseName}, ${courseName} course, ${courseName} tutorial, tech in my style, html in my style, ${courseName} in my style`;
+            finalTitle = `${courseName} Course — ${courseName} in My Style | Tech In My Style`;
+            finalDescription = `Master ${courseName} from beginner to advanced with our free interactive course on Tech In My Style (techinmystyle.com). Includes interactive lessons, live code compiler, resources, and exercises.`;
+            finalKeywords = `${courseName} in my style, ${courseName} course, learn ${courseName} free, ${courseName} tutorial, tech in my style, techinmystyle, ${courseName} for beginners, ${courseName} programming India`;
           } else {
             // Course Sub-Pages (special tabs)
             const subSegment = parts[1];
@@ -129,8 +129,8 @@ const GlobalSEO = () => {
 
             const pageLabel = detail ? `${courseName} ${detail} ${subName}` : `${courseName} ${subName}`;
             finalTitle = `${pageLabel} — Tech In My Style`;
-            finalDescription = `Explore the ${pageLabel} in our free ${courseName} course. Learn to code using our live browser compiler and detailed reference guides.`;
-            finalKeywords = `${courseName} ${subSegment}, ${courseName} ${detail || ''}, learn ${courseName}, ${courseName} playground, online compiler`;
+            finalDescription = `Explore the ${pageLabel} in our free ${courseName} course on Tech In My Style (techinmystyle.com). Learn to code using our live browser compiler and detailed reference guides.`;
+            finalKeywords = `${courseName} ${subSegment}, ${courseName} ${detail || ''}, learn ${courseName}, ${courseName} playground, online compiler, tech in my style, techinmystyle`;
           }
         }
       }

@@ -18,7 +18,7 @@ const Login = () => {
     // Check if user is already logged in
     const token = localStorage.getItem('token');
     if (token) {
-      navigate('/');
+      navigate('/home');
     }
 
     return () => {
@@ -49,8 +49,8 @@ const Login = () => {
       localStorage.setItem('email', response.data.email);
       localStorage.setItem('userId', response.data._id);
 
-      // Redirect to home
-      navigate('/');
+      // Redirect to authenticated home
+      navigate('/home');
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please try again.');
     } finally {
@@ -68,7 +68,7 @@ const Login = () => {
       <div className="auth-container">
         <div className="auth-card">
           <div className="auth-header">
-            <Link to="/" className="auth-logo">
+            <Link to="/" className="auth-logo" id="auth-logo-link">
               <h1>TECH IN MY STYLE</h1>
             </Link>
             <div className="auth-icon-badge">
